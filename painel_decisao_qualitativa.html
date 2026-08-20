@@ -19,6 +19,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+    <!-- Estudio de Mapas e Pontos Nodais (composicao e exportacao de imagens) -->
+    <link rel="stylesheet" href="estudio_mapas.css">
+    <script src="estudio_mapas.js" defer></script>
     
     <style>
         :root {
@@ -435,6 +439,9 @@
             </div>
         </div>
         <div class="d-flex align-items-center gap-3">
+            <button class="btn-estudio me-2" onclick="abrirEstudioMapas()" title="Abrir o estudio de composicao cartografica e exportacao de imagens">
+                <i class="fa-solid fa-images"></i> Estúdio de Imagem
+            </button>
             <div class="btn-export-group me-1">
                 <button class="btn-export-shp" onclick="exportDecisionsShapefile()" title="Exportar Shapefile completo (.zip com .shp, .shx, .dbf, .prj, .cpg) para QGIS">
                     <i class="fa-solid fa-map-location-dot"></i> Exportar Shapefile (QGIS)
@@ -778,6 +785,8 @@
             if (select && select.options.length > 0) {
                 changeCity(select.options[0].value);
             }
+
+            configurarEstudioMapas();
         }
 
         function toggleMapPicker(forceState) {
@@ -1848,6 +1857,75 @@ SISTEMA DE COORDENADAS:
             zipOut.set(eocd, outOffset);
 
             return zipOut;
+        }
+
+        // =========================================================================
+        // ESTUDIO DE MAPAS E PONTOS NODAIS
+        // Integra o modulo estudio_mapas.js: composicao cartografica da cidade
+        // em exibicao e exportacao das imagens em alta resolucao.
+        // =========================================================================
+
+        const tileRotulos = {
+            esri_streets: 'Esri World Street Map (ruas)',
+            carto_voyager: 'CartoDB Voyager (ruas / outdoor)',
+            esri_topo: 'Esri World Topo Map (topografico)',
+            osm: 'OpenStreetMap Standard',
+            dark: 'CartoDB DarkMatter (noturno)'
+        };
+
+        /** Estado atual dos filtros do painel, reaproveitado pelo estudio. */
+        function getFiltrosPainel() {
+            const fRange = document.getElementById('freqRange');
+            const rSelect = document.getElementById('rankFilterSelect');
+            const colorRadio = document.querySelector('input[name="colorFilter"]:checked');
+            const bmSelect = document.getElementById('baseMapSelect');
+            const lido = (id, padrao) => {
+                const el = document.getElementById(id);
+                return el ? el.checked : padrao;
+            };
+            const rankVal = rSelect ? rSelect.value : 'all';
+            return {
+                freqMinima: fRange ? (parseFloat(fRange.value) || 0) : 0,
+                categoria: colorRadio ? colorRadio.value : 'all',
+                limiteRank: rankVal === 'all' ? 0 : parseInt(rankVal, 10),
+                fluxo: lido('toggleHeatmap', true),
+                sobreposicao: lido('toggleOverlap', true),
+                atrativos: lido('toggleAttractions', true),
+                centroide: lido('toggleCentroid', true),
+                pontos: lido('toggleUserPins', true),
+                mapaBase: bmSelect ? bmSelect.value : 'esri_streets'
+            };
+        }
+
+        function configurarEstudioMapas() {
+            if (typeof EstudioMapas === 'undefined') {
+                console.warn('Modulo estudio_mapas.js nao encontrado: o Estudio de Imagem ficara indisponivel.');
+                return;
+            }
+            EstudioMapas.init({
+                getCidades: () => cityDataMap,
+                getCidadeAtual: () => currentCityKey,
+                getPontosSalvos: (chave) => getCitySavedPoints(chave),
+                getProvedores: () => tileProviders,
+                getAtribuicoes: () => tileAttributions,
+                getRotulosProvedores: () => tileRotulos,
+                getFiltros: getFiltrosPainel,
+                getVisaoMapa: () => {
+                    if (!map) return null;
+                    const centro = map.getCenter();
+                    const tamanho = map.getSize();
+                    return { lat: centro.lat, lon: centro.lng, zoom: map.getZoom(), largura: tamanho.x };
+                },
+                mapaBasePadrao: (document.getElementById('baseMapSelect') || {}).value || 'esri_streets'
+            });
+        }
+
+        function abrirEstudioMapas() {
+            if (typeof EstudioMapas === 'undefined') {
+                alert('O modulo estudio_mapas.js nao foi carregado. Mantenha o arquivo na mesma pasta do painel.');
+                return;
+            }
+            EstudioMapas.abrir();
         }
 
         window.onload = initMap;

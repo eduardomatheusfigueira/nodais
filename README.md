@@ -1,6 +1,8 @@
 # Selecao e Exportacao de Pontos Nodais de Afericao
 
-Sistema para visualizacao espacial de rotas e atrativos, marcacao de pontos de afericao e exportacao de camadas vetoriais nos formatos ESRI Shapefile, GeoPackage, GeoJSON e CSV para uso no QGIS.
+Sistema para visualizacao espacial de rotas e atrativos, marcacao de pontos nodais de afericao, geracao de mapas prontos para publicacao e exportacao de camadas vetoriais nos formatos ESRI Shapefile, GeoPackage, GeoJSON e CSV para uso no QGIS.
+
+A geracao de figuras e feita no Estudio de Mapas e Pontos Nodais, integrado ao painel: a composicao cartografica (mapa base, camadas do estudo, titulo, rosa dos ventos, escala grafica, legendas, grade e anotacoes) e montada na tela e exportada em PNG ou JPEG na resolucao escolhida, individualmente ou em lote por municipio.
 
 Desenvolvido no contexto do Projeto UNESCO UNES 2369/2025 em conjunto com o Itaipu Parquetec para os municipios do estudo nos estados de MS, PR e SC.
 
@@ -40,8 +42,31 @@ Funcionalidades:
   - **Shapefile (.zip)**: Gera arquivo compactado contendo as 4 camadas em Shapefile (`.shp`, `.shx`, `.dbf`, `.prj` em WGS 84 / EPSG:4326 e `.cpg` em UTF-8) e guia de instrucoes.
   - **GeoJSON**: Gera arquivo `.geojson` unificado contendo as feicoes e atributos de todas as camadas.
   - **CSV**: Gera planilha tabular das decisoes delimitada por ponto e virgula.
+  - **Imagem (PNG/JPEG)**: Abre o Estudio de Mapas e Pontos Nodais para compor e exportar a figura do municipio na resolucao desejada.
 
-### 2. Conversor Python para Camadas QGIS (`gerar_shapefile_qgis.py`)
+### 2. Estudio de Mapas e Pontos Nodais (`estudio_mapas.js` / `estudio_mapas.css`)
+
+Ambiente de composicao cartografica e geracao de imagens embutido no painel, acionado pelo botao **Estudio de Imagem** no cabecalho. Consolida em um unico lugar a geracao dos mapas do estudo e a exportacao das figuras finais, dispensando captura de tela e edicao externa.
+
+O estudio nao usa o mapa da tela: monta a composicao em `canvas` proprio, mosaicando os tiles do provedor selecionado e desenhando as camadas do estudo na resolucao de saida. Com isso, a previa exibida e exatamente a imagem exportada, em qualquer resolucao.
+
+Funcionalidades:
+
+- **Resolucao de saida**: predefinicoes HD, 2K, 4K, A4 300 dpi e quadrado, dimensoes livres, inversao de orientacao e escala proporcional dos elementos cartograficos.
+- **Formato**: PNG (sem perdas) ou JPEG com controle de qualidade.
+- **Mapa base**: qualquer um dos cinco provedores do painel (Esri World Street Map, CartoDB Voyager, Esri World Topo Map, OpenStreetMap e CartoDB DarkMatter), com creditos automaticos do provedor e do projeto.
+- **Camadas do estudo**: manchas de fluxo TomTom (com controle de intensidade), trechos de sobreposicao de rotas em escala logaritmica, atrativos turisticos com o distintivo numerico do Produto 4, centro geometrico dos CNPJs e pontos nodais de afericao, com rotulos opcionais.
+- **Filtros tematicos**: ranking do Produto 4, categoria de relevancia das rotas e frequencia minima, com a opcao de copiar diretamente os filtros ativos no painel.
+- **Elementos cartograficos posicionaveis** (arrastados sobre a previa): titulo e subtitulo configuraveis, rosa dos ventos em quatro estilos, escala grafica com a projecao declarada, legenda de simbologia montada a partir das camadas ativas e legenda dos pontos nodais com numeracao, coordenadas e justificativas tecnicas registradas.
+- **Grade de coordenadas**: paralelos e meridianos com rotulos em graus decimais e intervalo escolhido automaticamente pela escala.
+- **Textos e formas livres**: caixas de texto, retangulos, elipses e setas para destaques e anotacoes na prancha.
+- **Enquadramento**: automatico sobre todas as feicoes do municipio, restrito aos pontos nodais, ou copiado da visao atual do painel; navegacao por arraste e roda do mouse.
+- **Composicao**: salva no navegador, exportada e importada em `.json`, permitindo reproduzir a mesma prancha em outra sessao ou em outro municipio.
+- **Exportacao em lote**: gera um mapa por municipio com a mesma composicao, enquadrando cada um automaticamente ou preservando o enquadramento atual, e entrega tudo em um `.zip` acompanhado do arquivo de composicao.
+
+As rotinas de desenho ficam disponiveis em `EstudioMapas.desenho` (projecao, mosaico de tiles, camadas, rosa dos ventos, escala, legendas e composicao completa), podendo ser reaproveitadas por outros mapas do projeto.
+
+### 3. Conversor Python para Camadas QGIS (`gerar_shapefile_qgis.py`)
 Script em Python para processamento em linha de comando a partir das bases do projeto e arquivos CSV de pontos.
 
 Funcionalidades:
@@ -59,6 +84,8 @@ Funcionalidades:
 
 ### Painel Web
 Nao requer instalacao de dependencias. Basta abrir o arquivo `painel_decisao_qualitativa.html` em qualquer navegador web (Google Chrome, Mozilla Firefox, Microsoft Edge, etc.).
+
+Os arquivos `estudio_mapas.js` e `estudio_mapas.css` devem permanecer na mesma pasta do painel: sao eles que fornecem o Estudio de Imagem. Sem eles o painel continua funcionando, apenas sem o estudio.
 
 ### Script Python
 Requer Python 3.8 ou superior.
@@ -83,6 +110,14 @@ pip install pandas geopandas shapely pyogrio
    - "Exportar Shapefile (QGIS)"
    - "GeoJSON"
    - "CSV"
+
+### Uso do Estudio de Imagem
+1. Selecione o municipio e ajuste os filtros desejados no painel.
+2. Clique em "Estudio de Imagem" no cabecalho.
+3. Defina a resolucao de saida e o formato na coluna da esquerda; ajuste o mapa base, as camadas e os filtros tematicos.
+4. Enquadre a area com "Enquadrar municipio", "Enquadrar pontos nodais" ou "Usar visao do painel"; refine arrastando o mapa e usando a roda do mouse.
+5. Ative os elementos da prancha na coluna da direita e arraste-os sobre a previa ate a posicao desejada.
+6. Clique em "Exportar imagem" para baixar o arquivo, ou em "Exportar todos os municipios (.zip)" para gerar a serie completa com a mesma composicao.
 
 ### Uso do Script Python
 
