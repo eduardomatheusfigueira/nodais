@@ -6,6 +6,21 @@ Desenvolvido no contexto do Projeto UNESCO UNES 2369/2025 em conjunto com o Itai
 
 ---
 
+## Camadas Exportadas para o QGIS
+
+A exportacao gera 4 camadas vetoriais estruturadas:
+
+1. **Pontos de Afericao Selecionados (`1_pontos_afericao_selecionados`)**:
+   - Pontos de decisao registrados pelo usuario com justificativas tecnicas.
+2. **Pontos de Sobreposicao de Fluxos (`2_pontos_sobreposicao_fluxos`)**:
+   - Pontos de intersecao e concentracao de rotas classificados por ranking e frequencia de viagens.
+3. **Manchas de Fluxo / Rotas (`3_manchas_fluxo_rotas`)**:
+   - Pontos e trajetorias das rotas TomTom que compoem as manchas de fluxo.
+4. **Atrativos Turisticos (`4_atrativos_turisticos`)**:
+   - Localizacao dos atrativos turisticos do estudo com identificadores e classificacao do Produto 4.
+
+---
+
 ## Componentes do Sistema
 
 ### 1. Painel Web (`painel_decisao_qualitativa.html`)
@@ -22,20 +37,20 @@ Funcionalidades:
   - Insercao de nome e campo de justificativa/observacao.
   - Armazenamento local no navegador (LocalStorage) por municipio.
 - Exportacao direta:
-  - **Shapefile (.zip)**: Gera arquivo compactado contendo `.shp`, `.shx`, `.dbf`, `.prj` (WGS 84 / EPSG:4326), `.cpg` (UTF-8) e arquivo de texto explicativo.
-  - **GeoJSON**: Gera arquivo `.geojson` com geometrias do tipo Point e tabela de atributos.
-  - **CSV**: Gera planilha delimitada por ponto e virgula com codificacao UTF-8 com BOM.
+  - **Shapefile (.zip)**: Gera arquivo compactado contendo as 4 camadas em Shapefile (`.shp`, `.shx`, `.dbf`, `.prj` em WGS 84 / EPSG:4326 e `.cpg` em UTF-8) e guia de instrucoes.
+  - **GeoJSON**: Gera arquivo `.geojson` unificado contendo as feicoes e atributos de todas as camadas.
+  - **CSV**: Gera planilha tabular das decisoes delimitada por ponto e virgula.
 
 ### 2. Conversor Python para Camadas QGIS (`gerar_shapefile_qgis.py`)
-Script em Python para processamento em linha de comando a partir de arquivos CSV de pontos.
+Script em Python para processamento em linha de comando a partir das bases do projeto e arquivos CSV de pontos.
 
 Funcionalidades:
-- Leitura automatica do arquivo CSV de pontos mais recente ou informado por parametro.
+- Leitura automatica do arquivo CSV de pontos mais recente e das bases de rotas, sobreposicoes e atrativos.
 - Validacao e conversao de tipos de dados e coordenadas geograficas.
 - Exportacao simultanea para:
-  - ESRI Shapefile compactado em `.zip` (arquivos `.shp`, `.shx`, `.dbf`, `.prj`, `.cpg`).
-  - GeoPackage (`.gpkg`).
-  - GeoJSON (`.geojson`).
+  - ESRI Shapefile compactado em `.zip` contendo os 4 conjuntos de arquivos (`.shp`, `.shx`, `.dbf`, `.prj`, `.cpg`).
+  - GeoPackage (`.gpkg`) multi-camadas contendo as 4 camadas em arquivo unico.
+  - GeoJSON (`.geojson`) individual por camada.
 - Suporte aos sistemas de coordenadas EPSG:4326 (WGS 84) e EPSG:4674 (SIRGAS 2000).
 
 ---
@@ -64,14 +79,14 @@ pip install pandas geopandas shapely pyogrio
 3. Utilize os filtros laterais para ajustar a visualizacao das camadas (densidade de rotas, sobreposicao, centroides e atrativos).
 4. Clique em "Marcar Novo Ponto Clicando no Mapa" ou preencha o formulario lateral com as coordenadas, nome e justificativa.
 5. Clique em "Adicionar Ponto".
-6. Apos registrar os pontos necessarios, clique no botao de exportacao desejado no cabecalho:
+6. No cabecalho superior, clique na opcao de exportacao desejada:
    - "Exportar Shapefile (QGIS)"
    - "GeoJSON"
    - "CSV"
 
 ### Uso do Script Python
 
-Execucao basica (busca automatica pelo CSV mais recente):
+Execucao basica (busca automatica pelo CSV mais recente e integracao de todas as camadas):
 ```bash
 python gerar_shapefile_qgis.py
 ```
@@ -87,47 +102,58 @@ python gerar_shapefile_qgis.py --crs 4674
 ```
 
 Parametros disponiveis:
-- `--csv`, `-c`: Caminho do arquivo CSV de entrada (opcional; se omitido, o script busca automaticamente).
+- `--csv`, `-c`: Caminho do arquivo CSV de entrada de pontos selecionados (opcional).
 - `--out`, `-o`: Diretorio de destino dos arquivos exportados (padrao: `camadas_qgis`).
 - `--crs`: Codigo EPSG para a projecao cartografica (`4326` para WGS 84 ou `4674` para SIRGAS 2000; padrao: `4326`).
 
 ---
 
-## Estrutura dos Atributos dos Dados Exportados
+## Estrutura dos Atributos das Camadas
 
+### 1. Pontos de Afericao Selecionados (`1_pontos_afericao_selecionados`)
 | Campo | Tipo | Tamanho | Descricao |
 | :--- | :--- | :---: | :--- |
-| `MUNICIPIO` | Texto | 50 | Nome do municipio com sigla da UF (ex: PR - Foz do Iguacu) |
-| `ORDEM` | Inteiro | 4 | Numero sequencial do ponto no municipio |
-| `NOME` | Texto | 100 | Identificacao textual do ponto de afericao |
+| `MUNICIPIO` | Texto | 50 | Nome do municipio com UF |
+| `ORDEM` | Inteiro | 4 | Sequencia do ponto no municipio |
+| `NOME` | Texto | 100 | Identificacao do ponto de afericao |
 | `LATITUDE` | Decimal | 12, 6 | Latitude em graus decimais |
 | `LONGITUDE` | Decimal | 12, 6 | Longitude em graus decimais |
-| `JUSTIFIC` | Texto | 254 | Justificativa tecnica ou observacao registrada |
-| `DATA_HORA` | Texto | 30 | Registro de data e hora da decisao |
+| `JUSTIFIC` | Texto | 254 | Justificativa tecnica registrada |
+| `DATA_HORA` | Texto | 30 | Registro de data e hora |
 
----
+### 2. Pontos de Sobreposicao de Fluxos (`2_pontos_sobreposicao_fluxos`)
+| Campo | Tipo | Tamanho | Descricao |
+| :--- | :--- | :---: | :--- |
+| `MUNICIPIO` | Texto | 50 | Nome do municipio com UF |
+| `RANK` | Inteiro | 5 | Posicao no ranking de sobreposicao |
+| `FREQ` | Decimal | 10, 2 | Frequencia de viagens calculada |
+| `LATITUDE` | Decimal | 12, 6 | Latitude em graus decimais |
+| `LONGITUDE` | Decimal | 12, 6 | Longitude em graus decimais |
 
-## Estrutura do Repositorio
+### 3. Manchas de Fluxo / Rotas (`3_manchas_fluxo_rotas`)
+| Campo | Tipo | Tamanho | Descricao |
+| :--- | :--- | :---: | :--- |
+| `MUNICIPIO` | Texto | 50 | Nome do municipio com UF |
+| `ID_ROTA` | Inteiro | 6 | Identificador numerico da rota |
+| `NOME_ROTA` | Texto | 100 | Nome ou descricao da rota |
+| `LATITUDE` | Decimal | 12, 6 | Latitude em graus decimais |
+| `LONGITUDE` | Decimal | 12, 6 | Longitude em graus decimais |
 
-```
-nodais/
-|-- painel_decisao_qualitativa.html          # Interface web de decisao e exportacao
-|-- gerar_shapefile_qgis.py                 # Script Python de geracao de camadas GIS
-|-- Guia_Exportacao_Shapefile_QGIS.md       # Documentacao de apoio para importacao no QGIS
-|-- Relatorio_Qualitativo_Mapas_Afericao.md # Relatorio metodologico do estudo
-|-- Atrativos_Relevantes_Por_Cidade.md      # Tabela de atrativos e classificacoes
-|-- Atividades Produto 4_Projeto Unesco.xlsx# Planilha base do Produto 4
-|-- camadas_qgis/                           # Diretorio com os arquivos GIS gerados
-|-- mapas_afericao/                         # Mapas HTML individuais por municipio
-|-- final/                                  # Scripts de processamento e dados brutos
-`-- Materiais de referencia/                # Documentos de apoio e matrizes de deslocamento
-```
+### 4. Atrativos Turisticos (`4_atrativos_turisticos`)
+| Campo | Tipo | Tamanho | Descricao |
+| :--- | :--- | :---: | :--- |
+| `MUNICIPIO` | Texto | 50 | Nome do municipio com UF |
+| `ID_ATRATIV` | Inteiro | 5 | Numero identificador do atrativo |
+| `NOME` | Texto | 100 | Nome do atrativo turistico |
+| `RANK_PROD4` | Texto | 50 | Classificacao no Produto 4 |
+| `LATITUDE` | Decimal | 12, 6 | Latitude em graus decimais |
+| `LONGITUDE` | Decimal | 12, 6 | Longitude em graus decimais |
 
 ---
 
 ## Uso dos Arquivos no QGIS
 
 1. Abra o QGIS (versao 3.0 ou superior).
-2. Arraste o arquivo `pontos_afericao_unesco_shapefile.zip` ou o arquivo `pontos_afericao.shp` (extraido) para a area de trabalho do QGIS.
-3. Como alternativa, arraste o arquivo `pontos_afericao_unesco.gpkg` ou `pontos_afericao_unesco.geojson`.
-4. A camada de pontos sera carregada com a tabela de atributos completa e o sistema de coordenadas configurado.
+2. Arraste o arquivo `pontos_afericao_unesco_shapefile.zip` ou o arquivo `pontos_afericao_unesco.gpkg` diretamente para a area de trabalho do QGIS.
+3. O QGIS exibira uma janela permitindo selecionar as camadas desejadas (pontos selecionados, sobreposicao de fluxos, manchas de rotas e atrativos).
+4. Todas as camadas serao carregadas com atributos completos e coordenadas georreferenciadas.

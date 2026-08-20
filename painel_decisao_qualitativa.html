@@ -1315,11 +1315,11 @@
                         allPoints.push({
                             municipio: mKey,
                             ordem: index + 1,
-                            name: pt.name || `Ponto #${index + 1}`,
+                            nome: pt.name || `Ponto #${index + 1}`,
                             lat: latNum,
                             lon: lonNum,
-                            notes: pt.notes || '',
-                            timestamp: pt.timestamp || ''
+                            justific: pt.notes || '',
+                            data_hora: pt.timestamp || ''
                         });
                     }
                 });
@@ -1327,26 +1327,172 @@
             return allPoints;
         }
 
+        function getAllClustersList() {
+            let list = [];
+            for (let mKey in cityDataMap) {
+                const d = cityDataMap[mKey];
+                if (d.clusters && d.clusters.length > 0) {
+                    d.clusters.forEach(cl => {
+                        list.push({
+                            municipio: mKey,
+                            rank: cl.rank || 1,
+                            freq: cl.freq || 0,
+                            lat: cl.lat,
+                            lon: cl.lon
+                        });
+                    });
+                }
+            }
+            return list;
+        }
+
+        function getAllRoutesPointsList() {
+            let list = [];
+            for (let mKey in cityDataMap) {
+                const d = cityDataMap[mKey];
+                if (d.routes && d.routes.length > 0) {
+                    d.routes.forEach((pt, idx) => {
+                        list.push({
+                            municipio: mKey,
+                            id_rota: idx + 1,
+                            nome_rota: "Ponto de Fluxo " + mKey,
+                            lat: pt[0],
+                            lon: pt[1]
+                        });
+                    });
+                }
+            }
+            return list;
+        }
+
+        function getAllAttractionsList() {
+            let list = [];
+            for (let mKey in cityDataMap) {
+                const d = cityDataMap[mKey];
+                if (d.atrativos && d.atrativos.length > 0) {
+                    d.atrativos.forEach(att => {
+                        list.push({
+                            municipio: mKey,
+                            id_atrativ: att.badge || 1,
+                            nome: att.name || '',
+                            rank_prod4: att.rank || '',
+                            lat: att.lat,
+                            lon: att.lon
+                        });
+                    });
+                }
+            }
+            return list;
+        }
+
         // =========================================================================
-        // EXPORTAÇÃO 1: ESRI SHAPEFILE COMPLETO (.ZIP) PARA QGIS
+        // EXPORTAÇÃO 1: ESRI SHAPEFILE COMPLETO (.ZIP COM TODAS AS CAMADAS) PARA QGIS
         // =========================================================================
         function exportDecisionsShapefile() {
-            const points = getAllSavedPointsList();
-            if (points.length === 0) {
-                alert("Nenhum ponto de aferição salvo encontrado ainda! Adicione pontos nas cidades desejadas e depois clique em 'Exportar Shapefile (QGIS)'.");
+            const savedPoints = getAllSavedPointsList();
+            const clusterPoints = getAllClustersList();
+            const routePoints = getAllRoutesPointsList();
+            const attPoints = getAllAttractionsList();
+
+            if (savedPoints.length === 0 && clusterPoints.length === 0 && routePoints.length === 0) {
+                alert("Nenhum dado encontrado para exportacao.");
                 return;
             }
 
             try {
-                const shpPackage = buildShapefileBinaries(points);
-                const filesToZip = [
-                    { name: "pontos_afericao.shp", data: shpPackage.shp },
-                    { name: "pontos_afericao.shx", data: shpPackage.shx },
-                    { name: "pontos_afericao.dbf", data: shpPackage.dbf },
-                    { name: "pontos_afericao.prj", data: shpPackage.prj },
-                    { name: "pontos_afericao.cpg", data: shpPackage.cpg },
-                    { name: "LEIAME_QGIS.txt", data: shpPackage.readme }
-                ];
+                const filesToZip = [];
+
+                // 1. Camada de Pontos Selecionados
+                if (savedPoints.length > 0) {
+                    const fields1 = [
+                        { name: "MUNICIPIO", type: "C", length: 50 },
+                        { name: "ORDEM", type: "N", length: 4, dec: 0 },
+                        { name: "NOME", type: "C", length: 100 },
+                        { name: "LATITUDE", type: "N", length: 12, dec: 6, key: "lat" },
+                        { name: "LONGITUDE", type: "N", length: 12, dec: 6, key: "lon" },
+                        { name: "JUSTIFIC", type: "C", length: 254 },
+                        { name: "DATA_HORA", type: "C", length: 25 }
+                    ];
+                    const shp1 = buildGenericShapefile(savedPoints, fields1);
+                    filesToZip.push({ name: "1_pontos_afericao_selecionados.shp", data: shp1.shp });
+                    filesToZip.push({ name: "1_pontos_afericao_selecionados.shx", data: shp1.shx });
+                    filesToZip.push({ name: "1_pontos_afericao_selecionados.dbf", data: shp1.dbf });
+                    filesToZip.push({ name: "1_pontos_afericao_selecionados.prj", data: shp1.prj });
+                    filesToZip.push({ name: "1_pontos_afericao_selecionados.cpg", data: shp1.cpg });
+                }
+
+                // 2. Camada de Pontos de Sobreposicao de Fluxos
+                if (clusterPoints.length > 0) {
+                    const fields2 = [
+                        { name: "MUNICIPIO", type: "C", length: 50 },
+                        { name: "RANK", type: "N", length: 5, dec: 0 },
+                        { name: "FREQ", type: "N", length: 10, dec: 2 },
+                        { name: "LATITUDE", type: "N", length: 12, dec: 6, key: "lat" },
+                        { name: "LONGITUDE", type: "N", length: 12, dec: 6, key: "lon" }
+                    ];
+                    const shp2 = buildGenericShapefile(clusterPoints, fields2);
+                    filesToZip.push({ name: "2_pontos_sobreposicao_fluxos.shp", data: shp2.shp });
+                    filesToZip.push({ name: "2_pontos_sobreposicao_fluxos.shx", data: shp2.shx });
+                    filesToZip.push({ name: "2_pontos_sobreposicao_fluxos.dbf", data: shp2.dbf });
+                    filesToZip.push({ name: "2_pontos_sobreposicao_fluxos.prj", data: shp2.prj });
+                    filesToZip.push({ name: "2_pontos_sobreposicao_fluxos.cpg", data: shp2.cpg });
+                }
+
+                // 3. Camada de Manchas de Fluxo / Rotas
+                if (routePoints.length > 0) {
+                    const fields3 = [
+                        { name: "MUNICIPIO", type: "C", length: 50 },
+                        { name: "ID_ROTA", type: "N", length: 6, dec: 0 },
+                        { name: "NOME_ROTA", type: "C", length: 100 },
+                        { name: "LATITUDE", type: "N", length: 12, dec: 6, key: "lat" },
+                        { name: "LONGITUDE", type: "N", length: 12, dec: 6, key: "lon" }
+                    ];
+                    const shp3 = buildGenericShapefile(routePoints, fields3);
+                    filesToZip.push({ name: "3_manchas_fluxo_rotas.shp", data: shp3.shp });
+                    filesToZip.push({ name: "3_manchas_fluxo_rotas.shx", data: shp3.shx });
+                    filesToZip.push({ name: "3_manchas_fluxo_rotas.dbf", data: shp3.dbf });
+                    filesToZip.push({ name: "3_manchas_fluxo_rotas.prj", data: shp3.prj });
+                    filesToZip.push({ name: "3_manchas_fluxo_rotas.cpg", data: shp3.cpg });
+                }
+
+                // 4. Camada de Atrativos Turisticos
+                if (attPoints.length > 0) {
+                    const fields4 = [
+                        { name: "MUNICIPIO", type: "C", length: 50 },
+                        { name: "ID_ATRATIV", type: "N", length: 5, dec: 0 },
+                        { name: "NOME", type: "C", length: 100 },
+                        { name: "RANK_PROD4", type: "C", length: 50 },
+                        { name: "LATITUDE", type: "N", length: 12, dec: 6, key: "lat" },
+                        { name: "LONGITUDE", type: "N", length: 12, dec: 6, key: "lon" }
+                    ];
+                    const shp4 = buildGenericShapefile(attPoints, fields4);
+                    filesToZip.push({ name: "4_atrativos_turisticos.shp", data: shp4.shp });
+                    filesToZip.push({ name: "4_atrativos_turisticos.shx", data: shp4.shx });
+                    filesToZip.push({ name: "4_atrativos_turisticos.dbf", data: shp4.dbf });
+                    filesToZip.push({ name: "4_atrativos_turisticos.prj", data: shp4.prj });
+                    filesToZip.push({ name: "4_atrativos_turisticos.cpg", data: shp4.cpg });
+                }
+
+                // Guia de Uso
+                const readme = `================================================================================
+CAMADAS VETORIAIS PARA QGIS - PROJETO UNESCO & ITAIPU PARQUETEC
+UNES 2369/2025 - Selecao de Pontos para Afericao
+================================================================================
+
+COMO ABRIR NO QGIS:
+1. Abra o QGIS (versao 3.0 ou superior).
+2. Arraste e solte este arquivo .ZIP diretamente para a tela do QGIS.
+   O QGIS exibira a lista de camadas para selecao:
+   - 1_pontos_afericao_selecionados (${savedPoints.length} pontos)
+   - 2_pontos_sobreposicao_fluxos (${clusterPoints.length} pontos)
+   - 3_manchas_fluxo_rotas (${routePoints.length} pontos)
+   - 4_atrativos_turisticos (${attPoints.length} pontos)
+
+SISTEMA DE COORDENADAS:
+- WGS 84 (EPSG:4326) - Coordenadas Geograficas em Graus Decimais.
+- Codificacao UTF-8 com suporte completo a acentuacao.
+================================================================================`;
+                filesToZip.push({ name: "LEIAME_QGIS.txt", data: readme });
 
                 if (window.JSZip) {
                     const zip = new JSZip();
@@ -1355,13 +1501,12 @@
                         triggerDownload(content, "pontos_afericao_unesco_shapefile.zip");
                     });
                 } else {
-                    // Fallback nativo offline sem dependência externa
                     const zipBuffer = buildZipBuffer(filesToZip);
                     const blob = new Blob([zipBuffer], { type: "application/zip" });
                     triggerDownload(blob, "pontos_afericao_unesco_shapefile.zip");
                 }
             } catch (err) {
-                console.error("Erro ao gerar Shapefile:", err);
+                console.error("Erro ao gerar Shapefiles:", err);
                 alert("Ocorreu um erro ao gerar o arquivo Shapefile: " + err.message);
             }
         }
@@ -1370,35 +1515,69 @@
         // EXPORTAÇÃO 2: GEOJSON PARA QGIS / SIG WEB
         // =========================================================================
         function exportDecisionsGeoJSON() {
-            const points = getAllSavedPointsList();
-            if (points.length === 0) {
-                alert("Nenhum ponto de aferição salvo encontrado ainda! Adicione pontos nas cidades desejadas e depois clique em 'GeoJSON'.");
-                return;
-            }
+            const savedPoints = getAllSavedPointsList();
+            const clusterPoints = getAllClustersList();
+            const routePoints = getAllRoutesPointsList();
+            const attPoints = getAllAttractionsList();
+
+            const features = [];
+
+            savedPoints.forEach(pt => {
+                features.push({
+                    type: "Feature",
+                    properties: {
+                        camada: "pontos_afericao_selecionados",
+                        municipio: pt.municipio,
+                        ordem: pt.ordem,
+                        nome: pt.nome,
+                        latitude: pt.lat,
+                        longitude: pt.lon,
+                        justificativa: pt.justific,
+                        data_hora: pt.data_hora
+                    },
+                    geometry: { type: "Point", coordinates: [pt.lon, pt.lat] }
+                });
+            });
+
+            clusterPoints.forEach(pt => {
+                features.push({
+                    type: "Feature",
+                    properties: {
+                        camada: "pontos_sobreposicao_fluxos",
+                        municipio: pt.municipio,
+                        rank: pt.rank,
+                        frequencia: pt.freq,
+                        latitude: pt.lat,
+                        longitude: pt.lon
+                    },
+                    geometry: { type: "Point", coordinates: [pt.lon, pt.lat] }
+                });
+            });
+
+            attPoints.forEach(pt => {
+                features.push({
+                    type: "Feature",
+                    properties: {
+                        camada: "atrativos_turisticos",
+                        municipio: pt.municipio,
+                        id_atrativo: pt.id_atrativ,
+                        nome: pt.nome,
+                        rank_produto4: pt.rank_prod4,
+                        latitude: pt.lat,
+                        longitude: pt.lon
+                    },
+                    geometry: { type: "Point", coordinates: [pt.lon, pt.lat] }
+                });
+            });
 
             const geojson = {
                 type: "FeatureCollection",
-                name: "pontos_afericao_unesco",
+                name: "camadas_pontos_afericao_unesco",
                 crs: {
                     type: "name",
                     properties: { name: "urn:ogc:def:crs:OGC:1.3:CRS84" }
                 },
-                features: points.map(pt => ({
-                    type: "Feature",
-                    properties: {
-                        municipio: pt.municipio,
-                        ordem: pt.ordem,
-                        nome: pt.name,
-                        latitude: pt.lat,
-                        longitude: pt.lon,
-                        justificativa: pt.notes,
-                        data_hora: pt.timestamp
-                    },
-                    geometry: {
-                        type: "Point",
-                        coordinates: [pt.lon, pt.lat]
-                    }
-                }))
+                features: features
             };
 
             const jsonStr = JSON.stringify(geojson, null, 2);
@@ -1412,7 +1591,7 @@
         function exportDecisionsCSV() {
             const points = getAllSavedPointsList();
             if (points.length === 0) {
-                alert("Nenhum ponto de aferição salvo encontrado ainda! Adicione pontos nas cidades desejadas e depois clique em 'CSV'.");
+                alert("Nenhum ponto de afericao salvo encontrado ainda.");
                 return;
             }
 
@@ -1423,11 +1602,11 @@
                 csvRows.push([
                     `"${pt.municipio}"`,
                     `"Ponto #${pt.ordem}"`,
-                    `"${(pt.name || '').replace(/"/g, '""')}"`,
+                    `"${(pt.nome || '').replace(/"/g, '""')}"`,
                     `"${pt.lat}"`,
                     `"${pt.lon}"`,
-                    `"${(pt.notes || '').replace(/"/g, '""')}"`,
-                    `"${pt.timestamp || ''}"`
+                    `"${(pt.justific || '').replace(/"/g, '""')}"`,
+                    `"${pt.data_hora || ''}"`
                 ]);
             });
 
@@ -1448,39 +1627,40 @@
         }
 
         // =========================================================================
-        // GERADOR BINÁRIO ESRI SHAPEFILE (POINT) & DBASE III
+        // GERADOR BINÁRIO GENÉRICO ESRI SHAPEFILE (POINT) & DBASE III
         // =========================================================================
-        function buildShapefileBinaries(points) {
-            const numRecords = points.length;
+        function buildGenericShapefile(records, fields) {
+            const numRecords = records.length;
             let xmin = Infinity, xmax = -Infinity, ymin = Infinity, ymax = -Infinity;
-            points.forEach(p => {
+            records.forEach(p => {
                 if (p.lon < xmin) xmin = p.lon;
                 if (p.lon > xmax) xmax = p.lon;
                 if (p.lat < ymin) ymin = p.lat;
                 if (p.lat > ymax) ymax = p.lat;
             });
+            if (numRecords === 0) { xmin = 0; xmax = 0; ymin = 0; ymax = 0; }
 
             // 1. .SHP
             const shpWords = 50 + 14 * numRecords;
             const shpBuffer = new ArrayBuffer(shpWords * 2);
             const shpView = new DataView(shpBuffer);
 
-            shpView.setInt32(0, 9994, false); // File Code Big-Endian
-            shpView.setInt32(24, shpWords, false); // File Length in 16-bit words
-            shpView.setInt32(28, 1000, true); // Version Little-Endian
-            shpView.setInt32(32, 1, true); // ShapeType: Point (1)
+            shpView.setInt32(0, 9994, false); // Big-Endian File Code
+            shpView.setInt32(24, shpWords, false);
+            shpView.setInt32(28, 1000, true); // Little-Endian Version
+            shpView.setInt32(32, 1, true); // ShapeType: Point
             shpView.setFloat64(36, xmin, true);
             shpView.setFloat64(44, ymin, true);
             shpView.setFloat64(52, xmax, true);
             shpView.setFloat64(60, ymax, true);
 
             let shpOffset = 100;
-            points.forEach((p, idx) => {
-                shpView.setInt32(shpOffset, idx + 1, false); // Record number
-                shpView.setInt32(shpOffset + 4, 10, false); // Length = 10 words (20 bytes)
-                shpView.setInt32(shpOffset + 8, 1, true); // Point
-                shpView.setFloat64(shpOffset + 12, p.lon, true); // X
-                shpView.setFloat64(shpOffset + 20, p.lat, true); // Y
+            records.forEach((p, idx) => {
+                shpView.setInt32(shpOffset, idx + 1, false);
+                shpView.setInt32(shpOffset + 4, 10, false);
+                shpView.setInt32(shpOffset + 8, 1, true);
+                shpView.setFloat64(shpOffset + 12, p.lon, true);
+                shpView.setFloat64(shpOffset + 20, p.lat, true);
                 shpOffset += 28;
             });
 
@@ -1506,16 +1686,6 @@
             }
 
             // 3. .DBF (dBase III com UTF-8)
-            const fields = [
-                { name: "MUNICIPIO", type: "C", length: 50, dec: 0 },
-                { name: "ORDEM", type: "N", length: 4, dec: 0 },
-                { name: "NOME", type: "C", length: 100, dec: 0 },
-                { name: "LATITUDE", type: "N", length: 12, dec: 6 },
-                { name: "LONGITUDE", type: "N", length: 12, dec: 6 },
-                { name: "JUSTIFIC", type: "C", length: 254, dec: 0 },
-                { name: "DATA_HORA", type: "C", length: 25, dec: 0 }
-            ];
-
             const headerBytes = 32 + 32 * fields.length + 1;
             const recordBytes = 1 + fields.reduce((acc, f) => acc + f.length, 0);
             const dbfTotalBytes = headerBytes + recordBytes * numRecords + 1;
@@ -1525,43 +1695,39 @@
             const dbfBytes = new Uint8Array(dbfBuffer);
 
             const now = new Date();
-            dbfView.setUint8(0, 0x03); // dBase III
+            dbfView.setUint8(0, 0x03);
             dbfView.setUint8(1, (now.getFullYear() - 1900) % 256);
             dbfView.setUint8(2, now.getMonth() + 1);
             dbfView.setUint8(3, now.getDate());
             dbfView.setUint32(4, numRecords, true);
             dbfView.setUint16(8, headerBytes, true);
             dbfView.setUint16(10, recordBytes, true);
-            dbfView.setUint8(29, 0x57); // LDID UTF-8
+            dbfView.setUint8(29, 0x57); // UTF-8 LDID
 
             const encoder = new TextEncoder();
             let fOffset = 32;
             fields.forEach(f => {
                 const nameBytes = encoder.encode(f.name);
-                for (let j = 0; j < 11; j++) {
-                    dbfBytes[fOffset + j] = j < nameBytes.length ? nameBytes[j] : 0;
-                }
+                for (let j = 0; j < 11; j++) dbfBytes[fOffset + j] = j < nameBytes.length ? nameBytes[j] : 0;
                 dbfBytes[fOffset + 11] = f.type.charCodeAt(0);
                 dbfBytes[fOffset + 16] = f.length;
-                dbfBytes[fOffset + 17] = f.dec;
+                dbfBytes[fOffset + 17] = f.dec || 0;
                 fOffset += 32;
             });
-            dbfBytes[headerBytes - 1] = 0x0D; // Header terminator
+            dbfBytes[headerBytes - 1] = 0x0D;
 
             let rOffset = headerBytes;
-            points.forEach(p => {
-                dbfBytes[rOffset] = 0x20; // Delete flag (0x20 = Valid)
+            records.forEach(p => {
+                dbfBytes[rOffset] = 0x20; // 0x20 = Valid
                 let cOffset = rOffset + 1;
 
                 fields.forEach(f => {
                     let val = "";
-                    if (f.name === "MUNICIPIO") val = String(p.municipio || "");
-                    else if (f.name === "ORDEM") val = String(p.ordem || 1);
-                    else if (f.name === "NOME") val = String(p.name || "");
-                    else if (f.name === "LATITUDE") val = Number(p.lat).toFixed(6);
-                    else if (f.name === "LONGITUDE") val = Number(p.lon).toFixed(6);
-                    else if (f.name === "JUSTIFIC") val = String(p.notes || "");
-                    else if (f.name === "DATA_HORA") val = String(p.timestamp || "");
+                    const rawVal = p[f.key || f.name.toLowerCase()];
+                    if (rawVal !== undefined && rawVal !== null) {
+                        if (f.type === "N" && f.dec > 0) val = Number(rawVal).toFixed(f.dec);
+                        else val = String(rawVal);
+                    }
 
                     const valEncoded = encoder.encode(val);
                     const clamped = valEncoded.slice(0, f.length);
@@ -1578,46 +1744,12 @@
                 });
                 rOffset += recordBytes;
             });
-            dbfBytes[dbfTotalBytes - 1] = 0x1A; // EOF marker
+            dbfBytes[dbfTotalBytes - 1] = 0x1A;
 
-            // 4. .PRJ (WGS 84)
             const prj = 'GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137.0,298.257223563]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]]';
-            
-            // 5. .CPG
             const cpg = 'UTF-8\n';
 
-            // 6. LEIAME
-            const readme = `================================================================================
-PONTOS DE AFERIÇÃO SELECIONADOS - ITAIPU PARQUETEC & UNESCO (UNES 2369/2025)
-================================================================================
-
-COMO ABRIR NO QGIS:
-1. Abra o QGIS.
-2. Arraste e solte o arquivo "pontos_afericao.shp" (ou este próprio arquivo .ZIP)
-   diretamente para a janela principal do QGIS.
-3. O QGIS reconhecerá a projeção WGS 84 (EPSG:4326) e todos os atributos UTF-8.
-
-ARQUIVOS DO SHAPEFILE INCLUÍDOS:
-- pontos_afericao.shp  -> Geometrias dos pontos
-- pontos_afericao.shx  -> Índice espacial
-- pontos_afericao.dbf  -> Tabela de atributos
-- pontos_afericao.prj  -> Projeção (EPSG:4326 - WGS 84)
-- pontos_afericao.cpg  -> Codificação de caracteres (UTF-8)
-
-CAMPOS DA TABELA DE ATRIBUTOS:
-- MUNICIPIO : Nome do município
-- ORDEM     : Número do ponto
-- NOME      : Identificação do ponto de aferição
-- LATITUDE  : Latitude decimal
-- LONGITUDE : Longitude decimal
-- JUSTIFIC  : Justificativa técnica
-- DATA_HORA : Registro de data e hora
-
-Total de pontos: ${numRecords}
-Gerado em: ${now.toLocaleString()}
-================================================================================`;
-
-            return { shp: shpBuffer, shx: shxBuffer, dbf: dbfBuffer, prj: prj, cpg: cpg, readme: readme };
+            return { shp: shpBuffer, shx: shxBuffer, dbf: dbfBuffer, prj: prj, cpg: cpg };
         }
 
         // =========================================================================
@@ -1655,8 +1787,8 @@ Gerado em: ${now.toLocaleString()}
                 const lhView = new DataView(lh.buffer);
                 lhView.setUint32(0, 0x04034b50, true);
                 lhView.setUint16(4, 20, true);
-                lhView.setUint16(6, 0x0800, true); // UTF-8 name
-                lhView.setUint16(8, 0, true); // Store
+                lhView.setUint16(6, 0x0800, true);
+                lhView.setUint16(8, 0, true);
                 lhView.setUint16(10, 0, true);
                 lhView.setUint16(12, 0x58A1, true);
                 lhView.setUint32(14, fileCrc, true);
