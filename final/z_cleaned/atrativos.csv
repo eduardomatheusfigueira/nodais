@@ -1,0 +1,238 @@
+id,municipio,nome,latitude,longitude
+1,Corumbá,Pantanal,-19.030692150103,-57.6502346008807
+2,Corumbá,Rio Paraguai,-18.7305580988823,-57.4158732647146
+3,Corumbá,Porto Geral,-18.9966174803827,-57.6533853755456
+4,Corumbá,Barcos-hotéis,-18.9983510266536,-57.6143434166266
+5,Corumbá,Mirante do Cristo Rei,-19.0171324522671,-57.6412076536182
+6,Corumbá,Museu de História do Pantanal (Muhpan),-18.9972313258584,-57.6542536430062
+7,Corumbá,Memorial do Homem Pantaneiro,-18.9975539485879,-57.6554060927411
+8,Corumbá,Carnaval de Corumbá,-18.9947691989855,-57.656447911149
+9,Corumbá,Casario do Porto Geral de Corumbá,-18.9974081261385,-57.6554252773974
+10,Corumbá,Cristo Rei do Pantanal,-19.0182825455884,-57.6403830890372
+11,Corumbá,Artizu - casa da artesã Izulina Xavier,-19.0015573537324,-57.6478895197253
+12,Corumbá,Escadinha da Quinze,-18.997790426744,-57.6551181620536
+13,Corumbá,Forte Junqueira,-18.9966355799196,-57.6362547890377
+14,Corumbá,Igreja Nossa Senhora da Candelária,-18.9986598719445,-57.6508491197254
+15,Corumbá,ILA – Instituto Luiz de Albuquerque,-19.003131053019,-57.6367604307282
+16,Corumbá,Ladeira Cunha e Cruz,-18.9969803144253,-57.6516111197253
+17,Corumbá,Praça da Independência,-19.0008869546808,-57.6532214773973
+18,Corumbá,Santuário Nossa Senhora Auxiliadora,-19.0019597524463,-57.6530005369208
+19,Corumbá,Casa do Artesão,-18.999973196008,-57.6468330736939
+20,Corumbá,Casa do Massa Barro,-18.9988184508993,-57.663902979249
+21,Corumbá,Forte Coimbra,-19.0078441797701,-57.651646863905
+22,Corumbá,Capela Nossa Senhora do Carmo,-19.0179429907463,-57.6671030890373
+23,Corumbá,Instituto do Homem Pantaneiro – IHP,-18.997614815353,-57.6552558890376
+24,Corumbá,Estrada Parque Pantanal,-19.2217157298601,-57.4608670816053
+25,Mundo Novo,Biblioterca Municipal,-23.937317852654,-54.2896760216043
+26,Mundo Novo,Museu Tapuy Porã,-23.9393267666689,-54.294131247429
+27,Mundo Novo,Ponte Ayrton Senna,-23.9393267666689,-54.2939703148961
+28,Mundo Novo,Porto Isabel,-23.9414543643208,-54.2153026198189
+29,Mundo Novo,Prainha do Cascalho,-24.0412853382026,-54.2346894578516
+30,Mundo Novo,Prainha do Sol,-24.0012789538396,-54.1816738744142
+31,Ponta Porã ,Museu da Erva Mate - Santo Antônio,-22.5298032293794,-55.7350477294133
+32,Ponta Porã ,11º Regimento de Cavalaria Mecanizada,-22.5405007393292,-55.7226189889365
+33,Ponta Porã ,Prefeitura Municipal de Ponta Porã,-22.5381295289298,-55.7246126024288
+34,Ponta Porã ,Parque dos Ervais,-22.5516147179238,-55.716698761952
+35,Ponta Porã ,Monumento das Cuias,-22.562658473049,-55.6984382926394
+36,Ponta Porã ,Majestic Hall Centro de Eventos,-22.590584627235,-55.6744662447553
+37,Ponta Porã ,Castelinho Atividades cultural,-22.5231972989464,-55.7351683542811
+38,Ponta Porã ,Centro Internacional de Convenções “Miguel Gomez”,-22.5247463343085,-55.721490104281
+39,Ponta Porã ,Horto Florestal de Ponta Porã,-22.5263253641078,-55.7258640153843
+40,Ponta Porã ,Assentamento Itamarati,-22.1932341519013,-55.5779614456448
+41,Ponta Porã ,Prédio Histórico da Estação Ferroviária Noroeste do Brasil ,-22.5236055704795,-55.7336430831169
+42,Porto Murtinho ,Fecho dos Morros,-21.4770878431268,-57.9277665012807
+43,Porto Murtinho ,Morro Celina,-21.4564293662802,-57.9231220889693
+44,Porto Murtinho ,Cachoeira do Apa,-21.9929692581665,-57.4358626172663
+45,Porto Murtinho ,Fazenda Barranco Branco,-21.1463379124298,-57.6338271408747
+46,Porto Murtinho ,Cachoeira da Fazenda Primavera,-22.1658808050609,-57.5238068484718
+47,Porto Murtinho ,Cachoeira Facão,-22.1658609332017,-57.5237639321367
+48,Porto Murtinho ,Paróquia Sagrado Coração de Jesus,-21.6983601705481,-57.8834382898203
+49,Porto Murtinho ,"Monumento ""O Pantanal"" - Praça dos Tuiuiús ",-21.6969471167651,-57.8879974392676
+50,Porto Murtinho ,Praça do Tererê,-21.6980293504861,-57.8888451498927
+51,Porto Murtinho ,"Monumento ""O Pioneiro""",-21.6967043993041,-57.8839950456426
+52,Porto Murtinho ,Monumento ao Lenhador,-21.7006053639234,-57.8863443474913
+53,Porto Murtinho ,Monumento ao Chalaneiro,-21.6995070224503,-57.8888069712736
+54,Porto Murtinho ,Monumento ao Aguatero,-21.7006239157722,-57.8863733585692
+55,Porto Murtinho ,Cine Teatro Murtinhense Ney Machado Mesquita,-21.6988461398639,-57.8896233131097
+56,Porto Murtinho ,Edificação Ismail Ali Alouie,-21.6941405641249,-57.8827175321494
+57,Porto Murtinho ,Edificação Rafael Cortada Codorniz,-21.7005880793079,-57.8827100726294
+58,Porto Murtinho ,Edificação Nelson Cintra Ribeiro,-21.7005781108375,-57.8827744456425
+59,Porto Murtinho ,Rio Negro,-19.4379489706898,-54.9878457781568
+60,Porto Murtinho ,Rio Perdido,-21.6059447869501,-57.0799891791272
+61,Porto Murtinho ,Rio Abobral,-19.3166113243423,-57.2636289399003
+62,Porto Murtinho ,Rio Vermelho,-19.6459579686791,-56.7612992285459
+63,Porto Murtinho ,Monumento do Touro Candil,-21.6949126899143,-57.8860053744783
+64,Porto Murtinho ,Praça do Tererê,-21.6979595699382,-57.8892421168071
+65,Bonito ,Gruta do Mimoso,-20.9027780033044,-56.5573204754932
+66,Bonito ,Abismo Anhumas,-21.1449164212417,-56.600205342947
+67,Bonito ,Aquário Natural,-21.1631580653656,-56.4389780908296
+68,Bonito ,Nascente Azul,-20.8934621435473,-56.5320267061812
+69,Bonito ,Rio Formoso,-21.2053299158256,-56.4934777355884
+70,Bonito ,Praça da Liberdade,-21.1283528682116,-56.4834413178148
+71,Bonito ,Aeroporto Regional de Bonito,-21.2439273846822,-56.4502188619912
+72,Bonito ,Serra da Bodoquena,-20.998997713791,-56.8333762843074
+73,Bonito ,Passeios de bote,-21.1431871554237,-56.4012792619943
+74,Bonito ,Boia cross,-21.1712870587485,-56.4464047350092
+75,Bonito ,Boca da Onça Ecotur,-20.7612384674248,-56.7130098277597
+76,Bonito ,Balneário do Sol,-21.1421790341944,-56.4054866485021
+77,Bonito ,Balneário Ilha Bonita,-21.1448314381339,-56.4005513619941
+78,Bonito ,Balneário Municipal,-21.173278280413,-56.445918729454
+79,Bonito ,Barra do Sucuri,-21.2567204114246,-56.5492467043189
+80,Bonito ,Cabanas Boia Cross,-21.1713470868887,-56.4463510908294
+81,Bonito ,Caiman Scuba Dive,-21.1294148077375,-56.4831079196665
+82,Bonito ,Cavalgada Recanto do Peão,-21.1585664308631,-56.4425130736341
+83,Bonito ,Ceita Corê Ecoturismo,-20.8419173841541,-56.5902022196749
+84,Bonito ,Discovery Bonito Scuba no Rio Formoso,-21.1287759841031,-56.4859071773385
+85,Bonito ,Estância Mimosa Ecoturismo,-20.9824966674694,-56.5160743429515
+86,Bonito ,Fabrica Taboa Encantos,-19.6449408895391,-56.640017281227
+87,Bonito ,Gruta de São Miguel,-20.8919530211994,-56.5810704414535
+88,Bonito ,Gruta do Lago Azul,-21.1443653634341,-56.5913835043223
+89,Bonito ,Gruta São Mateus e Museu,-21.1341283581892,-56.4540329313068
+90,Bonito ,Lobo Guara Bike Adventure,-21.1293686926498,-56.4830879196666
+91,Bonito ,Parque das Cachoeiras,-21.0058530114832,-56.5015771196701
+92,Bonito ,Parque Ecológico Baia Bonita,-21.1624230431723,-56.4402629601418
+93,Bonito ,Porto da Ilha,-21.1187397665013,-56.3868009485028
+94,Bonito ,Praia da Figueira,-21.2517952958376,-56.5353260619912
+95,Bonito ,Projeto Jibóia,-21.1215575276959,-56.4973186601432
+96,Bonito ,Rio do Peixe,-20.8625964994773,-56.5303177466584
+97,Bonito ,Rio Sucuri Ecoturismo,-21.2544293070713,-56.569999948499
+98,Campo Grande,Centro Cultural José Octavio Guizzo,-20.4672978895621,-54.6177413745102
+99,Campo Grande,Complexo Ferroviário,-20.4497128272635,-54.6206271456752
+100,Campo Grande,Museu de Medicina de Mato Grosso do Sul,-20.4771844614442,-54.6153501321811
+101,Campo Grande,Morada dos Baís,-20.4641512600755,-54.620198276359
+102,Campo Grande,Museu de Arqueologia da UFMS,-20.4681626396199,-54.6177879051943
+103,Campo Grande,Correios e Telágrafos,-20.4611160621612,-54.6197298731611
+104,Campo Grande,Casa do Artesão,-20.4639266493639,-54.6184387038988
+105,Campo Grande,Memorial da Cultura Indígena (em reforma),-20.4692431528152,-54.5700394321812
+106,Campo Grande,Museu de Arte Contemporânea – Marco,-20.451008671167,-54.5755257591687
+107,Campo Grande,Museu José Antônio Pereira,-20.5350169919495,-54.6292268591665
+108,Campo Grande,Parque Florestal Antônio De Albuquerque – Horto Florestal,-20.4694314502787,-54.6228409456748
+109,Campo Grande,Parque Ecológico Do Anhanduí,-20.5065795954846,-54.6429674321805
+110,Campo Grande,Parque das Nações Indígenas,-20.4562069744759,-54.5812607438265
+111,Campo Grande,Parque do Sóter,-20.4292049383891,-54.5766368898534
+112,Campo Grande,Parque Estadual do Prosa,-20.4503744175757,-54.5608383168396
+113,Campo Grande,Parque Linear do Imbirussu,-20.445013742159,-54.6975156489655
+114,Campo Grande,Parque Estadual Matas Do Segredo,-20.3983718920946,-54.5861971456766
+115,Campo Grande,Lago Do Amor,-20.5025532011317,-54.6187871033448
+116,Campo Grande,Parque Doutor Anísio De Barros – Lagoa Itatiaia,-20.4780362770024,-54.5827390403169
+117,Campo Grande,Estância Alegria,-20.6439862623045,-54.5328075475191
+118,Campo Grande,Estância Hanay,-20.470686711263,-54.4549933475234
+119,Campo Grande,Estância Jóia,-20.3253389395345,-54.5600865745138
+120,Campo Grande,Estância Malhete,-20.375455572793,-54.6104262475257
+121,Campo Grande,Estância Vovô Dedê,-20.2852125227652,-54.7795895456793
+122,Campo Grande,Fazenda Pontal das Águas,-20.4661138422872,-54.4364766321813
+123,Campo Grande,Pousada Rural Cabanas do Pontal,-20.2223604291047,-54.9172643763651
+124,Campo Grande,Recanto Nippon,-20.3918987953019,-54.6617469033478
+125,Campo Grande,Toca do Ouriço,-20.3810712093417,-54.6105363610191
+126,Campo Grande,Monumento Maria Fumaça,-20.4566904274898,-54.6201522978
+127,Campo Grande,Chácara J&F,-20.2926080518394,-54.5477638745144
+128,Campo Grande,Igreja Universal do Reino de Deus,-20.4513925364535,-54.6880020271509
+129,Campo Grande,Monumento Estátua Manoel Barros,-20.4633448933057,-54.613837318688
+130,Campo Grande,Bioparque Pantanal,-20.4558373398393,-54.5760472033461
+131,Campo Grande,Esplanada Ferroviária,-20.4540445805297,-54.6202988610172
+132,Campo Grande,Feira Central,-20.4509748993902,-54.619948164991
+133,Campo Grande,Morro do Ernesto,-20.3389230025842,-54.7093112745137
+134,Campo Grande,Morada dos Baís,-20.464231674063,-54.6195974615696
+135,Campo Grande,Hotel Gaspar,-20.456426827076,-54.6201247880039
+136,Campo Grande,Memorial da Cidadania e da Cultura Popular Apolônio de Carvalho,-20.4681438366443,-54.617625959168
+137,Campo Grande,Mercado Municipal Antônio Valente,-20.4664409650606,-54.6199089898523
+138,Campo Grande,Museu da Cultura Dom Bosco,-20.4546428813513,-54.5675333610171
+139,Campo Grande,Palácio das Comunicações,-20.440689888394,-54.5554087861558
+140,Campo Grande,Paróquia Santo Antônio - Catedral Nossa Senhora da Abadia,-20.4660104937388,-54.6179837904051
+141,Campo Grande,Paróquia São Francisco de Assis,-20.4425899242492,-54.619595974511
+142,Campo Grande,Pesqueiro Nippon,-20.3918485129272,-54.6617683610188
+143,Campo Grande,Praça Ary Coelho,-20.4636837171988,-54.6163037753093
+144,Campo Grande,Praça Esportiva Belmar Fidalgo,-20.4594946400583,-54.6069178475236
+145,Campo Grande,Praça Comendador Oshiro Takemori,-20.4672148624803,-54.6201021610169
+146,Campo Grande,Praça das Araras,-20.4629425717359,-54.6315391484233
+147,Campo Grande,Praça do Rádio,-20.4633848516277,-54.6313674870549
+148,Campo Grande,Praça dos Imigrantes,-20.4667882231553,-54.6130146898524
+149,Campo Grande,Praça Pantanal Sul ,-20.4599431461655,-54.6047976625284
+150,Campo Grande,Relógio Central Renato Barbosa Rezende,-20.4640810600206,-54.618888833201
+151,Campo Grande,Santuário Estadual Nossa Senhora do Perpétuo Socorro,-20.4667331432598,-54.6316346573196
+152,Campo Grande,Eco Park Clube Campo Grande ,-20.4722530315448,-54.476225057043
+153,Campo Grande,Carlos Iracy Tour da Experiência,-20.4621147330698,-54.6255018627941
+154,Campo Grande,Sitio Harmonia,-20.2106305751872,-54.5861089168458
+155,Foz do Iguaçu,Adrena Kart Kartódromo,-25.556195631962,-54.5676834320391
+156,Foz do Iguaçu,Aguaray Eco,-25.5974976645001,-54.5280260706694
+157,Foz do Iguaçu,AquaFoz,-25.6141313697398,-54.4804620710579
+158,Foz do Iguaçu,Aquamania,-25.5824012517886,-54.5277482590253
+159,Foz do Iguaçu,Bike Poço Preto,-25.6133,-54.4812
+160,Foz do Iguaçu,Blue Park,-25.5662210907766,-54.5537880296375
+161,Foz do Iguaçu,Cataratas del Iguazú – Arg.,-25.6657397623252,-54.4503015493529
+162,Foz do Iguaçu,Cataratas do Iguaçu – Brasil,-25.6807176021686,-54.4373528594411
+163,Foz do Iguaçu,Dreams Park Show,-25.5898628224964,-54.5170353767298
+164,Foz do Iguaçu,Falls Bike Tour,-25.5565265291119,-54.5730605518506
+165,Foz do Iguaçu,Fly Foz – Paraquedismo,-25.4604893533922,-54.5967721608776
+166,Foz do Iguaçu,Helisul Experience – Cataratas,-25.6126977621796,-54.481560960873
+167,Foz do Iguaçu,Helisul Experience – Itaipu,-25.6126203654703,-54.4811639939586
+168,Foz do Iguaçu,Iguassu by Bike,-25.6139901837243,-54.4816155897085
+169,Foz do Iguaçu,Itaipu Iluminada,-25.4467837820795,-54.5840048897135
+170,Foz do Iguaçu,Itaipu Panorâmica,-25.4467550061132,-54.5839186897136
+171,Foz do Iguaçu,Itaipu Refúgio Biológico,-25.4468007700637,-54.5839371571807
+172,Foz do Iguaçu,Kattamaram,-25.4331438695461,-54.5586608092154
+173,Foz do Iguaçu,Macuco Safari,-25.6510496621479,-54.4380611743651
+174,Foz do Iguaçu,Marco das Três Fronteiras,-25.5899267377765,-54.5902396320383
+175,Foz do Iguaçu,Mesquita Omar Ibn Al-Khattab,-25.5203063960528,-54.5785828743691
+176,Foz do Iguaçu,Parque das Aves,-25.6137196130527,-54.4825549743663
+177,Foz do Iguaçu,Pôr do Sol nas Cataratas,-25.4932352403254,-54.5919894860148
+178,Foz do Iguaçu,Templo Budista Chen Tien,-25.4743844342876,-54.5990115479364
+179,Foz do Iguaçu,Turismo Itaipu,-25.4467277662568,-54.5841632992332
+180,Foz do Iguaçu,Wonder Park Foz,-25.6088396057347,-54.4889792166955
+181,Foz do Iguaçu,Yup Star – Roda Gigante,-25.5865072600867,-54.5881834264922
+182,Foz do Iguaçu,Catedral,-25.4973495190614,-54.5734058742622
+183,Foz do Iguaçu,Centro Comercial - Paraguai,-25.5093771902319,-54.607232124992
+184,Foz do Iguaçu,Museu El Mensú - Paraguai,-25.5130623206802,-54.6145171012438
+185,Foz do Iguaçu,Salto Monday - Paraguai,-25.5592412618521,-54.6315324742607
+186,Foz do Iguaçu,Duty Free - Argentina,-25.5992615181105,-54.5639498319324
+187,Foz do Iguaçu,Marco das 3 fronteiras (Argentina),-25.5947055889842,-54.5907523165872
+188,Foz do Iguaçu,Cataratas (Argentina),-25.6768328654673,-54.4555185850584
+189,Foz do Iguaçu,Feirinha da Argentina,-25.59390036863,-54.5738994742598
+190,Foz do Iguaçu,Feira do centro da cidade - Argentina,-25.5962744988072,-54.5747998153454
+191,Medianeira,Sítio da Marlene,-25.3172831120339,-54.021845918553
+192,Medianeira,Sítio do Beto,-25.3152092170208,-54.0346596964754
+193,Medianeira,Recanto Olivo,-25.235213098874,-54.0662612860224
+194,Medianeira,Recanto Ilha do Sol,-25.3048795918431,-54.10269164554
+195,Medianeira,Cachoeira da Maralúcia,-25.1898550411715,-54.0402315355778
+196,Medianeira,Circuito Medianeira Rural,-25.2954389122991,-54.0882697826311
+197,Medianeira,Espigão do Norte,-25.1996989688195,-54.0685915706545
+198,Medianeira,Morro da Salete,-25.2967184776127,-54.0373615301983
+199,Medianeira,Rota da fé,-25.2296862596704,-54.0732644185557
+200,Guaíra,Mirante com vista para o Rio Paraná,-25.2935787374816,-54.5866360479513
+201,Guaíra,Parque Nacional de Ilha Grande ,-23.709190853018,-54.0245486953817
+202,Guaíra,Centro Náutico Recreativo (Marinas),-24.0791340737343,-54.2619876167409
+203,Guaíra,Lagoa Saraiva,-24.0170545792981,-54.1758581455782
+204,Guaíra,Igreja Nossa Senhora dos Navegantes,-23.9515042784727,-54.2461657841627
+205,Guaíra,Kartódromo Ayrton Senna,-23.9602555227227,-54.2462016746202
+206,Guaíra,Trilha Marinas,-24.0790914998343,-54.2621470146159
+207,Guaíra,Estação Motorhome,-24.0792614118279,-54.26115076757
+208,Guaíra,Praça do Japão Mitsuaki Shiomi,-24.0906034251604,-54.2559187032471
+209,Guaíra,Cine Teatro  Sete Quedas,-24.0771385799275,-54.257984274412
+210,Guaíra,Cruzeiro das Américas,-24.0791438689767,-54.2619232437278
+211,Guaíra,Praia do Sol,-24.0789969402613,-54.262030532083
+212,Guaíra,Museu Sete Quedas,-24.0792,-54.2612
+213,Guaíra,Vila Velha,-24.0808844862211,-54.2589429185895
+214,Guaíra,Locomotiva nº 04,-24.0774005221686,-54.256760274412
+215,Guaíra,Ponte Ayrton Senna,-24.0569680583842,-54.259383645577
+216,Guaíra,Feira do Produtor,-24.0854132833258,-54.2498975744116
+217,Guaíra,Rio Paraná,-24.0856380380568,-54.2826309364624
+218,Guaíra,Igreja Nuestro Señor Del Perdón,-24.0792613595865,-54.258518084208
+219,Guaíra,Maracaju dos Gaúchos,-24.2018117473838,-54.2003081381779
+220,Guaíra,Feira do Artesão,-20.3128361750483,-48.2880402154085
+221,Guaíra,Ilha São Francisco,-24.0672616130541,-54.2551726704386
+222,Guaíra,Portal Turístico,-24.0751329497639,-54.2421751093462
+223,Guaíra,Parque do Lago - Rogério Manuel Gonçalvez,-24.0876261975501,-54.2425912074972
+224,Guaíra,Atelíê do Frei Pacífico,-24.0803111560899,-54.2479363810632
+225,Barracão,Igreja Histórica de São José,-26.230417420786,-53.5822440166764
+226,Barracão,Marco das Três Fronteiras,-26.2526920677701,-53.6357892743467
+227,Barracão,Vale do Capanema,-26.2303693006676,-53.5821689148277
+228,Barracão,Gruta de Santa Emília de Rodat,-26.2302665588344,-53.4496766872359
+229,Capanema,Salto do Rio Silva Jardim,-25.6599155753367,-53.7897618514771
+230,Capanema,Ilha do Cavalo,-25.5586141773917,-53.7538004190986
+231,Capanema,Balneário Martini,-25.6009770508486,-53.7793763320379
+232,Capanema,Balneário/Camping Kaú,-25.5848883250131,-53.8715379405385
+233,Capanema,Camping Ecológico Wesling,-25.5897956309629,-53.9124227117028
+234,Capanema,Camping Por do Sol,-25.6003993171194,-53.7758211497812
+235,Dionísio Cerqueira,Cânion do Assentamento ,-26.2747029363217,-53.3747639688001
+236,Dionísio Cerqueira,Cachoeira do Toldo,-26.3035238483696,-53.6174349778005
+237,Dionísio Cerqueira,Praça Professor Dalilo Quintino Pereira,-26.2538324679562,-53.6405096018861

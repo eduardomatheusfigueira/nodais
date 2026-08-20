@@ -1,0 +1,2204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_05566fc9f9b2ff55267637b6cb357b71 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+</head>
+<body>
+    
+    
+    <div style="position: fixed; bottom: 20px; left: 20px; width: 320px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); border: 1px solid #cbd5e1; border-radius: 12px; padding: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); font-family: 'Segoe UI', system-ui, sans-serif; font-size: 12px; color: #1e293b;">
+        <h4 style="margin: 0 0 8px 0; font-size: 13px; font-weight: 700; color: #0f172a; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid #2563eb; padding-bottom: 4px;">
+            🗺️ Legenda do Mapa - MS - Porto Murtinho
+        </h4>
+        <div style="margin-bottom: 6px;">
+            <span style="display: inline-block; width: 14px; height: 14px; background: #f59e0b; border-radius: 50%; margin-right: 6px; vertical-align: middle;"></span>
+            <b>Centro Geométrico CNPJ</b> (48 empresas)
+        </div>
+        <div style="margin-bottom: 8px;">
+            <span style="display: inline-block; width: 14px; height: 14px; background: #1e293b; border: 2px solid #2563eb; border-radius: 50%; color: white; font-size: 9px; text-align: center; line-height: 12px; margin-right: 6px; vertical-align: middle;">#</span>
+            <b>Atrativos por Ordem de Relevância</b>
+        </div>
+        <div style="margin-bottom: 4px; font-weight: 600; color: #475569;">Sobreposição de Rotas (Escala Logarítmica):</div>
+        <div style="height: 12px; background: linear-gradient(to right, #ffffff, #ff9999, #ff3333, #cc0000, #700000); border-radius: 6px; border: 1px solid #cbd5e1; margin-bottom: 4px;"></div>
+        <div style="display: flex; justify-content: space-between; font-size: 10px; color: #475569; font-weight: 600;">
+            <span>⚪ Branco (Baixa)</span>
+            <span>🩷 Rosa</span>
+            <span>🔴 Vermelho</span>
+            <span>🍷 Vinho (Máxima)</span>
+        </div>
+        <div style="font-size: 9px; color: #64748b; margin-top: 4px; font-style: italic;">
+            * Mapa Externo com Ruas (Esri WorldStreetMap) como padrão.
+        </div>
+    </div>
+    
+    
+            <div class="folium-map" id="map_05566fc9f9b2ff55267637b6cb357b71" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_05566fc9f9b2ff55267637b6cb357b71 = L.map(
+                "map_05566fc9f9b2ff55267637b6cb357b71",
+                {
+                    center: [-21.555928416515634, -57.711882423685694],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+  "name": "Mapa Externo com Ruas (Esri WorldStreetMap)",
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_6f0fed44eb68651ef6d0fe7882356dd2 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "\u0026copy; Esri \u0026mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_6f0fed44eb68651ef6d0fe7882356dd2.addTo(map_05566fc9f9b2ff55267637b6cb357b71);
+        
+    
+            var tile_layer_0adee9d7b750505184d102e12ec61907 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "\u0026copy; CartoDB Voyager",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_0adee9d7b750505184d102e12ec61907.addTo(map_05566fc9f9b2ff55267637b6cb357b71);
+        
+    
+            var tile_layer_7d66921b8b778f93793bb1a25d6f26e2 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_7d66921b8b778f93793bb1a25d6f26e2.addTo(map_05566fc9f9b2ff55267637b6cb357b71);
+        
+    
+            var tile_layer_8fe284ea6feb8ca89faaaa3ba57ea19e = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "\u0026copy; Esri WorldTopoMap",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_8fe284ea6feb8ca89faaaa3ba57ea19e.addTo(map_05566fc9f9b2ff55267637b6cb357b71);
+        
+    
+            var feature_group_1ff8fb46cdbf2a9bd17915ecde1905c3 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var heat_map_5e826dc169ca1c769c2ac0f1a2e55069 = L.heatLayer(
+                [[-21.6989058, -57.8758848], [-21.69889, -57.87603], [-21.69889, -57.87603], [-21.69887, -57.87631], [-21.69887, -57.87631], [-21.69886, -57.87649], [-21.69886, -57.87649], [-21.69881, -57.87689], [-21.69872, -57.87756], [-21.69871, -57.87764], [-21.69871, -57.87764], [-21.6987, -57.8777], [-21.6987, -57.8777], [-21.69835, -57.87881], [-21.69835, -57.87881], [-21.69833, -57.87889], [-21.69833, -57.87889], [-21.69821, -57.87928], [-21.69797, -57.88005], [-21.69797, -57.88005], [-21.69782, -57.8805], [-21.69763, -57.88122], [-21.69763, -57.88122], [-21.69857, -57.88207], [-21.69857, -57.88207], [-21.69868, -57.88221], [-21.69868, -57.88221], [-21.69975, -57.88348], [-21.69975, -57.88348], [-21.70043, -57.8842], [-21.70043, -57.8842], [-21.70114, -57.88493], [-21.70118, -57.88496], [-21.70118, -57.88496], [-21.70115, -57.88502], [-21.70115, -57.88502], [-21.70094, -57.88517], [-21.7008175, -57.8852974], [-21.7052973, -57.8950279], [-21.70528, -57.89498], [-21.70523, -57.89481], [-21.70521, -57.89471], [-21.70492, -57.89437], [-21.70482, -57.89429], [-21.70453, -57.89402], [-21.70437, -57.89382], [-21.70434, -57.89367], [-21.70434, -57.89367], [-21.704, -57.89338], [-21.704, -57.89338], [-21.70386, -57.89325], [-21.70314, -57.89266], [-21.70314, -57.89266], [-21.70358, -57.89219], [-21.70358, -57.89219], [-21.70286, -57.89134], [-21.70286, -57.89134], [-21.70222, -57.8907], [-21.70222, -57.8907], [-21.70204, -57.89046], [-21.70204, -57.89046], [-21.70135, -57.88976], [-21.70135, -57.88976], [-21.70058, -57.88899], [-21.70058, -57.88899], [-21.69983, -57.88836], [-21.69983, -57.88836], [-21.70027, -57.88729], [-21.70027, -57.88729], [-21.70077, -57.88621], [-21.70077, -57.88621], [-21.70072, -57.88615], [-21.70067, -57.88609], [-21.70067, -57.88609], [-21.70039, -57.8858], [-21.70039, -57.8858], [-21.70069, -57.88543], [-21.7008175, -57.8852974], [-21.6982385, -57.8835526], [-21.69896, -57.88432], [-21.69896, -57.88432], [-21.69969, -57.88509], [-21.69969, -57.88509], [-21.69992, -57.88533], [-21.70039, -57.8858], [-21.70039, -57.8858], [-21.70069, -57.88543], [-21.7008175, -57.8852974], [-21.6969053, -57.8880361], [-21.69652, -57.88762], [-21.69579, -57.88685], [-21.6957, -57.88672], [-21.69565, -57.88655], [-21.69565, -57.88655], [-21.69635, -57.88723], [-21.69635, -57.88723], [-21.69703, -57.88793], [-21.69703, -57.88793], [-21.69744, -57.88749], [-21.69744, -57.88749], [-21.6982, -57.88668], [-21.6982, -57.88668], [-21.69895, -57.88589], [-21.69895, -57.88589], [-21.69969, -57.88509], [-21.69969, -57.88509], [-21.69992, -57.88533], [-21.70039, -57.8858], [-21.70039, -57.8858], [-21.70069, -57.88543], [-21.7008175, -57.8852974], [-21.6979798, -57.8888901], [-21.69788, -57.88878], [-21.6978, -57.88871], [-21.6978, -57.88871], [-21.69818, -57.88825], [-21.69818, -57.88825], [-21.69893, -57.88741], [-21.69893, -57.88741], [-21.69964, -57.88664], [-21.69964, -57.88664], [-21.70039, -57.8858], [-21.70039, -57.8858], [-21.70069, -57.88543], [-21.7008175, -57.8852974], [-21.6968013, -57.8840791], [-21.69661, -57.8843], [-21.69625, -57.8847], [-21.69625, -57.8847], [-21.6963, -57.88475], [-21.69636, -57.88481], [-21.69636, -57.88481], [-21.69669, -57.88443], [-21.69704, -57.88405], [-21.69711, -57.88399], [-21.69711, -57.88399], [-21.69716, -57.88392], [-21.69757, -57.88347], [-21.69786, -57.88315], [-21.69786, -57.88315], [-21.69896, -57.88432], [-21.69896, -57.88432], [-21.69969, -57.88509], [-21.69969, -57.88509], [-21.69992, -57.88533], [-21.70039, -57.8858], [-21.70039, -57.8858], [-21.70069, -57.88543], [-21.7008175, -57.8852974], [-21.7005648, -57.8863263], [-21.70018, -57.88719], [-21.70018, -57.88719], [-21.70027, -57.88729], [-21.70027, -57.88729], [-21.70077, -57.88621], [-21.70077, -57.88621], [-21.70072, -57.88615], [-21.70067, -57.88609], [-21.70067, -57.88609], [-21.70039, -57.8858], [-21.70039, -57.8858], [-21.70069, -57.88543], [-21.7008175, -57.8852974], [-21.6995236, -57.8888135], [-21.69931, -57.88936], [-21.69931, -57.88936], [-21.6994, -57.88941], [-21.6994, -57.88941], [-21.69946, -57.88945], [-21.69946, -57.88945], [-21.69983, -57.88836], [-21.69983, -57.88836], [-21.70027, -57.88729], [-21.70027, -57.88729], [-21.70077, -57.88621], [-21.70077, -57.88621], [-21.70072, -57.88615], [-21.70067, -57.88609], [-21.70067, -57.88609], [-21.70039, -57.8858], [-21.70039, -57.8858], [-21.70069, -57.88543], [-21.7008175, -57.8852974], [-21.7006819, -57.8864002], [-21.70077, -57.88621], [-21.70077, -57.88621], [-21.70072, -57.88615], [-21.70067, -57.88609], [-21.70067, -57.88609], [-21.70039, -57.8858], [-21.70039, -57.8858], [-21.70069, -57.88543], [-21.7008175, -57.8852974], [-21.6988123, -57.8896879], [-21.69874, -57.88965], [-21.69867, -57.88961], [-21.69867, -57.88961], [-21.69907, -57.88913], [-21.69907, -57.88913], [-21.69925, -57.8893], [-21.69925, -57.8893], [-21.69931, -57.88936], [-21.69931, -57.88936], [-21.6994, -57.88941], [-21.6994, -57.88941], [-21.69946, -57.88945], [-21.69946, -57.88945], [-21.69983, -57.88836], [-21.69983, -57.88836], [-21.70027, -57.88729], [-21.70027, -57.88729], [-21.70077, -57.88621], [-21.70077, -57.88621], [-21.70072, -57.88615], [-21.70067, -57.88609], [-21.70067, -57.88609], [-21.70039, -57.8858], [-21.70039, -57.8858], [-21.70069, -57.88543], [-21.7008175, -57.8852974], [-21.6945317, -57.883074], [-21.69459, -57.88301], [-21.69459, -57.88301], [-21.69533, -57.88374], [-21.69533, -57.88374], [-21.696, -57.88446], [-21.69625, -57.8847], [-21.69625, -57.8847], [-21.6963, -57.88475], [-21.69636, -57.88481], [-21.69636, -57.88481], [-21.69669, -57.88443], [-21.69704, -57.88405], [-21.69711, -57.88399], [-21.69711, -57.88399], [-21.69716, -57.88392], [-21.69757, -57.88347], [-21.69786, -57.88315], [-21.69786, -57.88315], [-21.69896, -57.88432], [-21.69896, -57.88432], [-21.69969, -57.88509], [-21.69969, -57.88509], [-21.69992, -57.88533], [-21.70039, -57.8858], [-21.70039, -57.8858], [-21.70069, -57.88543], [-21.7008175, -57.8852974], [-21.7005884, -57.8827096], [-21.7012, -57.88333], [-21.7012, -57.88333], [-21.70077, -57.8838], [-21.70077, -57.8838], [-21.70043, -57.8842], [-21.70043, -57.8842], [-21.70114, -57.88493], [-21.70118, -57.88496], [-21.70118, -57.88496], [-21.70115, -57.88502], [-21.70115, -57.88502], [-21.70094, -57.88517], [-21.7008175, -57.8852974], [-21.7006158, -57.8827373], [-21.7012, -57.88333], [-21.7012, -57.88333], [-21.70077, -57.8838], [-21.70077, -57.8838], [-21.70043, -57.8842], [-21.70043, -57.8842], [-21.70114, -57.88493], [-21.70118, -57.88496], [-21.70118, -57.88496], [-21.70115, -57.88502], [-21.70115, -57.88502], [-21.70094, -57.88517], [-21.7008175, -57.8852974], [-21.6950184, -57.8859195], [-21.6951, -57.88602], [-21.6951, -57.88602], [-21.69514, -57.88605], [-21.69519, -57.8861], [-21.69519, -57.8861], [-21.69531, -57.88595], [-21.69559, -57.88566], [-21.69564, -57.88561], [-21.69564, -57.88561], [-21.69575, -57.88548], [-21.69606, -57.88514], [-21.69636, -57.88481], [-21.69636, -57.88481], [-21.69669, -57.88443], [-21.69704, -57.88405], [-21.69711, -57.88399], [-21.69711, -57.88399], [-21.69716, -57.88392], [-21.69757, -57.88347], [-21.69786, -57.88315], [-21.69786, -57.88315], [-21.69896, -57.88432], [-21.69896, -57.88432], [-21.69969, -57.88509], [-21.69969, -57.88509], [-21.69992, -57.88533], [-21.70039, -57.8858], [-21.70039, -57.8858], [-21.70069, -57.88543], [-21.7008175, -57.8852974], [-21.6979929, -57.8892043], [-21.69843, -57.88959], [-21.6987, -57.88977], [-21.69905, -57.89006], [-21.69944, -57.89019], [-21.69944, -57.89019], [-21.69941, -57.89014], [-21.69939, -57.89007], [-21.69939, -57.89], [-21.69939, -57.89], [-21.69935, -57.88997], [-21.69874, -57.88965], [-21.69867, -57.88961], [-21.69867, -57.88961], [-21.69907, -57.88913], [-21.69907, -57.88913], [-21.69925, -57.8893], [-21.69925, -57.8893], [-21.69931, -57.88936], [-21.69931, -57.88936], [-21.6994, -57.88941], [-21.6994, -57.88941], [-21.69946, -57.88945], [-21.69946, -57.88945], [-21.69983, -57.88836], [-21.69983, -57.88836], [-21.70027, -57.88729], [-21.70027, -57.88729], [-21.70077, -57.88621], [-21.70077, -57.88621], [-21.70072, -57.88615], [-21.70067, -57.88609], [-21.70067, -57.88609], [-21.70039, -57.8858], [-21.70039, -57.8858], [-21.70069, -57.88543], [-21.7008175, -57.8852974]],
+                {
+  "minOpacity": 0.35,
+  "maxZoom": 14,
+  "radius": 10,
+  "blur": 12,
+  "gradient": {
+  0.2: "#0000ff",
+  0.4: "#00ffff",
+  0.6: "#00ff00",
+  0.8: "#ffff00",
+  1.0: "#ff0000",
+},
+}
+            );
+        
+    
+            heat_map_5e826dc169ca1c769c2ac0f1a2e55069.addTo(feature_group_1ff8fb46cdbf2a9bd17915ecde1905c3);
+        
+    
+            feature_group_1ff8fb46cdbf2a9bd17915ecde1905c3.addTo(map_05566fc9f9b2ff55267637b6cb357b71);
+        
+    
+            var feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_052a22bd5dc8d36b6783db5f37dc996a = L.circleMarker(
+                [-21.7008403125, -57.88552717499999],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff4b4b", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_9ddce7f7c400edce004f61456cd30a64 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_95523759ed9002beb4253bf3c77ffcac = $(`<div id="html_95523759ed9002beb4253bf3c77ffcac" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #1                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #ff4b4b;">16</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.700840, -57.885527<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_9ddce7f7c400edce004f61456cd30a64.setContent(html_95523759ed9002beb4253bf3c77ffcac);
+            
+        
+
+        circle_marker_052a22bd5dc8d36b6783db5f37dc996a.bindPopup(popup_9ddce7f7c400edce004f61456cd30a64)
+        ;
+
+        
+    
+    
+            circle_marker_052a22bd5dc8d36b6783db5f37dc996a.bindTooltip(
+                `<div>
+                     Ponto #1 | Frequência: 16 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7a48e874a0b71ffeba4be63ce4472ff5 = L.circleMarker(
+                [-21.704630561538465, -57.89410599230769],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff5d5d", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_d291129bd227f6e285fd978ab28ae918 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_755a91b78eb0819dcb1c87b26b7321fb = $(`<div id="html_755a91b78eb0819dcb1c87b26b7321fb" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #2                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #ff5d5d;">13</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.704631, -57.894106<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_d291129bd227f6e285fd978ab28ae918.setContent(html_755a91b78eb0819dcb1c87b26b7321fb);
+            
+        
+
+        circle_marker_7a48e874a0b71ffeba4be63ce4472ff5.bindPopup(popup_d291129bd227f6e285fd978ab28ae918)
+        ;
+
+        
+    
+    
+            circle_marker_7a48e874a0b71ffeba4be63ce4472ff5.bindTooltip(
+                `<div>
+                     Ponto #2 | Frequência: 13 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9ccd6695f595a9ae3256641f74f9f9ae = L.circleMarker(
+                [-21.698807369230767, -57.87682113846154],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff5d5d", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_00e707eb154fe7dce0cb0a8b4cfeea31 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_017783a845ecea717d529885d1a1aef1 = $(`<div id="html_017783a845ecea717d529885d1a1aef1" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #3                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #ff5d5d;">13</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.698807, -57.876821<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_00e707eb154fe7dce0cb0a8b4cfeea31.setContent(html_017783a845ecea717d529885d1a1aef1);
+            
+        
+
+        circle_marker_9ccd6695f595a9ae3256641f74f9f9ae.bindPopup(popup_00e707eb154fe7dce0cb0a8b4cfeea31)
+        ;
+
+        
+    
+    
+            circle_marker_9ccd6695f595a9ae3256641f74f9f9ae.bindTooltip(
+                `<div>
+                     Ponto #3 | Frequência: 13 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3b27ff4660c2fda531db0fa70167afa5 = L.circleMarker(
+                [-21.698059, -57.879772],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff7474", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_f296c738e8755ab3d2c27683384dcecf = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_ac621c03e1e62261ac337b6077e9b014 = $(`<div id="html_ac621c03e1e62261ac337b6077e9b014" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #4                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #ff7474;">10</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.698059, -57.879772<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_f296c738e8755ab3d2c27683384dcecf.setContent(html_ac621c03e1e62261ac337b6077e9b014);
+            
+        
+
+        circle_marker_3b27ff4660c2fda531db0fa70167afa5.bindPopup(popup_f296c738e8755ab3d2c27683384dcecf)
+        ;
+
+        
+    
+    
+            circle_marker_3b27ff4660c2fda531db0fa70167afa5.bindTooltip(
+                `<div>
+                     Ponto #4 | Frequência: 10 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9b8c4a101b8f98522b8585556ea1fb85 = L.circleMarker(
+                [-21.70237333333333, -57.89083333333334],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9f9f", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_8fd2c2e182e7273af7d0fbee9acdc102 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_1651d712d8a8befa6361f0f5355b6a0f = $(`<div id="html_1651d712d8a8befa6361f0f5355b6a0f" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #5                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #ff9f9f;">6</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.702373, -57.890833<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_8fd2c2e182e7273af7d0fbee9acdc102.setContent(html_1651d712d8a8befa6361f0f5355b6a0f);
+            
+        
+
+        circle_marker_9b8c4a101b8f98522b8585556ea1fb85.bindPopup(popup_8fd2c2e182e7273af7d0fbee9acdc102)
+        ;
+
+        
+    
+    
+            circle_marker_9b8c4a101b8f98522b8585556ea1fb85.bindTooltip(
+                `<div>
+                     Ponto #5 | Frequência: 6 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_521a61335fbb4b198fb7607f356f620c = L.circleMarker(
+                [-21.698625, -57.88213999999999],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffc5c5", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_fc9a44be6d8ed9a67f2020b2fbf86238 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_8b79515a770e8d981d8c06bf256e8543 = $(`<div id="html_8b79515a770e8d981d8c06bf256e8543" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #6                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #ffc5c5;">4</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.698625, -57.882140<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_fc9a44be6d8ed9a67f2020b2fbf86238.setContent(html_8b79515a770e8d981d8c06bf256e8543);
+            
+        
+
+        circle_marker_521a61335fbb4b198fb7607f356f620c.bindPopup(popup_fc9a44be6d8ed9a67f2020b2fbf86238)
+        ;
+
+        
+    
+    
+            circle_marker_521a61335fbb4b198fb7607f356f620c.bindTooltip(
+                `<div>
+                     Ponto #6 | Frequência: 4 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_375aeba4e49ab2351eb8c1c331b42b16 = L.circleMarker(
+                [-21.70336, -57.892425],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffc5c5", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_ad5626fd6d7ce5764a569e80714b009c = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_ea5a1930c49fd9cec755154059c9134a = $(`<div id="html_ea5a1930c49fd9cec755154059c9134a" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #7                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #ffc5c5;">4</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.703360, -57.892425<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_ad5626fd6d7ce5764a569e80714b009c.setContent(html_ea5a1930c49fd9cec755154059c9134a);
+            
+        
+
+        circle_marker_375aeba4e49ab2351eb8c1c331b42b16.bindPopup(popup_ad5626fd6d7ce5764a569e80714b009c)
+        ;
+
+        
+    
+    
+            circle_marker_375aeba4e49ab2351eb8c1c331b42b16.bindTooltip(
+                `<div>
+                     Ponto #7 | Frequência: 4 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_849e7844e043934c6157b35c8e494519 = L.circleMarker(
+                [-21.70043, -57.8842],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_001e08f0c127dafccfd5fc60bd6b41e4 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_7ae37dce5c38c10a3f3825364610e99c = $(`<div id="html_7ae37dce5c38c10a3f3825364610e99c" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #8                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #ffffff;">2</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.700430, -57.884200<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_001e08f0c127dafccfd5fc60bd6b41e4.setContent(html_7ae37dce5c38c10a3f3825364610e99c);
+            
+        
+
+        circle_marker_849e7844e043934c6157b35c8e494519.bindPopup(popup_001e08f0c127dafccfd5fc60bd6b41e4)
+        ;
+
+        
+    
+    
+            circle_marker_849e7844e043934c6157b35c8e494519.bindTooltip(
+                `<div>
+                     Ponto #8 | Frequência: 2 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5c4b8a3b422201415a721007ca5aa8ac = L.circleMarker(
+                [-21.69975, -57.88348],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_2650311317714336ded68090b3fcabf9 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_030fbfae53d2b294debfce8208b8f919 = $(`<div id="html_030fbfae53d2b294debfce8208b8f919" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #9                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #ffffff;">2</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.699750, -57.883480<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_2650311317714336ded68090b3fcabf9.setContent(html_030fbfae53d2b294debfce8208b8f919);
+            
+        
+
+        circle_marker_5c4b8a3b422201415a721007ca5aa8ac.bindPopup(popup_2650311317714336ded68090b3fcabf9)
+        ;
+
+        
+    
+    
+            circle_marker_5c4b8a3b422201415a721007ca5aa8ac.bindTooltip(
+                `<div>
+                     Ponto #9 | Frequência: 2 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_403901344699a38fc6b9e09f909879b7 = L.circleMarker(
+                [-21.70135, -57.88976],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_cd431abcccec30794635375519de2883 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_ae72729761522370bb889ce3899f9eae = $(`<div id="html_ae72729761522370bb889ce3899f9eae" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #10                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #ffffff;">2</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.701350, -57.889760<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_cd431abcccec30794635375519de2883.setContent(html_ae72729761522370bb889ce3899f9eae);
+            
+        
+
+        circle_marker_403901344699a38fc6b9e09f909879b7.bindPopup(popup_cd431abcccec30794635375519de2883)
+        ;
+
+        
+    
+    
+            circle_marker_403901344699a38fc6b9e09f909879b7.bindTooltip(
+                `<div>
+                     Ponto #10 | Frequência: 2 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a36e6aaf653f4a189b1572dbef5ff338 = L.circleMarker(
+                [-21.70058, -57.88899],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_7a94b41e536432c6b80cdf7a06f98cab = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_966d1ddee307695e33bbe1c901d6df25 = $(`<div id="html_966d1ddee307695e33bbe1c901d6df25" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #11                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #ffffff;">2</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.700580, -57.888990<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_7a94b41e536432c6b80cdf7a06f98cab.setContent(html_966d1ddee307695e33bbe1c901d6df25);
+            
+        
+
+        circle_marker_a36e6aaf653f4a189b1572dbef5ff338.bindPopup(popup_7a94b41e536432c6b80cdf7a06f98cab)
+        ;
+
+        
+    
+    
+            circle_marker_a36e6aaf653f4a189b1572dbef5ff338.bindTooltip(
+                `<div>
+                     Ponto #11 | Frequência: 2 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b8a57d7aa1c0e61d632f74f39cd81833 = L.circleMarker(
+                [-21.69983, -57.88836],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_ca20ac4e88f7eaae20f9d082e8b6ba96 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_aceacc6fdf82d3ba000d97716fb31166 = $(`<div id="html_aceacc6fdf82d3ba000d97716fb31166" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #12                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #ffffff;">2</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.699830, -57.888360<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_ca20ac4e88f7eaae20f9d082e8b6ba96.setContent(html_aceacc6fdf82d3ba000d97716fb31166);
+            
+        
+
+        circle_marker_b8a57d7aa1c0e61d632f74f39cd81833.bindPopup(popup_ca20ac4e88f7eaae20f9d082e8b6ba96)
+        ;
+
+        
+    
+    
+            circle_marker_b8a57d7aa1c0e61d632f74f39cd81833.bindTooltip(
+                `<div>
+                     Ponto #12 | Frequência: 2 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e9628ef47d6378c75062438d9f8f71db = L.circleMarker(
+                [-21.70027, -57.88729],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_07bd1713167eba527faa4dad39168834 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_39c7022282c0eb5c43d2e4e06e65e31c = $(`<div id="html_39c7022282c0eb5c43d2e4e06e65e31c" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #13                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #ffffff;">2</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.700270, -57.887290<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_07bd1713167eba527faa4dad39168834.setContent(html_39c7022282c0eb5c43d2e4e06e65e31c);
+            
+        
+
+        circle_marker_e9628ef47d6378c75062438d9f8f71db.bindPopup(popup_07bd1713167eba527faa4dad39168834)
+        ;
+
+        
+    
+    
+            circle_marker_e9628ef47d6378c75062438d9f8f71db.bindTooltip(
+                `<div>
+                     Ponto #13 | Frequência: 2 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b96a5fd77a0210e38223a28a0b7bec4c = L.circleMarker(
+                [-21.7005162875, -57.88577073839286],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6f0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_ea8dde8e07a36865ebc290f21ff31682 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_0a169e391fe3a1e3a71aa4d8f1ac9b3e = $(`<div id="html_0a169e391fe3a1e3a71aa4d8f1ac9b3e" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #1                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #6f0000;">112</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.700516, -57.885771<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_ea8dde8e07a36865ebc290f21ff31682.setContent(html_0a169e391fe3a1e3a71aa4d8f1ac9b3e);
+            
+        
+
+        circle_marker_b96a5fd77a0210e38223a28a0b7bec4c.bindPopup(popup_ea8dde8e07a36865ebc290f21ff31682)
+        ;
+
+        
+    
+    
+            circle_marker_b96a5fd77a0210e38223a28a0b7bec4c.bindTooltip(
+                `<div>
+                     Ponto #1 | Frequência: 112 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3c7619bbcd49ccd65e55c81799041167 = L.circleMarker(
+                [-21.696581148437502, -57.8850201140625],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#cc0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_9d794cfedc41dc7fac1a30cc08cd8f4b = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_966ffd1d22ba4933785f077cb7b59541 = $(`<div id="html_966ffd1d22ba4933785f077cb7b59541" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #2                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #cc0000;">64</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.696581, -57.885020<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_9d794cfedc41dc7fac1a30cc08cd8f4b.setContent(html_966ffd1d22ba4933785f077cb7b59541);
+            
+        
+
+        circle_marker_3c7619bbcd49ccd65e55c81799041167.bindPopup(popup_9d794cfedc41dc7fac1a30cc08cd8f4b)
+        ;
+
+        
+    
+    
+            circle_marker_3c7619bbcd49ccd65e55c81799041167.bindTooltip(
+                `<div>
+                     Ponto #2 | Frequência: 64 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a6f15c70a88d7ef34a8240cf2039b764 = L.circleMarker(
+                [-21.699115414035084, -57.88930203157895],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d10505", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_29a4dae9972f2b4d3c83c8eff69fa47c = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_b282cd1f022436aa767bc567b36de3e8 = $(`<div id="html_b282cd1f022436aa767bc567b36de3e8" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #3                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #d10505;">57</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.699115, -57.889302<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_29a4dae9972f2b4d3c83c8eff69fa47c.setContent(html_b282cd1f022436aa767bc567b36de3e8);
+            
+        
+
+        circle_marker_a6f15c70a88d7ef34a8240cf2039b764.bindPopup(popup_29a4dae9972f2b4d3c83c8eff69fa47c)
+        ;
+
+        
+    
+    
+            circle_marker_a6f15c70a88d7ef34a8240cf2039b764.bindTooltip(
+                `<div>
+                     Ponto #3 | Frequência: 57 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_772a937d3d21e810e9a258f2736ca053 = L.circleMarker(
+                [-21.700771728571425, -57.88362620714285],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff5757", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_0172fd63a506a2a8138091266cc42fd3 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_d52e9b3bb9b21362c20ec0be25ff02c5 = $(`<div id="html_d52e9b3bb9b21362c20ec0be25ff02c5" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #4                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #ff5757;">14</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.700772, -57.883626<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_0172fd63a506a2a8138091266cc42fd3.setContent(html_d52e9b3bb9b21362c20ec0be25ff02c5);
+            
+        
+
+        circle_marker_772a937d3d21e810e9a258f2736ca053.bindPopup(popup_0172fd63a506a2a8138091266cc42fd3)
+        ;
+
+        
+    
+    
+            circle_marker_772a937d3d21e810e9a258f2736ca053.bindTooltip(
+                `<div>
+                     Ponto #4 | Frequência: 14 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8f6c014cf4f7a9583c644cc1b3cdf0e4 = L.circleMarker(
+                [-21.69896, -57.88432],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff8787", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_e87bb6cd015ee25b240692b41521eb77 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_400e5d9f4572c1ea3b9af85c1e1df4b3 = $(`<div id="html_400e5d9f4572c1ea3b9af85c1e1df4b3" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #5                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #ff8787;">8</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.698960, -57.884320<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_e87bb6cd015ee25b240692b41521eb77.setContent(html_400e5d9f4572c1ea3b9af85c1e1df4b3);
+            
+        
+
+        circle_marker_8f6c014cf4f7a9583c644cc1b3cdf0e4.bindPopup(popup_e87bb6cd015ee25b240692b41521eb77)
+        ;
+
+        
+    
+    
+            circle_marker_8f6c014cf4f7a9583c644cc1b3cdf0e4.bindTooltip(
+                `<div>
+                     Ponto #5 | Frequência: 8 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1bd9e4358d4a4dcf703ed08f892335f8 = L.circleMarker(
+                [-21.69457056666667, -57.88303133333333],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdede", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_51ca9fdb04f761dea993bff39715cfdc = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_5ad97ec4bb829423cd7503b7ef2a47ef = $(`<div id="html_5ad97ec4bb829423cd7503b7ef2a47ef" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #6                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #ffdede;">3</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.694571, -57.883031<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_51ca9fdb04f761dea993bff39715cfdc.setContent(html_5ad97ec4bb829423cd7503b7ef2a47ef);
+            
+        
+
+        circle_marker_1bd9e4358d4a4dcf703ed08f892335f8.bindPopup(popup_51ca9fdb04f761dea993bff39715cfdc)
+        ;
+
+        
+    
+    
+            circle_marker_1bd9e4358d4a4dcf703ed08f892335f8.bindTooltip(
+                `<div>
+                     Ponto #6 | Frequência: 3 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4b6793aa270998a8d7c3f88b73174d5f = L.circleMarker(
+                [-21.69895, -57.88589],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_e700be67fad731e8d19b7a5b725da507 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_ba96fad8c8c2abb3414933cf0735b5d8 = $(`<div id="html_ba96fad8c8c2abb3414933cf0735b5d8" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #7                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #ffffff;">2</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.698950, -57.885890<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_e700be67fad731e8d19b7a5b725da507.setContent(html_ba96fad8c8c2abb3414933cf0735b5d8);
+            
+        
+
+        circle_marker_4b6793aa270998a8d7c3f88b73174d5f.bindPopup(popup_e700be67fad731e8d19b7a5b725da507)
+        ;
+
+        
+    
+    
+            circle_marker_4b6793aa270998a8d7c3f88b73174d5f.bindTooltip(
+                `<div>
+                     Ponto #7 | Frequência: 2 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_13c4f02b3d5420179b2750c692376d80 = L.circleMarker(
+                [-21.6982, -57.88668],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_8445609b5598469abfa8a1a2d0ed72d1 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_2e268227909aae0828b61fb058faa980 = $(`<div id="html_2e268227909aae0828b61fb058faa980" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #8                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #ffffff;">2</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.698200, -57.886680<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_8445609b5598469abfa8a1a2d0ed72d1.setContent(html_2e268227909aae0828b61fb058faa980);
+            
+        
+
+        circle_marker_13c4f02b3d5420179b2750c692376d80.bindPopup(popup_8445609b5598469abfa8a1a2d0ed72d1)
+        ;
+
+        
+    
+    
+            circle_marker_13c4f02b3d5420179b2750c692376d80.bindTooltip(
+                `<div>
+                     Ponto #8 | Frequência: 2 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6a28c6cdab106135bfb3e5ba707b26f2 = L.circleMarker(
+                [-21.69893, -57.88741],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_b480fe415e76b2d9906f20a43dc8d0f2 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_ec1627dba5da91b380f76e7e727d889d = $(`<div id="html_ec1627dba5da91b380f76e7e727d889d" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #9                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #ffffff;">2</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.698930, -57.887410<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_b480fe415e76b2d9906f20a43dc8d0f2.setContent(html_ec1627dba5da91b380f76e7e727d889d);
+            
+        
+
+        circle_marker_6a28c6cdab106135bfb3e5ba707b26f2.bindPopup(popup_b480fe415e76b2d9906f20a43dc8d0f2)
+        ;
+
+        
+    
+    
+            circle_marker_6a28c6cdab106135bfb3e5ba707b26f2.bindTooltip(
+                `<div>
+                     Ponto #9 | Frequência: 2 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_01038c894c1f9845636fa2bbb1549158 = L.circleMarker(
+                [-21.69533, -57.88374],
+                {"bubblingMouseEvents": true, "color": "#1e293b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 1.2}
+            ).addTo(feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf);
+        
+    
+        var popup_dd04753a805881191d3cc1753912da95 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_9b1d350e9ca31505da0d76f2957770f2 = $(`<div id="html_9b1d350e9ca31505da0d76f2957770f2" style="width: 100.0%; height: 100.0%;">             <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; line-height: 1.4; color: #1e293b;">                 <h4 style="margin: 0 0 5px 0; color: #b91c1c; border-bottom: 2px solid #b91c1c; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                     📍 Ponto de Sobreposição #10                 </h4>                 <b>Município:</b> MS - Porto Murtinho<br/>                 <b>Frequência / Ocorrências:</b> <span style="font-size: 14px; font-weight: bold; color: #ffffff;">2</span><br/>                 <b>Escala Logarítmica:</b> Norma Ajustada.<br/>                 <b>Coordenadas:</b> -21.695330, -57.883740<br/>                 <hr style="margin: 6px 0; border: 0; border-top: 1px solid #cbd5e1;"/>                 <small style="color: #64748b;">Ponto candidato para aferição em campo.</small>             </div>             </div>`)[0];
+                popup_dd04753a805881191d3cc1753912da95.setContent(html_9b1d350e9ca31505da0d76f2957770f2);
+            
+        
+
+        circle_marker_01038c894c1f9845636fa2bbb1549158.bindPopup(popup_dd04753a805881191d3cc1753912da95)
+        ;
+
+        
+    
+    
+            circle_marker_01038c894c1f9845636fa2bbb1549158.bindTooltip(
+                `<div>
+                     Ponto #10 | Frequência: 2 (Escala Log)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf.addTo(map_05566fc9f9b2ff55267637b6cb357b71);
+        
+    
+            var feature_group_90f60a1e040842d8fb916046cbd9cc5c = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_9b4fe56649f1c17c746d4b595aa094fe = L.marker(
+                [-21.67613610416667, -57.80973671249999],
+                {
+}
+            ).addTo(feature_group_90f60a1e040842d8fb916046cbd9cc5c);
+        
+    
+            var icon_71550a8fdd90a7e7fc9e9c5a7727e460 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2de4649608ad11daf2a0b072bfd3d8af = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_094fc9d7a2463d7ebb8fc3760babc5e4 = $(`<div id="html_094fc9d7a2463d7ebb8fc3760babc5e4" style="width: 100.0%; height: 100.0%;">     <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 230px; font-size: 12px; color: #1e293b;">         <h4 style="margin: 0 0 5px 0; color: #d97706; border-bottom: 2px solid #d97706; padding-bottom: 3px; font-size: 14px; font-weight: bold;">             🎯 Centro Geométrico dos CNPJs         </h4>         <b>Município:</b> MS - Porto Murtinho<br/>         <b>Total de Empresas (CNPJs):</b> 48 estabelecimentos<br/>         <b>Latitude:</b> -21.676136<br/>         <b>Longitude:</b> -57.809737<br/>         <small style="color: #64748b;">Centroide ponderado da densidade empresarial.</small>     </div>     </div>`)[0];
+                popup_2de4649608ad11daf2a0b072bfd3d8af.setContent(html_094fc9d7a2463d7ebb8fc3760babc5e4);
+            
+        
+
+        marker_9b4fe56649f1c17c746d4b595aa094fe.bindPopup(popup_2de4649608ad11daf2a0b072bfd3d8af)
+        ;
+
+        
+    
+    
+            marker_9b4fe56649f1c17c746d4b595aa094fe.bindTooltip(
+                `<div>
+                     🎯 CENTRO GEOMÉTRICO CNPJ (48 empresas)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9b4fe56649f1c17c746d4b595aa094fe.setIcon(icon_71550a8fdd90a7e7fc9e9c5a7727e460);
+            
+    
+            feature_group_90f60a1e040842d8fb916046cbd9cc5c.addTo(map_05566fc9f9b2ff55267637b6cb357b71);
+        
+    
+            var feature_group_98ab92d14f36f76161fbfaf0c4d958f6 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_1dbc1ffbaa976ba2a2909989413af1e8 = L.marker(
+                [-21.6989036577613, -57.8758845641771],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_7dff0e60bd9bfe247974d72701451051 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            1\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_3ac8e8569badff1333da061922c41d2a = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_645f49f11ae2c0471c64350fbce29b20 = $(`<div id="html_645f49f11ae2c0471c64350fbce29b20" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #1: BR - 267             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -21.698904, -57.875885<br/>         </div>         </div>`)[0];
+                popup_3ac8e8569badff1333da061922c41d2a.setContent(html_645f49f11ae2c0471c64350fbce29b20);
+            
+        
+
+        marker_1dbc1ffbaa976ba2a2909989413af1e8.bindPopup(popup_3ac8e8569badff1333da061922c41d2a)
+        ;
+
+        
+    
+    
+            marker_1dbc1ffbaa976ba2a2909989413af1e8.bindTooltip(
+                `<div>
+                     Atrativo #1: BR - 267 (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1dbc1ffbaa976ba2a2909989413af1e8.setIcon(div_icon_7dff0e60bd9bfe247974d72701451051);
+            
+    
+            var marker_86121dd64546d5c57df5b732754e0ac0 = L.marker(
+                [-21.7052829016904, -57.8950330961047],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_02ea4d54efa74949b5745cb8db064d63 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            2\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_bc3bc64b02728f33f5e204b9c72f982f = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_122a2ae561d47f387fc397752dbafb0e = $(`<div id="html_122a2ae561d47f387fc397752dbafb0e" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #2: Porto Carandá             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -21.705283, -57.895033<br/>         </div>         </div>`)[0];
+                popup_bc3bc64b02728f33f5e204b9c72f982f.setContent(html_122a2ae561d47f387fc397752dbafb0e);
+            
+        
+
+        marker_86121dd64546d5c57df5b732754e0ac0.bindPopup(popup_bc3bc64b02728f33f5e204b9c72f982f)
+        ;
+
+        
+    
+    
+            marker_86121dd64546d5c57df5b732754e0ac0.bindTooltip(
+                `<div>
+                     Atrativo #2: Porto Carandá (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_86121dd64546d5c57df5b732754e0ac0.setIcon(div_icon_02ea4d54efa74949b5745cb8db064d63);
+            
+    
+            var marker_f8219574f46e92802214fee8f2a48503 = L.marker(
+                [-21.4770878431268, -57.9277665012807],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_3d0f2b54d33d09fa0999a4e742012d9a = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            3\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_7b55231f28697cd504dfa7aaccd4a6ca = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_62f9b606f530b8fe040ca902ec821ade = $(`<div id="html_62f9b606f530b8fe040ca902ec821ade" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #3: Fecho dos Morros             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -21.477088, -57.927767<br/>         </div>         </div>`)[0];
+                popup_7b55231f28697cd504dfa7aaccd4a6ca.setContent(html_62f9b606f530b8fe040ca902ec821ade);
+            
+        
+
+        marker_f8219574f46e92802214fee8f2a48503.bindPopup(popup_7b55231f28697cd504dfa7aaccd4a6ca)
+        ;
+
+        
+    
+    
+            marker_f8219574f46e92802214fee8f2a48503.bindTooltip(
+                `<div>
+                     Atrativo #3: Fecho dos Morros (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f8219574f46e92802214fee8f2a48503.setIcon(div_icon_3d0f2b54d33d09fa0999a4e742012d9a);
+            
+    
+            var marker_a0dd88b908b2fbab0b0a3c3adcc57eda = L.marker(
+                [-21.4564293662802, -57.9231220889693],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_4ecc86ee857ab6c11502aa1aaec420ac = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            4\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_ba99c85eec53d752df07c9448df8d959 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_8ca50f18fe4969b61484ee72a7898dc9 = $(`<div id="html_8ca50f18fe4969b61484ee72a7898dc9" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #4: Morro Celina             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -21.456429, -57.923122<br/>         </div>         </div>`)[0];
+                popup_ba99c85eec53d752df07c9448df8d959.setContent(html_8ca50f18fe4969b61484ee72a7898dc9);
+            
+        
+
+        marker_a0dd88b908b2fbab0b0a3c3adcc57eda.bindPopup(popup_ba99c85eec53d752df07c9448df8d959)
+        ;
+
+        
+    
+    
+            marker_a0dd88b908b2fbab0b0a3c3adcc57eda.bindTooltip(
+                `<div>
+                     Atrativo #4: Morro Celina (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a0dd88b908b2fbab0b0a3c3adcc57eda.setIcon(div_icon_4ecc86ee857ab6c11502aa1aaec420ac);
+            
+    
+            var marker_03ac5307deda881e29b4bf656576a16e = L.marker(
+                [-21.9929692581665, -57.4358626172663],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_04bd7bfa5d402c0d30a69229b62e7135 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            5\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_76f4c5fbc4a606f184be5d5346c32807 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_6719d1406e71365c2f2d9f80604dcf36 = $(`<div id="html_6719d1406e71365c2f2d9f80604dcf36" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #5: Cachoeira do Apa             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -21.992969, -57.435863<br/>         </div>         </div>`)[0];
+                popup_76f4c5fbc4a606f184be5d5346c32807.setContent(html_6719d1406e71365c2f2d9f80604dcf36);
+            
+        
+
+        marker_03ac5307deda881e29b4bf656576a16e.bindPopup(popup_76f4c5fbc4a606f184be5d5346c32807)
+        ;
+
+        
+    
+    
+            marker_03ac5307deda881e29b4bf656576a16e.bindTooltip(
+                `<div>
+                     Atrativo #5: Cachoeira do Apa (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_03ac5307deda881e29b4bf656576a16e.setIcon(div_icon_04bd7bfa5d402c0d30a69229b62e7135);
+            
+    
+            var marker_271ad007dc329fb4eba227acb8000b80 = L.marker(
+                [-21.1463379124298, -57.6338271408747],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_dcd77927a061a0b36cfb1ba60239beaf = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            6\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_c3b0f4007c38c43c267331cf976608fc = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_0627bf834bd2709ca9a53c555ce373cb = $(`<div id="html_0627bf834bd2709ca9a53c555ce373cb" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #6: Fazenda Barranco Branco             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -21.146338, -57.633827<br/>         </div>         </div>`)[0];
+                popup_c3b0f4007c38c43c267331cf976608fc.setContent(html_0627bf834bd2709ca9a53c555ce373cb);
+            
+        
+
+        marker_271ad007dc329fb4eba227acb8000b80.bindPopup(popup_c3b0f4007c38c43c267331cf976608fc)
+        ;
+
+        
+    
+    
+            marker_271ad007dc329fb4eba227acb8000b80.bindTooltip(
+                `<div>
+                     Atrativo #6: Fazenda Barranco Branco (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_271ad007dc329fb4eba227acb8000b80.setIcon(div_icon_dcd77927a061a0b36cfb1ba60239beaf);
+            
+    
+            var marker_15b95e9ffca43a39e07794ff74767adc = L.marker(
+                [-22.1658808050609, -57.5238068484718],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_541e02a457ff0b43364c79826b68312d = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            7\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_a2b3b36f36b28af379c4d4375e3ee6e0 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_93f53b28dfe8457c8750a4d0ac4ba0a9 = $(`<div id="html_93f53b28dfe8457c8750a4d0ac4ba0a9" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #7: Cachoeira da Fazenda Primavera             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -22.165881, -57.523807<br/>         </div>         </div>`)[0];
+                popup_a2b3b36f36b28af379c4d4375e3ee6e0.setContent(html_93f53b28dfe8457c8750a4d0ac4ba0a9);
+            
+        
+
+        marker_15b95e9ffca43a39e07794ff74767adc.bindPopup(popup_a2b3b36f36b28af379c4d4375e3ee6e0)
+        ;
+
+        
+    
+    
+            marker_15b95e9ffca43a39e07794ff74767adc.bindTooltip(
+                `<div>
+                     Atrativo #7: Cachoeira da Fazenda Primavera (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_15b95e9ffca43a39e07794ff74767adc.setIcon(div_icon_541e02a457ff0b43364c79826b68312d);
+            
+    
+            var marker_fc2884fda7d2dbfee9ff007ffe9f0343 = L.marker(
+                [-22.1658609332017, -57.5237639321367],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_4fa2d58cfb43e18f82922ba51a30d2ed = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            8\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_6b64ddfd468a7c8f301acf093867255c = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_d2f0d6fd197baae7a5bff49709f0c238 = $(`<div id="html_d2f0d6fd197baae7a5bff49709f0c238" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #8: Cachoeira Facão             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -22.165861, -57.523764<br/>         </div>         </div>`)[0];
+                popup_6b64ddfd468a7c8f301acf093867255c.setContent(html_d2f0d6fd197baae7a5bff49709f0c238);
+            
+        
+
+        marker_fc2884fda7d2dbfee9ff007ffe9f0343.bindPopup(popup_6b64ddfd468a7c8f301acf093867255c)
+        ;
+
+        
+    
+    
+            marker_fc2884fda7d2dbfee9ff007ffe9f0343.bindTooltip(
+                `<div>
+                     Atrativo #8: Cachoeira Facão (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fc2884fda7d2dbfee9ff007ffe9f0343.setIcon(div_icon_4fa2d58cfb43e18f82922ba51a30d2ed);
+            
+    
+            var marker_cf359f84587b58c6e25c14e7ceb17e93 = L.marker(
+                [-21.6983601705481, -57.8834382898203],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_74b4a74f2d548e76d24ab8cee339bd41 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            9\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_62ea574140fd7c099f404391fc09e209 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_4dc9698ad60ced23cf0d9278700453a2 = $(`<div id="html_4dc9698ad60ced23cf0d9278700453a2" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #9: Paróquia Sagrado Coração de Jesus             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -21.698360, -57.883438<br/>         </div>         </div>`)[0];
+                popup_62ea574140fd7c099f404391fc09e209.setContent(html_4dc9698ad60ced23cf0d9278700453a2);
+            
+        
+
+        marker_cf359f84587b58c6e25c14e7ceb17e93.bindPopup(popup_62ea574140fd7c099f404391fc09e209)
+        ;
+
+        
+    
+    
+            marker_cf359f84587b58c6e25c14e7ceb17e93.bindTooltip(
+                `<div>
+                     Atrativo #9: Paróquia Sagrado Coração de Jesus (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cf359f84587b58c6e25c14e7ceb17e93.setIcon(div_icon_74b4a74f2d548e76d24ab8cee339bd41);
+            
+    
+            var marker_9fc83af63ba125456d5772ca715fb279 = L.marker(
+                [-21.6969471167651, -57.8879974392676],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_8be10f19dd650e43b4ac05459319bd58 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            10\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_04f607bd4efffb7617b981a80b422a06 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_f51ff9ea3b49ed7e8b2fcb333c529fbd = $(`<div id="html_f51ff9ea3b49ed7e8b2fcb333c529fbd" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #10: Monumento "O Pantanal" - Praça dos Tuiuiús             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -21.696947, -57.887997<br/>         </div>         </div>`)[0];
+                popup_04f607bd4efffb7617b981a80b422a06.setContent(html_f51ff9ea3b49ed7e8b2fcb333c529fbd);
+            
+        
+
+        marker_9fc83af63ba125456d5772ca715fb279.bindPopup(popup_04f607bd4efffb7617b981a80b422a06)
+        ;
+
+        
+    
+    
+            marker_9fc83af63ba125456d5772ca715fb279.bindTooltip(
+                `<div>
+                     Atrativo #10: Monumento "O Pantanal" - Praça dos Tuiuiús (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9fc83af63ba125456d5772ca715fb279.setIcon(div_icon_8be10f19dd650e43b4ac05459319bd58);
+            
+    
+            var marker_9aa497b79ab2f8c291e3aef749b825c5 = L.marker(
+                [-21.6980293504861, -57.8888451498927],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_beeb7ec1489856fa92272c5ad4640f96 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            11\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_83650c5aac102d29bb13603797ccbced = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_fa35054853a94302dc43b4d27ca98a4b = $(`<div id="html_fa35054853a94302dc43b4d27ca98a4b" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #11: Praça do Tererê             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -21.698029, -57.888845<br/>         </div>         </div>`)[0];
+                popup_83650c5aac102d29bb13603797ccbced.setContent(html_fa35054853a94302dc43b4d27ca98a4b);
+            
+        
+
+        marker_9aa497b79ab2f8c291e3aef749b825c5.bindPopup(popup_83650c5aac102d29bb13603797ccbced)
+        ;
+
+        
+    
+    
+            marker_9aa497b79ab2f8c291e3aef749b825c5.bindTooltip(
+                `<div>
+                     Atrativo #11: Praça do Tererê (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9aa497b79ab2f8c291e3aef749b825c5.setIcon(div_icon_beeb7ec1489856fa92272c5ad4640f96);
+            
+    
+            var marker_c14645926590c6796d1abc67aa092a1e = L.marker(
+                [-21.6967043993041, -57.8839950456426],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_d484954e8527f9152ac085ec7fc3dd5b = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            12\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_704488601753e1a81e41405ee5735bb2 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_898c08a5f0eda1f56b353c9e1dc7d195 = $(`<div id="html_898c08a5f0eda1f56b353c9e1dc7d195" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #12: Monumento "O Pioneiro"             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -21.696704, -57.883995<br/>         </div>         </div>`)[0];
+                popup_704488601753e1a81e41405ee5735bb2.setContent(html_898c08a5f0eda1f56b353c9e1dc7d195);
+            
+        
+
+        marker_c14645926590c6796d1abc67aa092a1e.bindPopup(popup_704488601753e1a81e41405ee5735bb2)
+        ;
+
+        
+    
+    
+            marker_c14645926590c6796d1abc67aa092a1e.bindTooltip(
+                `<div>
+                     Atrativo #12: Monumento "O Pioneiro" (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c14645926590c6796d1abc67aa092a1e.setIcon(div_icon_d484954e8527f9152ac085ec7fc3dd5b);
+            
+    
+            var marker_b8357d03127f9d1a9df0397f1817476a = L.marker(
+                [-21.7006053639234, -57.8863443474913],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_8bdf0e6badebb588c454a326c015304b = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            13\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_4e9acd720d71f9e0592cf96bedc51f1e = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_0eb8716565ce397f9c90e5f86ff920c5 = $(`<div id="html_0eb8716565ce397f9c90e5f86ff920c5" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #13: Monumento ao Lenhador             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -21.700605, -57.886344<br/>         </div>         </div>`)[0];
+                popup_4e9acd720d71f9e0592cf96bedc51f1e.setContent(html_0eb8716565ce397f9c90e5f86ff920c5);
+            
+        
+
+        marker_b8357d03127f9d1a9df0397f1817476a.bindPopup(popup_4e9acd720d71f9e0592cf96bedc51f1e)
+        ;
+
+        
+    
+    
+            marker_b8357d03127f9d1a9df0397f1817476a.bindTooltip(
+                `<div>
+                     Atrativo #13: Monumento ao Lenhador (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b8357d03127f9d1a9df0397f1817476a.setIcon(div_icon_8bdf0e6badebb588c454a326c015304b);
+            
+    
+            var marker_770fabbad27e2a149eb0ee2a67a9ada4 = L.marker(
+                [-21.6995070224503, -57.8888069712736],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_33d76b0b14ed8ac75e9e64fc2eaf66d8 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            14\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_5470e319684f0310ea0730d618ce69bd = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_0c2b9218377cdaa4f5158421df006d82 = $(`<div id="html_0c2b9218377cdaa4f5158421df006d82" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #14: Monumento ao Chalaneiro             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -21.699507, -57.888807<br/>         </div>         </div>`)[0];
+                popup_5470e319684f0310ea0730d618ce69bd.setContent(html_0c2b9218377cdaa4f5158421df006d82);
+            
+        
+
+        marker_770fabbad27e2a149eb0ee2a67a9ada4.bindPopup(popup_5470e319684f0310ea0730d618ce69bd)
+        ;
+
+        
+    
+    
+            marker_770fabbad27e2a149eb0ee2a67a9ada4.bindTooltip(
+                `<div>
+                     Atrativo #14: Monumento ao Chalaneiro (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_770fabbad27e2a149eb0ee2a67a9ada4.setIcon(div_icon_33d76b0b14ed8ac75e9e64fc2eaf66d8);
+            
+    
+            var marker_4e9049429c542a8a1a51e264224c2ab8 = L.marker(
+                [-21.7006239157722, -57.8863733585692],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_e08de295c535c02b180282b4b9170499 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            15\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_fcd3cc9d83b4499a6c9cda1a57b1da55 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_735346c1e6c5428163ea3f32b5f31b46 = $(`<div id="html_735346c1e6c5428163ea3f32b5f31b46" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #15: Monumento ao Aguatero             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -21.700624, -57.886373<br/>         </div>         </div>`)[0];
+                popup_fcd3cc9d83b4499a6c9cda1a57b1da55.setContent(html_735346c1e6c5428163ea3f32b5f31b46);
+            
+        
+
+        marker_4e9049429c542a8a1a51e264224c2ab8.bindPopup(popup_fcd3cc9d83b4499a6c9cda1a57b1da55)
+        ;
+
+        
+    
+    
+            marker_4e9049429c542a8a1a51e264224c2ab8.bindTooltip(
+                `<div>
+                     Atrativo #15: Monumento ao Aguatero (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4e9049429c542a8a1a51e264224c2ab8.setIcon(div_icon_e08de295c535c02b180282b4b9170499);
+            
+    
+            var marker_c46ce6046aeaa3c4e0901004fddb1588 = L.marker(
+                [-21.6988461398639, -57.8896233131097],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_649f05304fda8e6090347c065a6466f8 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            16\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_4946609f8592762a552f3c2289a9f976 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_d3072bc0614398476970a27bf5f749e5 = $(`<div id="html_d3072bc0614398476970a27bf5f749e5" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #16: Cine Teatro Murtinhense Ney Machado Mesquita             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -21.698846, -57.889623<br/>         </div>         </div>`)[0];
+                popup_4946609f8592762a552f3c2289a9f976.setContent(html_d3072bc0614398476970a27bf5f749e5);
+            
+        
+
+        marker_c46ce6046aeaa3c4e0901004fddb1588.bindPopup(popup_4946609f8592762a552f3c2289a9f976)
+        ;
+
+        
+    
+    
+            marker_c46ce6046aeaa3c4e0901004fddb1588.bindTooltip(
+                `<div>
+                     Atrativo #16: Cine Teatro Murtinhense Ney Machado Mesquita (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c46ce6046aeaa3c4e0901004fddb1588.setIcon(div_icon_649f05304fda8e6090347c065a6466f8);
+            
+    
+            var marker_4769ea0316e5f93cee11bb7d29d6cb6f = L.marker(
+                [-21.6941405641249, -57.8827175321494],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_94e97b2da3e004a6665aefd911951213 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            17\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_519898d32866557ea7ede95043647f65 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_0f7132c9e4c6744acfaa70389086601a = $(`<div id="html_0f7132c9e4c6744acfaa70389086601a" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #17: Edificação Ismail Ali Alouie             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -21.694141, -57.882718<br/>         </div>         </div>`)[0];
+                popup_519898d32866557ea7ede95043647f65.setContent(html_0f7132c9e4c6744acfaa70389086601a);
+            
+        
+
+        marker_4769ea0316e5f93cee11bb7d29d6cb6f.bindPopup(popup_519898d32866557ea7ede95043647f65)
+        ;
+
+        
+    
+    
+            marker_4769ea0316e5f93cee11bb7d29d6cb6f.bindTooltip(
+                `<div>
+                     Atrativo #17: Edificação Ismail Ali Alouie (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4769ea0316e5f93cee11bb7d29d6cb6f.setIcon(div_icon_94e97b2da3e004a6665aefd911951213);
+            
+    
+            var marker_f0c98e43b46e4abb86e3d24eb8a6c657 = L.marker(
+                [-21.7005880793079, -57.8827100726294],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_8e55ee35893a107e31922dc9eb458848 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            18\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_7f134939735eeeb191e9adf7d62d7f31 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_4c934281c5195583ba673fb2af4b9705 = $(`<div id="html_4c934281c5195583ba673fb2af4b9705" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #18: Edificação Rafael Cortada Codorniz             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -21.700588, -57.882710<br/>         </div>         </div>`)[0];
+                popup_7f134939735eeeb191e9adf7d62d7f31.setContent(html_4c934281c5195583ba673fb2af4b9705);
+            
+        
+
+        marker_f0c98e43b46e4abb86e3d24eb8a6c657.bindPopup(popup_7f134939735eeeb191e9adf7d62d7f31)
+        ;
+
+        
+    
+    
+            marker_f0c98e43b46e4abb86e3d24eb8a6c657.bindTooltip(
+                `<div>
+                     Atrativo #18: Edificação Rafael Cortada Codorniz (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f0c98e43b46e4abb86e3d24eb8a6c657.setIcon(div_icon_8e55ee35893a107e31922dc9eb458848);
+            
+    
+            var marker_540cff64ed2c23f959ce0e10b31a6883 = L.marker(
+                [-21.7005781108375, -57.8827744456425],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_f7b71f48fcf82bacab4227cabad398c1 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            19\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_297cb27965accfc94e46a14fbcf48a9d = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_b604c1c1efdaef7c49e915b89adff322 = $(`<div id="html_b604c1c1efdaef7c49e915b89adff322" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #19: Edificação Nelson Cintra Ribeiro             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -21.700578, -57.882774<br/>         </div>         </div>`)[0];
+                popup_297cb27965accfc94e46a14fbcf48a9d.setContent(html_b604c1c1efdaef7c49e915b89adff322);
+            
+        
+
+        marker_540cff64ed2c23f959ce0e10b31a6883.bindPopup(popup_297cb27965accfc94e46a14fbcf48a9d)
+        ;
+
+        
+    
+    
+            marker_540cff64ed2c23f959ce0e10b31a6883.bindTooltip(
+                `<div>
+                     Atrativo #19: Edificação Nelson Cintra Ribeiro (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_540cff64ed2c23f959ce0e10b31a6883.setIcon(div_icon_f7b71f48fcf82bacab4227cabad398c1);
+            
+    
+            var marker_9189afa811f1cffda35a1e9dcc464616 = L.marker(
+                [-19.4379489706898, -54.9878457781568],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_bd9c4cfe6a9b4871a929140e22cadee1 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            20\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_fdacf5a0fa2e77f44a9454582f166308 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_86d2a38320f160389741260215575470 = $(`<div id="html_86d2a38320f160389741260215575470" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #20: Rio Negro             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -19.437949, -54.987846<br/>         </div>         </div>`)[0];
+                popup_fdacf5a0fa2e77f44a9454582f166308.setContent(html_86d2a38320f160389741260215575470);
+            
+        
+
+        marker_9189afa811f1cffda35a1e9dcc464616.bindPopup(popup_fdacf5a0fa2e77f44a9454582f166308)
+        ;
+
+        
+    
+    
+            marker_9189afa811f1cffda35a1e9dcc464616.bindTooltip(
+                `<div>
+                     Atrativo #20: Rio Negro (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9189afa811f1cffda35a1e9dcc464616.setIcon(div_icon_bd9c4cfe6a9b4871a929140e22cadee1);
+            
+    
+            var marker_f9d746a9786fc50e0895e961f5cf39a8 = L.marker(
+                [-21.6059447869501, -57.0799891791272],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_00e37c99e732296c3b23511760b08259 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            21\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_72f115e5a3ea146a57bc38c583239f3e = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_9e31a423f52bd694c68abbc81f3b8433 = $(`<div id="html_9e31a423f52bd694c68abbc81f3b8433" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #21: Rio Perdido             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -21.605945, -57.079989<br/>         </div>         </div>`)[0];
+                popup_72f115e5a3ea146a57bc38c583239f3e.setContent(html_9e31a423f52bd694c68abbc81f3b8433);
+            
+        
+
+        marker_f9d746a9786fc50e0895e961f5cf39a8.bindPopup(popup_72f115e5a3ea146a57bc38c583239f3e)
+        ;
+
+        
+    
+    
+            marker_f9d746a9786fc50e0895e961f5cf39a8.bindTooltip(
+                `<div>
+                     Atrativo #21: Rio Perdido (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f9d746a9786fc50e0895e961f5cf39a8.setIcon(div_icon_00e37c99e732296c3b23511760b08259);
+            
+    
+            var marker_0c194457127a827b771acb28ab7705f7 = L.marker(
+                [-19.3166113243423, -57.2636289399003],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_7673dd0c64b6412d4d436ceece2e8680 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            22\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_7d6e952845e98372c71016513cb2b72a = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_ff46b3ef31113439c4c99e0d7cb2c077 = $(`<div id="html_ff46b3ef31113439c4c99e0d7cb2c077" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #22: Rio Abobral             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -19.316611, -57.263629<br/>         </div>         </div>`)[0];
+                popup_7d6e952845e98372c71016513cb2b72a.setContent(html_ff46b3ef31113439c4c99e0d7cb2c077);
+            
+        
+
+        marker_0c194457127a827b771acb28ab7705f7.bindPopup(popup_7d6e952845e98372c71016513cb2b72a)
+        ;
+
+        
+    
+    
+            marker_0c194457127a827b771acb28ab7705f7.bindTooltip(
+                `<div>
+                     Atrativo #22: Rio Abobral (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0c194457127a827b771acb28ab7705f7.setIcon(div_icon_7673dd0c64b6412d4d436ceece2e8680);
+            
+    
+            var marker_769fc7387a805bb57e11258139f25a07 = L.marker(
+                [-19.6459579686791, -56.7612992285459],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_fa0c45dddee5b1bc367ef7d4aad46a23 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            23\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_fb4c9f997d390422e0da8f2fdddc33f7 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_7088cf4fc4d3822a1a5554be5c7f5890 = $(`<div id="html_7088cf4fc4d3822a1a5554be5c7f5890" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #23: Rio Vermelho             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -19.645958, -56.761299<br/>         </div>         </div>`)[0];
+                popup_fb4c9f997d390422e0da8f2fdddc33f7.setContent(html_7088cf4fc4d3822a1a5554be5c7f5890);
+            
+        
+
+        marker_769fc7387a805bb57e11258139f25a07.bindPopup(popup_fb4c9f997d390422e0da8f2fdddc33f7)
+        ;
+
+        
+    
+    
+            marker_769fc7387a805bb57e11258139f25a07.bindTooltip(
+                `<div>
+                     Atrativo #23: Rio Vermelho (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_769fc7387a805bb57e11258139f25a07.setIcon(div_icon_fa0c45dddee5b1bc367ef7d4aad46a23);
+            
+    
+            var marker_36524150af9db875d43b7ec202c3de97 = L.marker(
+                [-21.6949126899143, -57.8860053744783],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_f50b9e180075cf44c75173c163971b82 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            24\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_50dc8669c1b6765b48581dd9145301b8 = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_06fa10c1c89f0eb2accaa384af6fb631 = $(`<div id="html_06fa10c1c89f0eb2accaa384af6fb631" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #24: Monumento do Touro Candil             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -21.694913, -57.886005<br/>         </div>         </div>`)[0];
+                popup_50dc8669c1b6765b48581dd9145301b8.setContent(html_06fa10c1c89f0eb2accaa384af6fb631);
+            
+        
+
+        marker_36524150af9db875d43b7ec202c3de97.bindPopup(popup_50dc8669c1b6765b48581dd9145301b8)
+        ;
+
+        
+    
+    
+            marker_36524150af9db875d43b7ec202c3de97.bindTooltip(
+                `<div>
+                     Atrativo #24: Monumento do Touro Candil (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_36524150af9db875d43b7ec202c3de97.setIcon(div_icon_f50b9e180075cf44c75173c163971b82);
+            
+    
+            var marker_475d5d242ce75846228948a6e5d6aba0 = L.marker(
+                [-21.6979595699382, -57.8892421168071],
+                {
+}
+            ).addTo(feature_group_98ab92d14f36f76161fbfaf0c4d958f6);
+        
+    
+            var div_icon_26b14448cb9b9c6508bcb58483369333 = L.divIcon({
+  "html": "\n        \u003cdiv style=\"background-color: #1e293b; color: #ffffff; border: 2px solid #2563eb; border-radius: 50%; width: 28px; height: 28px; text-align: center; line-height: 24px; font-weight: bold; font-size: 13px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);\"\u003e\n            25\n        \u003c/div\u003e\n        ",
+  "iconSize": [28, 28],
+  "iconAnchor": [14, 14],
+  "className": "empty",
+});
+        
+    
+        var popup_ef87c54ff1ea48925c49b753aa6774bb = L.popup({
+  "maxWidth": 270,
+});
+
+        
+            
+                var html_c6d2a3b8ac6c9d216b0f3cacd2f25d68 = $(`<div id="html_c6d2a3b8ac6c9d216b0f3cacd2f25d68" style="width: 100.0%; height: 100.0%;">         <div style="font-family: 'Segoe UI', system-ui, sans-serif; width: 240px; font-size: 12px; line-height: 1.4; color: #1e293b;">             <h4 style="margin: 0 0 5px 0; color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 3px; font-size: 14px; font-weight: bold;">                 ⭐ Atrativo #25: Praça do Tererê             </h4>             <b>Ordem de Importância:</b> <span style="color: #1d4ed8; font-weight: bold;">Fora do Estudo</span><br/>             <b>Categoria:</b> Atrativo Turístico<br/>             <b>Coordenadas:</b> -21.697960, -57.889242<br/>         </div>         </div>`)[0];
+                popup_ef87c54ff1ea48925c49b753aa6774bb.setContent(html_c6d2a3b8ac6c9d216b0f3cacd2f25d68);
+            
+        
+
+        marker_475d5d242ce75846228948a6e5d6aba0.bindPopup(popup_ef87c54ff1ea48925c49b753aa6774bb)
+        ;
+
+        
+    
+    
+            marker_475d5d242ce75846228948a6e5d6aba0.bindTooltip(
+                `<div>
+                     Atrativo #25: Praça do Tererê (Fora do Estudo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_475d5d242ce75846228948a6e5d6aba0.setIcon(div_icon_26b14448cb9b9c6508bcb58483369333);
+            
+    
+            feature_group_98ab92d14f36f76161fbfaf0c4d958f6.addTo(map_05566fc9f9b2ff55267637b6cb357b71);
+        
+    
+            var layer_control_eed3fd00e68ebc6329fb9ab0ec58cdac_layers = {
+                base_layers : {
+                    "https://server.arcgisonline.com/arcgis/rest/services/world_street_map/mapserver/tile/{z}/{y}/{x}" : tile_layer_6f0fed44eb68651ef6d0fe7882356dd2,
+                    "CartoDB Voyager (Ruas / Outdoor Limpo)" : tile_layer_0adee9d7b750505184d102e12ec61907,
+                    "OpenStreetMap Standard" : tile_layer_7d66921b8b778f93793bb1a25d6f26e2,
+                    "Esri World Topo Map (Topogr\u00e1fico)" : tile_layer_8fe284ea6feb8ca89faaaa3ba57ea19e,
+                },
+                overlays :  {
+                    "\ud83d\udd25 Manchas de Fluxo de Tr\u00e2nsito (Heatmap TomTom)" : feature_group_1ff8fb46cdbf2a9bd17915ecde1905c3,
+                    "\ud83d\udd34 Trechos de Sobreposi\u00e7\u00e3o Logar\u00edtmica (R100)" : feature_group_5a46d2ef02e8cd0e93fca847d0f2cedf,
+                    "\ud83c\udfaf Centro Geom\u00e9trico CNPJs" : feature_group_90f60a1e040842d8fb916046cbd9cc5c,
+                    "\u2b50 Atrativos e Legenda Num\u00e9rica" : feature_group_98ab92d14f36f76161fbfaf0c4d958f6,
+                },
+            };
+            let layer_control_eed3fd00e68ebc6329fb9ab0ec58cdac = L.control.layers(
+                layer_control_eed3fd00e68ebc6329fb9ab0ec58cdac_layers.base_layers,
+                layer_control_eed3fd00e68ebc6329fb9ab0ec58cdac_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_05566fc9f9b2ff55267637b6cb357b71);
+
+        
+</script>
+</html>

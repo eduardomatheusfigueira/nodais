@@ -1,0 +1,1129 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Matriz Desejo x Tempo v3 - Itaipu Parquetec</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0072CE",
+              "background-light": "#f8fafc",
+              "text-light": "#1D1D1B",
+              "surface-light": "rgba(255, 255, 255, 0.8)",
+              "border-light": "rgba(226, 232, 240, 0.8)",
+
+              // Cores da Marca (Aproximadas/Oficiais Itaipu Parquetec)
+              "quadrant-green": "#00873E", // Atual / Desejável (Preservar)
+              "quadrant-blue": "#0072CE", // Futuro / Desejável (Alcançar)
+              "quadrant-red": "#E30613", // Atual / Indesejável (Eliminar)
+              "quadrant-yellow": "#FFB81C", // Futuro / Indesejável (Evitar)
+            },
+            fontFamily: {
+              display: ["Ubuntu", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.75rem",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Ubuntu", sans-serif;
+      }
+      .glass {
+        background: var(--tw-bg-surface-light);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--tw-bg-border-light);
+      }
+      .writing-vertical-rl {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(148, 163, 184, 0.5);
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(148, 163, 184, 0.8);
+      }
+
+      .ghost-draggable {
+        opacity: 0.4;
+      }
+      .drag-handle {
+        cursor: grab;
+      }
+      .drag-handle:active {
+        cursor: grabbing;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-br from-background-light to-slate-100 text-text-light min-h-screen flex flex-col font-display selection:bg-primary selection:text-white"
+  >
+    <!-- HEADER -->
+    <header
+      class="glass bg-white/80 border-b border-border-light py-3 px-4 lg:px-8 flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-4 sticky top-0 z-20 shadow-sm backdrop-blur-md"
+    >
+      <div class="flex items-center gap-4 lg:gap-6 justify-between w-full lg:w-auto">
+        <img alt="Itaipu Parquetec Logo" class="h-10 w-auto object-contain" src="data:image/png;base64,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X1TP5+OPPy7UhTBjxgwVhy66dOkCqWfAEsGV6pnoiOSdoaPjiPI8db8zdn3Rtf387rNcKmTTSrumpVylj5upEoDF1oV9bAI008ariQAM/No05TwCKjyE1157reqZ2w8hO0337dtXxo0bJ7xAAI+fnDSeQV6UfD18wAN5aNAPO+wwadu2rSoWebjG/75kyRLV41QJBf4wkK/LGmajQ3qTfu4ogANAodFhGrGtX8rGFTN69Gg1DRkgpxEkvhIDjb5fpwHX04IFCwQd6OrHs8a9xwrQ0fzsZz/TJUUaz/t51llnaXlidQFOfveMe7tp0ybxA4YgEzcKfWe8hFfgwnRAr8Skx3FTopYRt9Kp08cn3mLJV28FNG36CuMzre49ueyD//SkAZV8cpOOS4gX3+9lyvei0LOFly7QwAIeuvTG+MZfepw02n49w0ZK799PPvnEOyETC6hmDnn/aVDpfeoI6Uk6e406OuIpExD3a4igS2oAZHWy0WHwcz2582EFAMrueK6xJPw6BtBEEe677z4tGywugpbAlWBbwK5odYl149cpi/KdoUAFLuVY7U7hRYUqS5at214UC3dmgOWrT51f8cDirBcg01BXKxc8daUzOtZzgMWvF6kThgZQ55bK96L49WwBFhpYXble8VgBH330kVdS3rig6xr8GNEb16VjEWJ96dJ18TREuoZVl6fc8XSEdbrga55BOwzOegDKuJ2ccfb5I488Yp+W7KgDeVymWC1hCwaMdB2zJ598Ussu6ndGgYsqLdNYq2Ol/NSk5IW310cmLfuGNTdgsZUDwDy94i8Ff9TM5lPIkZejEGCxy3KvjrfjOdJL5egOfrOHyBMWWGz+AAxAaV/HedT11mlEglqEXvLSsHrFJzXuuef2fUvJLePpp58ujBkUEq644go3O3U9efJkdSzVj9+ziuuukLqQh6nAXjLrrF8/OQp9ZxS4bN3+uZcciY9buPLTSGRctXWtHPX7EZL0wfuiKlvdSSa/8VhRLArJfOONNxaSLZsHIGCMJRvhONE1uAyOOsiyp7i1CunZZhlkTgDKIDOOMqSR/TONWccM140uLWh8vsHtoHzioGMAW1cOi3UZMygk6BpdZiiWwv1u1wEL3D53H5lUUEhdyONnheBidZele2egK/SdUeAS91YqCFxsYDry1MWbimWj8j/51iwp5dYuqpAy/2C9zFr9eqxSAAoMjhdb6KWXXqpl4fWiPPTQQ570d955p2d82Mgf/ehHYbMURU8D58UAlyETD7zSwsTRQw5DX05a1qHEXf7y5ctLVmRUi1HDCPjhhx82Ide9M4zlNSEOGJGCrtI2rURmFTKuvHc/Lt56WV27TrFr7j+6j5yVqt4MhEfB268Bdb8o9DJ1M6rYzysKebR8omDuwePtt9/2iBXxA13PDD6RlTD2EsfgupeKgmzX4pUvSBxT3oPQRUnTqlWrJux078wpp5zShDZohAKXStu0Mlu5mpS8uXxL9rLQk+W1ayLd7bhQOUqdL+7FoIceemhkVWJw04vZ2rVrc6J1LwlEfiBFetBgT1kOSl8sna4BOuqoo4plnc3PupDsRUJP/GbdlUpkXKm4ZkvBv1xgyWxMZ328rH87/eCDD7ZPQx8VuFTUppWuKs55t3jX2DvbVrq4Ns/Lsd2PibViBxxwQGTlsYmfFzOmCDvjt23b5rws2fnAgQNLxtvNWAeYUeq3Q4cO7mITdx3FrLuwlfIb7wrLy03Pol13XKmvmYHpLsNv9+1i3NoKXMLv0+UWrzzXUY27LKldUZ4KxFgq05GPPKDwXkghokb58mzdutVTBHYZdiaU0oXhLIdFbc7rUp7Te/biH6V+4wJlr3oEjfO7t0wljjIwrZkp61FZu1515PsnXvHERVkXeOH2xAJmdiH8nSHf7ttO2jDnClzCZEgS7Yb6BpkwsGvxItUV71orXojSc+jfsU/pC3GU4B4PcSSFPtVt5te5c+ccXrqGGCI/85/0MEFnTYThEZSWreS9aD/44AOv6ILi3n///YLyxZnJz1ID7KMMLCgslTvM1hlT2+1z9zHKusCLKec6oPR7Z9jLzi1b0GsFLmwCiRUQNFNi6Ooa5NxjexUlDouyxFJqKIpPJWQ+pHO/WMV87bXXIinPDxT69MkFTL/xkKjkYR1BFBULykPngotyCrFuYWJQGeOg82uMi2kE45BdVwYz/rzS4nzG/FxfbKPjJV+QONWqVtqmldmK7UnLKUfl9lyzaQFPNn9e/GyzgEWVl6x+q/Tp2DNWGZiKHEWBOqsF3l69MVwApLlDVB+4olfr5l3K62OOOcaTPWsk/IDXM5NHZCHjCqVypXiIlxOl2wuMbVxyCCvk4rzzzvOUFEvDM6FEkbgBvVj/4he/8IoOFKfARSps00pqZrvE/Hqq0OULn+2OdguZfOWVM71/+96xF1/sS8LUYt32GLoXYuzYsZ71ZL1IIQ2pkxk95CgWLjp55jv38pPbeaLYXLGQrWP4jootg/Ponr3nTPM6160M95ouS34+pMXRHejIKC+EOyHh17oFuViSUXQcglZf987wSXK/XTL8+Kd4ef0IIkkrBZMIXGKItbZ2g0h1J06bfSgWiAtREKuMi3lJvvWtb2mLhbdXom7aMrSsUSnmmWf3WfjEGXBb6KwxgK7Ql5868O0OGhDOw4RBgwZ5kofpTPhtonjIIYd48j/jjDM844n89re/zaGigl/HQbeFSykq6LcmDQAsZNp0qhzT+yJRTsYldsYxxbt5Pt0Zz9TVSOpcBJMBB3ypiNzFZWUacSEAc9VVV4nOJcYgJFuxeElGY8yeZl5pxH3xi18saJdoenfMuIFH3AFd6Mrk5S/ERz99+nTfLdp15RE/YsQIDk3CzJkz1f5eTRI8Ivx2tuYTAR5Z1GcRsFK80nhWdFsCedG74wA7gju+1NdYKV5lYNX53XevPM64VatWSZj6sAGqM7/z/KCDDpKwAJNatXWPSJXl5JP4c9slRiNSrLAbtzf/mWJMQ/5Kt6OLVVVR+QEYXpYgTHiIach1Lx088m2bodsrirwABN+fD9og85LSU6fhJH85wrHHHiu68QbkYT+pMGNB6Ofcc88la0HhtNNO0+ZDlnydCcpnzMiLiV/HAHo/VyB8wzbIPJeWZQmD6wTLsgTgpaywgZlZYfP4fSKAdwBXYBhrm+e6a9euwixDuz5BLEq/DVCZHcm0f3QVtH6prds/D0qbHLqIXGJUaMWnqzk0+9Cjrf4rdXFVftSoUULgAfV6Wehl0fPkIfZryGlk/dwJ1AcXYL7ZVDSCbMqnG4fhJaWh4iUtxHWEHFGGKVOm+LJjs8LevXurhhGAdhPT4ANAlmUJenanh7lm5pZuzAs+dCZo0NzjINxjgMmvfN0YG3wJlD116lROPQMNsmVZ4rcZIxmRhYabZ5JrZwB4SXPGBTmn41IIMHktbrTLwyKjMwRfr/fGpqMTxPPKcw0Y2PEccSEPGzaMU9/gJwcZ0RUBV6z73pLuDCnnRcWcR+QSo77rd2zm0OzD0N7xrSj3U+bcuXMVwPCy0LviQcUqsKzGniM9T7/8pAX9xgYbMurGKuBDYCNExmEsyxIaZho+BqstyxJeUhoq6JIQaFTzvfwMqNMwAtCWZSld06hYliU0+ABQVHW56aabfFnRoLFQEH1yny2r8R7rLBaY4fLSucRItwOdgnz3lq87WpYl0DK2BNgReMa41/Tqabhtnu7jhg2Z8Vh35N5rvzU36J868yw5AzrgXgBqe9lkD3SWqHs2wuMEvrw3gB6f+qYuBOpDeXSC/J7X1avzd6SRg+/BeBSfjeIdxhXLvbWsfc8Y9aPzYhOmNtfuts8Tc/QTJEqXGOVs2b2tRewr1rFN8rb3oHfFgxrGKli3bp2EcYfy8vHCcK/zBRpmGj56n/loy5VOXfx67W650C+z5NzxUVwDAkFkQZ/IEaTM2267LQiZogl6b+lAYA0BdgSsJu61YqL5AXj8gFy39shmR515lpwBHXAvdM87dccqt3nojgAiQERdCNSH8nT0dnzQhbK4Jf2sUpuffbTrxZHOC51F0lJd2jfdIZOExIYIXWLUsUXsK1a/VXq17051KzoALDRoYStBIxHkpQ3Lt1z09MTzufzikg1ZaIyiKI/7G5YP99ZvdmBYftAD4EuWLOFUG7Aioy6XwlivAxByHlUAKNkqCFdxUJ5YIIXeV8CT/KlO7fYLWl4y6DIusa8PPTAZslSQFP3bx7/GJSr10ItKp9NSCLDYMvDSFvNtCpuP35GX2C/dnYZrwR0X9BqXn39vNSin4ulwo/jNNApSAsBS6P3lA2JR3VvqAmAFkZlp4EHo3DT5rJ5JkyZJVJ0HLByAMgyw2PKiCywv+zrM8bHHHpNU/841IpkGO0zGctHaLjFd+e+uf18IunSv+MuOOFuYTeWV1pziCnm4oqg/oFBoD4iXcN68eUIvKApZWCxII5bPV6/sIukaAAAH30lEQVQrCzAgPy+smwZg0U2NdtPa18V+pZPdCdBvMQ3rrFmzBB3bMhV6ZKZRIXzQJXUoFFhsee17W6iFihXCRpVhnlVkDltnniHumy237kjngR2/C7VisL7ofOBq05URJJ51XXV1dQLQBKG3aQC0lGp0WlfZcck+Zlxil404SCvjK8v/Lkc/fpHkm8XgZHD+oLNE6pr3dOSv9DjJWeXYz3kweVHwz/PQ5xOAF3zhwoXy1ltvSdgGOx9vGgR89YAEg58AmF8edpSlV07DM3v2bGU9ffpp7pZBfAvlzTff9GPTJI2eaVR1o2GlgQYogjSuWIL0zsnD4rndu6MZd6U+8EQOGtEmlXZE8ExwD4pt/Bws1b3BQoUv9xbAd6a7z533FuunkI0qqTPlBdE7AMYz5JZDd43rDSsG/nQgeM50tMSz9gu9Airc3yAgRr58gTFO3klAhueWeuTLwwQDNVvsp8N6CVZBvgxlT89YWCcM6OYWI3v93EevKiuk3d0D5DcvT87G+5307dRLzjnIe7sQv3yVkoZVdnKvwWUXlxcF/zwPPQ0QLwC9Psxu4gATAIg0XhD3B42irgAgw/oCAIyXxi0P1/ipWbdAr9zZ8DBLCrkJ0LG5n+qkaYTkJaeO0FNnyqNnqiEvOBqgoHFFh4AhOqVMyuacRoo0LMGRI0cWXE6+jMhBI0o90Q/lI4dTBhor7kE+XoWkw5d7S++Ze4gM6B0ZkIVr4r3ubaHloXeeX7scynIG7gcAVih/OhA8Z7ZO7XKoD3ql7E2bNgl65XkrpJx8eQAZnlvqwXNEndxyoFtkQS4FLl/7Us9M770hH++ypgN++bbXf3rFX9TML764eM2CSWLdOVCeXvxcXrmvGPrP0rBzVV66SiVIyjRkp/54Aej1YXbT0AEmAJCTJq5zXhq3PFzrAIPGC7kJ0AWRkzpCT50pL0ieYmgAQ3RKmZTNOXIXwzNsXuqJfigfOcohA/cQGdA7MiAL18SHrU8+ep5fuxzKcgbuR778QdJtndrlUB/0StlB8kdJQ53ccqBbWxYFLsoaqFGnUZYdLa+6BvFzibnHWlI17RXQjJs9UaruGi7PL31VK88pXxguAJKWoJIT6rbI6YeeXMk1MLLHoQFThtFAxBrIIsojYw6TDTvrI2YfLTsFghqWjLd4bUAJyJDl1Kf/SY548Ovy1/fncdkk3PflK5RLrUlCBUfgEsPlV4peWgWrxYhuNGA0EIMGsuDyzZMOFkmo9YJL7KfD+/iq47PPd/imY5ks27VFvjptvJw09ZtNZpWddPCXReq3+vKouMRMfW4edXXFiW0ENhowGqh8DaScVZh3yWDZ8FmdMyoZ53UNosaFfKQ5+IBga19SbfrKvG0fyVG/HyGXPP0TWbV1reI6+Y3HxMvyUYkV+sMssSN7fKFCpTdiGw0YDVSyBlJO4XE7MWiOpeCMT8I5svnJcUT3TCOa6an70TjTUm37y5QPZ0m/B74s1q/7ym/ee1yN0ThpKvm8YccKefTsOyu5CkZ2owGjgQrWQA64UI/fXzZMTuzcOjFTkwG6fC4x5KaHHvabJYzH4C5ToaY9bJpFYKzlzuE3CtOs46hQhw7J27csjno39zLY6FJXRxNvNJBPA03AhQxzJw6X7tWpZABMAJcYMhPuPeV6ocfOeUsNAMs5fU6Sq0++JDYVMMU132LE2IQxBUWmAb+vgEZWiGHUbDXgCS7MpV5/6+hGC6bcM8hqUpLPJWbfHaYU02NvqQADsAxo31+mX3ivrZLYjqzKjq0wU1DJNcAqbBa9lrwgU0Cz1YAnuNi1ffW6kwWXVLkG+ZVLbFgvCfNHj336WVOERZE0tmHyetJWSCR1/UqXgfLeZf9dFon79u0rrMxldT0Lu9iqgm1GyiKMKTSUBo488kjhfnHfABW2+GAVdigmhthowKUBX3CB9qYLBso7Px4uh3XYT80ko8EnPpawa4/80/B+oYs6Z+AZUnfNcnngxOtkbPdjVH4FNplBbnXcuSoLPjTKzqCIK+wHS+3qI8bLKxMeLavkrMxl+wm2fmCrCrYZKatApvBAGsCtyf3ivgEqbPERKKMhMhrw0UBecCHvkQd2FKyYeVcMlQmHHdAIMhl3WSmBBt7MXKNsZAgbcO1ddvw3lYtoz5XzJP3jVZL+yWpZefnfVXhnwovywtgHZPpptysQunPYVUIDDRgN79C4OWYOECUQkABF9PLCeU/KnWf9B6cmGA0kUQNGphaogUDgYuuFsQ9mk23/9Qj5yz8fLWx4qSwagOazOrXCn1X+KtQ3FDwhAGBhQgFl2WVHdWQGFYHZZYzRYOUAQrjTaKAZr8ACyAJSBpRCA1IAC8kGhrD1Ih+gRz6AETmpB9cmGA0YDRgNJEUDocDFFprtRL4+9EDBZYZFk/5/ZwiA8861J8i87w6RR84doIAHK8cTfPYCDyBi8+TINeM75Ft/62iiEhEAI0JgQMpYSLXfe9fXQrr4kLMkayHV1Ta66WzriCNxduA6A1iHte4s1x99kWB1ASoAYyIUZIQwGjAaMBpwaaAgcHHxUJcADi4srBu2kgF4sDw8wWfMYXL3Vw8SQATwgQFHLKF3MuM75COuEoMtM+MPfoA0+ZxfqTESQCJ9zWLlttv+/SU5gITb7p1/flrF1V27Qg3W33z6RAHk7HLM0WjAaMBoIIka+P8AAAD//+8HpN0AAAAGSURBVAMAlE0J+nCoo0UAAAAASUVORK5CYII=" />
+        <h1
+          class="text-xl font-bold border-l pl-6 border-slate-300 tracking-tight text-slate-800"
+        >
+          Matriz Desejo x Tempo
+        </h1>
+      </div>
+      <div id="user-data-fields" class="flex flex-wrap sm:flex-nowrap items-center gap-3 sm:gap-4 lg:gap-5 text-sm w-full lg:flex-1 lg:max-w-3xl justify-start lg:justify-end">
+        <div class="flex flex-col relative group flex-1 sm:flex-none">
+          <label
+            class="text-[11px] font-bold text-slate-500 mb-1 uppercase tracking-wider"
+            >Nome</label
+          >
+          <input
+            id="user-name"
+            class="bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-primary/20 focus:border-primary w-full sm:w-36 lg:w-40 text-sm transition-all shadow-sm"
+            placeholder="Quem preenche?"
+            type="text"
+            oninput="saveState()"
+          />
+        </div>
+        <div class="flex flex-col relative group">
+          <label
+            class="text-[11px] font-bold text-slate-500 mb-1 uppercase tracking-wider"
+            >Instituição</label
+          >
+          <input
+            id="user-inst"
+            class="bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-primary/20 focus:border-primary w-full sm:w-40 lg:w-48 text-sm transition-all shadow-sm"
+            placeholder="Sua instituição"
+            type="text"
+            oninput="saveState()"
+          />
+        </div>
+        <div class="flex flex-col relative group">
+          <label
+            class="text-[11px] font-bold text-slate-500 mb-1 uppercase tracking-wider"
+            >Município</label
+          >
+          <input
+            id="user-municipio"
+            class="bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-primary/20 focus:border-primary w-full sm:w-40 lg:w-48 text-sm transition-all shadow-sm"
+            placeholder="Seu município"
+            type="text"
+            oninput="saveState()"
+          />
+        </div>
+        <div class="flex flex-col relative group">
+          <label
+            class="text-[11px] font-bold text-slate-500 mb-1 uppercase tracking-wider"
+            >Função</label
+          >
+          <input
+            id="user-role"
+            class="bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-primary/20 focus:border-primary w-full sm:w-36 lg:w-40 text-sm transition-all shadow-sm"
+            placeholder="Sua função/cargo"
+            type="text"
+            oninput="saveState()"
+          />
+        </div>
+        <button id="btn-change-mode" onclick="changeMode()" class="flex items-center justify-center p-2 rounded-full border border-slate-200 text-slate-500 hover:text-purple-600 hover:border-purple-400 hover:bg-purple-50 transition-colors" title="Alterar modo de preenchimento">
+            <span class="material-symbols-outlined text-[20px]">swap_horiz</span>
+        </button>
+        <button onclick="startTour()" class="ml-4 flex items-center justify-center p-2 rounded-full border border-slate-200 text-slate-500 hover:text-primary hover:border-primary hover:bg-primary/5 transition-colors group relative" title="Como usar">
+            <span class="material-symbols-outlined text-[20px]">help</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- TRIAGE MODAL -->
+    <div id="triage-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-opacity">
+      <div class="bg-white rounded-2xl shadow-2xl max-w-xl w-full mx-4 overflow-hidden" style="animation: fadeIn 0.3s ease-out">
+        <div class="bg-gradient-to-r from-primary to-blue-600 p-6 text-white">
+          <h2 class="text-xl font-bold flex items-center gap-3">
+            <span class="material-symbols-outlined text-[28px]">assignment</span>
+            Levantamento de Projetos — Turismo Náutico
+          </h2>
+          <p class="text-blue-100 text-sm mt-2">Seu município já possui os projetos de turismo náutico prontos ou em fase avançada de elaboração?</p>
+        </div>
+        <div class="p-6 space-y-3">
+          <button onclick="selectMode('projetos_prontos')" class="w-full flex items-center gap-4 p-4 rounded-xl border-2 border-slate-200 hover:border-green-500 hover:bg-green-50 transition-all text-left group">
+            <span class="material-symbols-outlined text-[32px] text-green-600 group-hover:scale-110 transition-transform">check_circle</span>
+            <div>
+              <p class="font-bold text-slate-800">Sim, já temos projetos prontos</p>
+              <p class="text-xs text-slate-500 mt-0.5">Cadastre os projetos existentes com detalhes de maturidade e status.</p>
+            </div>
+          </button>
+          <button onclick="selectMode('desenvolver')" class="w-full flex items-center gap-4 p-4 rounded-xl border-2 border-slate-200 hover:border-blue-500 hover:bg-blue-50 transition-all text-left group">
+            <span class="material-symbols-outlined text-[32px] text-blue-600 group-hover:scale-110 transition-transform">edit_note</span>
+            <div>
+              <p class="font-bold text-slate-800">Ainda precisamos desenvolver projetos</p>
+              <p class="text-xs text-slate-500 mt-0.5">Preencha a Matriz Desejo×Tempo para identificar usos e prioridades.</p>
+            </div>
+          </button>
+          <button onclick="selectMode('ambos')" class="w-full flex items-center gap-4 p-4 rounded-xl border-2 border-slate-200 hover:border-purple-500 hover:bg-purple-50 transition-all text-left group">
+            <span class="material-symbols-outlined text-[32px] text-purple-600 group-hover:scale-110 transition-transform">sync</span>
+            <div>
+              <p class="font-bold text-slate-800">Temos alguns projetos prontos, mas também precisamos de novos</p>
+              <p class="text-xs text-slate-500 mt-0.5">Cadastre os projetos existentes e também preencha a matriz para novos.</p>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB BAR (only visible in 'ambos' mode) -->
+    <div id="tab-bar" class="hidden px-4 lg:px-8 pt-4 gap-2">
+      <button id="tab-projetos" onclick="switchTab('projetos')" class="px-5 py-2.5 rounded-t-xl font-bold text-sm border border-b-0 transition-all flex items-center gap-2 bg-white text-primary border-slate-200 shadow-sm">
+        <span class="material-symbols-outlined text-[18px]">check_circle</span>Projetos Prontos
+      </button>
+      <button id="tab-matriz" onclick="switchTab('matriz')" class="px-5 py-2.5 rounded-t-xl font-bold text-sm border border-b-0 transition-all flex items-center gap-2 bg-slate-100 text-slate-500 border-slate-200">
+        <span class="material-symbols-outlined text-[18px]">grid_view</span>Matriz Desejo×Tempo
+      </button>
+    </div>
+
+    <!-- PROJECTS SECTION (Fluxo A) -->
+    <section id="section-projetos" class="hidden flex-1 p-4 md:p-8 flex flex-col gap-6">
+      <div class="flex flex-col md:flex-row md:justify-between md:items-end mb-2 gap-4">
+        <div>
+          <h2 class="text-lg md:text-2xl font-bold text-slate-800 tracking-tight mb-1 flex items-center gap-2">
+            <span class="material-symbols-outlined text-green-600">folder_open</span>
+            Projetos Prontos
+          </h2>
+          <p class="text-xs md:text-sm text-slate-500">Cadastre os projetos de turismo náutico que seu município já possui elaborados.</p>
+        </div>
+        <button onclick="addProject()" class="flex items-center gap-2 px-4 py-2.5 text-sm font-bold bg-green-600 text-white rounded-lg hover:bg-green-700 hover:shadow-md transition-all">
+          <span class="material-symbols-outlined text-[18px]">add</span>Adicionar Projeto
+        </button>
+      </div>
+      <div id="projects-list" class="space-y-6"></div>
+      <div id="empty-projects" class="flex-1 flex flex-col items-center justify-center text-slate-400 opacity-60 min-h-[200px]">
+        <span class="material-symbols-outlined text-5xl mb-3">folder_off</span>
+        <p class="text-sm font-medium">Nenhum projeto cadastrado ainda.</p>
+        <p class="text-xs mt-1">Clique em "Adicionar Projeto" para começar.</p>
+      </div>
+      <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 text-[11px] text-slate-500 leading-relaxed">
+        <strong class="text-slate-700">Legenda de Maturidade para Projetos (1-5 estrelas):</strong><br>
+        <strong>⭐ (1):</strong> Ideia documentada / Anteprojeto muito preliminar.<br>
+        <strong>⭐⭐ (2):</strong> Estudo de viabilidade ou diagnóstico realizado.<br>
+        <strong>⭐⭐⭐ (3):</strong> Projeto básico elaborado.<br>
+        <strong>⭐⭐⭐⭐ (4):</strong> Projeto executivo pronto, pendências menores.<br>
+        <strong>⭐⭐⭐⭐⭐ (5):</strong> Projeto executivo completo, licenciado, pronto para execução.
+      </div>
+      
+      <!-- EXPORT BUTTONS (Projects Section) -->
+      <div class="flex gap-2 md:gap-3 flex-wrap mt-2">
+        <label
+          class="cursor-pointer flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-2 text-sm font-medium bg-white border border-slate-200 rounded-lg hover:bg-slate-50 hover:shadow-sm transition-all text-slate-700"
+        >
+          <span class="material-symbols-outlined text-[18px]">upload</span>
+          <span class="hidden md:inline">Importar CSV</span>
+          <input
+            type="file"
+            accept=".csv"
+            class="hidden"
+            onchange="importCSV(event)"
+          />
+        </label>
+        <button
+          onclick="exportCSV()"
+          class="flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-2 text-sm font-medium bg-primary text-white rounded-lg hover:bg-blue-700 hover:shadow-md transition-all"
+        >
+          <span class="material-symbols-outlined text-[18px]">download</span>
+          <span class="hidden md:inline">Exportar CSV</span>
+        </button>
+        <button
+          onclick="clearAll()"
+          class="flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-2 text-sm font-medium bg-red-50 text-red-600 border border-red-200 rounded-lg hover:bg-red-100 hover:shadow-sm transition-all"
+          title="Limpar tudo"
+        >
+          <span class="material-symbols-outlined text-[18px]">delete_sweep</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- PROJECT CARD TEMPLATE -->
+    <template id="project-card-template">
+      <div class="bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden project-card">
+        <div class="bg-gradient-to-r from-green-50 to-emerald-50 p-4 border-b border-slate-100 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-green-600 text-[24px]">description</span>
+            <span class="font-bold text-slate-800 project-number">Projeto 1</span>
+          </div>
+          <button class="text-slate-400 hover:text-red-500 transition-colors remove-project-btn" title="Remover projeto">
+            <span class="material-symbols-outlined">delete</span>
+          </button>
+        </div>
+        <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="md:col-span-2">
+            <label class="text-[11px] font-bold text-slate-500 mb-1 uppercase tracking-wider block">Nome do Projeto *</label>
+            <input type="text" class="proj-name w-full text-sm bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none" placeholder="Ex: Marina Pública Municipal" />
+          </div>
+          <div>
+            <label class="text-[11px] font-bold text-slate-500 mb-1 uppercase tracking-wider block">Tipo/Categoria *</label>
+            <select class="proj-type w-full text-sm bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none">
+              <option value="">Selecione...</option>
+              <option value="Infraestrutura Náutica">Infraestrutura Náutica</option>
+              <option value="Regulamentação">Regulamentação</option>
+              <option value="Ambiental">Ambiental</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-[11px] font-bold text-slate-500 mb-1 uppercase tracking-wider block">Status *</label>
+            <select class="proj-status w-full text-sm bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none">
+              <option value="">Selecione...</option>
+              <option value="Projeto Executivo Pronto">Projeto Executivo Pronto</option>
+              <option value="Projeto Básico">Projeto Básico</option>
+              <option value="Estudo de Viabilidade">Estudo de Viabilidade</option>
+              <option value="Anteprojeto">Anteprojeto</option>
+            </select>
+          </div>
+          <div class="md:col-span-2">
+            <label class="text-[11px] font-bold text-slate-500 mb-1 uppercase tracking-wider block">Breve Descrição *</label>
+            <textarea class="proj-desc w-full text-sm bg-slate-50 border border-slate-200 rounded-lg p-3 focus:ring-2 focus:ring-green-500/20 focus:border-green-500 resize-y outline-none" placeholder="O que o projeto contempla..." rows="2"></textarea>
+          </div>
+          <div>
+            <label class="text-[11px] font-bold text-slate-500 mb-1 uppercase tracking-wider block">Possui financiamento?</label>
+            <select class="proj-funding w-full text-sm bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none">
+              <option value="">Selecione...</option>
+              <option value="Sim (aprovado)">Sim (aprovado)</option>
+              <option value="Em busca">Em busca</option>
+              <option value="Não">Não</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-[11px] font-bold text-slate-500 mb-1 uppercase tracking-wider block">Situação regulatória</label>
+            <select class="proj-regulatory w-full text-sm bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none">
+              <option value="">Selecione...</option>
+              <option value="Licenciado">Licenciado</option>
+              <option value="Em licenciamento">Em licenciamento</option>
+              <option value="Pendente">Pendente</option>
+              <option value="Não aplicável">Não aplicável</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-[11px] font-bold text-slate-500 mb-1 uppercase tracking-wider block">Prazo estimado de início</label>
+            <select class="proj-timeline w-full text-sm bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500/20 focus:border-green-500 outline-none">
+              <option value="">Selecione...</option>
+              <option value="Imediato (&lt; 3 meses)">Imediato (&lt; 3 meses)</option>
+              <option value="Curto prazo (3-12 meses)">Curto prazo (3-12 meses)</option>
+              <option value="Médio prazo (1-3 anos)">Médio prazo (1-3 anos)</option>
+              <option value="Indefinido">Indefinido</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-[11px] font-bold text-slate-500 mb-1 uppercase tracking-wider block">Maturidade</label>
+            <div class="flex gap-1 proj-star-container mt-1">
+              <button class="material-symbols-outlined text-[24px] text-slate-300 hover:text-yellow-400 focus:outline-none transition-colors proj-star-btn cursor-pointer" data-value="1">star</button>
+              <button class="material-symbols-outlined text-[24px] text-slate-300 hover:text-yellow-400 focus:outline-none transition-colors proj-star-btn cursor-pointer" data-value="2">star</button>
+              <button class="material-symbols-outlined text-[24px] text-slate-300 hover:text-yellow-400 focus:outline-none transition-colors proj-star-btn cursor-pointer" data-value="3">star</button>
+              <button class="material-symbols-outlined text-[24px] text-slate-300 hover:text-yellow-400 focus:outline-none transition-colors proj-star-btn cursor-pointer" data-value="4">star</button>
+              <button class="material-symbols-outlined text-[24px] text-slate-300 hover:text-yellow-400 focus:outline-none transition-colors proj-star-btn cursor-pointer" data-value="5">star</button>
+            </div>
+          </div>
+          <div class="md:col-span-2">
+            <label class="text-[11px] font-bold text-slate-500 mb-1 uppercase tracking-wider block">Observações</label>
+            <textarea class="proj-notes w-full text-sm bg-slate-50 border border-slate-200 rounded-lg p-3 focus:ring-2 focus:ring-green-500/20 focus:border-green-500 resize-y outline-none" placeholder="Informações adicionais relevantes..." rows="2"></textarea>
+          </div>
+        </div>
+      </div>
+    </template>
+
+
+    <!-- MAIN (Matrix Section - Fluxo B) -->
+    <main id="section-matriz" class="hidden flex-1 p-4 md:p-8 flex flex-col lg:flex-row gap-6 md:gap-8 h-auto lg:h-[calc(100vh-[header-height])] lg:overflow-hidden relative">
+      <!-- MATRIX AREA -->
+      <div class="flex-1 flex flex-col min-w-0 overflow-y-visible lg:overflow-y-hidden">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-end mb-6 gap-4">
+          <div>
+            <h2 class="text-lg md:text-2xl font-bold text-slate-800 tracking-tight mb-1">
+              Matriz Estratégica
+            </h2>
+            <p class="text-xs md:text-sm text-slate-500">
+              Categorize os <strong>usos do Lago de Itaipu</strong> com base no tempo e desejo.
+            </p>
+          </div>
+          <div class="flex gap-2 md:gap-3 flex-wrap">
+            <label
+              id="btn-import"
+              class="cursor-pointer flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-2 text-sm font-medium bg-white border border-slate-200 rounded-lg hover:bg-slate-50 hover:shadow-sm transition-all text-slate-700"
+            >
+              <span class="material-symbols-outlined text-[18px]">upload</span>
+              <span class="hidden md:inline">Importar CSV</span>
+              <input
+                type="file"
+                id="import-csv"
+                accept=".csv"
+                class="hidden"
+                onchange="importCSV(event)"
+              />
+            </label>
+            <button
+              onclick="exportCSV()"
+              class="flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-2 text-sm font-medium bg-primary text-white rounded-lg hover:bg-blue-700 hover:shadow-md transition-all"
+            >
+              <span class="material-symbols-outlined text-[18px]"
+                >download</span
+              >
+              <span class="hidden md:inline">Exportar CSV</span>
+            </button>
+            <button
+              onclick="clearAll()"
+              class="flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-2 text-sm font-medium bg-red-50 text-red-600 border border-red-200 rounded-lg hover:bg-red-100 hover:shadow-sm transition-all"
+              title="Limpar tudo"
+            >
+              <span class="material-symbols-outlined text-[18px]"
+                >delete_sweep</span
+              >
+            </button>
+          </div>
+        </div>
+
+        <!-- 2x2 GRID -->
+        <div
+          class="flex-1 grid grid-cols-2 lg:grid-cols-[auto_1fr_1fr] grid-rows-none lg:grid-rows-[auto_1fr_1fr] gap-3 md:gap-6 min-h-0"
+        >
+          <!-- Desktop Column Headers (hidden on mobile) -->
+          <div class="hidden lg:block"></div>
+          <div
+            class="hidden lg:block glass text-center font-bold text-slate-700 text-lg py-3 rounded-xl shadow-sm tracking-wide bg-slate-100/50 uppercase"
+          >
+            Atual
+          </div>
+          <div
+            class="hidden lg:block glass text-center font-bold text-slate-700 text-lg py-3 rounded-xl shadow-sm tracking-wide bg-slate-100/50 uppercase"
+          >
+            Futuro
+          </div>
+
+          <!-- Mobile Section Header: Desejável (hidden on desktop) -->
+          <div class="col-span-2 lg:hidden flex items-center gap-2 px-1 pt-1">
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Desejável</span>
+            <div class="flex-1 h-px bg-slate-200"></div>
+            <div class="flex gap-3 text-[10px] font-medium text-slate-400 uppercase">
+              <span>◀ Atual</span>
+              <span>Futuro ▶</span>
+            </div>
+          </div>
+
+          <!-- Desktop Row Label: Desejável (hidden on mobile) -->
+          <div
+            class="hidden lg:flex glass items-center justify-center font-bold text-slate-700 text-lg px-3 writing-vertical-rl rotate-180 rounded-xl shadow-sm tracking-wide bg-slate-100/50 uppercase"
+          >
+            Desejável
+          </div>
+
+          <!-- Q1: Atual / Desejável (Verde) -->
+          <div
+            class="glass rounded-xl shadow-sm flex flex-col overflow-hidden relative group hover:shadow-md transition-shadow min-h-[180px] lg:min-h-0"
+          >
+            <div
+              class="absolute top-0 left-0 w-full h-1.5 bg-quadrant-green/80"
+            ></div>
+            <div
+              class="p-3 lg:p-4 border-b border-border-light flex flex-col gap-2 lg:gap-3 bg-white/40"
+            >
+              <div class="flex flex-col">
+                <h3
+                  class="font-bold text-sm lg:text-base flex items-center gap-2 lg:gap-2.5 text-slate-800"
+                >
+                  <span
+                    class="w-2.5 h-2.5 rounded-full bg-quadrant-green shadow-sm shrink-0"
+                  ></span>
+                  <span class="truncate">Manter</span>
+                </h3>
+                <span class="text-[10px] lg:text-[11.5px] text-slate-500 italic ml-5 mt-0.5">Ex: Pesca esportiva</span>
+              </div>
+              <form
+                onsubmit="
+                  addItem(event, 'q1', 'Atual/Desejável', 'quadrant-green')
+                "
+                class="flex gap-2"
+              >
+                <input
+                  type="text"
+                  id="input-q1"
+                  class="flex-1 text-sm bg-white border border-slate-200 rounded-md px-3 py-1.5 focus:ring-2 focus:ring-quadrant-green/20 focus:border-quadrant-green outline-none min-w-0"
+                  placeholder="Adicionar item..."
+                  required
+                />
+                <button
+                  type="submit"
+                  class="text-slate-500 hover:text-quadrant-green transition-colors"
+                >
+                  <span class="material-symbols-outlined">add_circle</span>
+                </button>
+              </form>
+            </div>
+            <div
+              id="list-q1"
+              class="p-3 lg:p-4 flex-1 overflow-y-auto space-y-2"
+            ></div>
+          </div>
+
+          <!-- Q2: Futuro / Desejável (Azul) -->
+          <div
+            class="glass rounded-xl shadow-sm flex flex-col overflow-hidden relative group hover:shadow-md transition-shadow min-h-[180px] lg:min-h-0"
+          >
+            <div
+              class="absolute top-0 left-0 w-full h-1.5 bg-quadrant-blue/80"
+            ></div>
+            <div
+              class="p-3 lg:p-4 border-b border-border-light flex flex-col gap-2 lg:gap-3 bg-white/40"
+            >
+              <div class="flex flex-col">
+                <h3
+                  class="font-bold text-sm lg:text-base flex items-center gap-2 lg:gap-2.5 text-slate-800"
+                >
+                  <span
+                    class="w-2.5 h-2.5 rounded-full bg-quadrant-blue shadow-sm shrink-0"
+                  ></span>
+                  <span class="truncate">Alcançar</span>
+                </h3>
+                <span class="text-[10px] lg:text-[11.5px] text-slate-500 italic ml-5 mt-0.5">Ex: Para-Glide</span>
+              </div>
+              <form
+                onsubmit="
+                  addItem(event, 'q2', 'Futuro/Desejável', 'quadrant-blue')
+                "
+                class="flex gap-2"
+              >
+                <input
+                  type="text"
+                  id="input-q2"
+                  class="flex-1 text-sm bg-white border border-slate-200 rounded-md px-3 py-1.5 focus:ring-2 focus:ring-quadrant-blue/20 focus:border-quadrant-blue outline-none min-w-0"
+                  placeholder="Adicionar item..."
+                  required
+                />
+                <button
+                  type="submit"
+                  class="text-slate-500 hover:text-quadrant-blue transition-colors"
+                >
+                  <span class="material-symbols-outlined">add_circle</span>
+                </button>
+              </form>
+            </div>
+            <div
+              id="list-q2"
+              class="p-3 lg:p-4 flex-1 overflow-y-auto space-y-2"
+            ></div>
+          </div>
+
+          <!-- Mobile Section Header: Indesejável (hidden on desktop) -->
+          <div class="col-span-2 lg:hidden flex items-center gap-2 px-1 pt-2">
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Indesejável</span>
+            <div class="flex-1 h-px bg-slate-200"></div>
+            <div class="flex gap-3 text-[10px] font-medium text-slate-400 uppercase">
+              <span>◀ Atual</span>
+              <span>Futuro ▶</span>
+            </div>
+          </div>
+
+          <!-- Desktop Row Label: Indesejável (hidden on mobile) -->
+          <div
+            class="hidden lg:flex glass items-center justify-center font-bold text-slate-700 text-lg px-3 writing-vertical-rl rotate-180 rounded-xl shadow-sm tracking-wide bg-slate-100/50 uppercase"
+          >
+            Indesejável
+          </div>
+
+          <!-- Q3: Atual / Indesejável (Vermelho) -->
+          <div
+            class="glass rounded-xl shadow-sm flex flex-col overflow-hidden relative group hover:shadow-md transition-shadow min-h-[180px] lg:min-h-0"
+          >
+            <div
+              class="absolute top-0 left-0 w-full h-1.5 bg-quadrant-red/80"
+            ></div>
+            <div
+              class="p-3 lg:p-4 border-b border-border-light flex flex-col gap-2 lg:gap-3 bg-white/40"
+            >
+              <div class="flex flex-col">
+                <h3
+                  class="font-bold text-sm lg:text-base flex items-center gap-2 lg:gap-2.5 text-slate-800"
+                >
+                  <span
+                    class="w-2.5 h-2.5 rounded-full bg-quadrant-red shadow-sm shrink-0"
+                  ></span>
+                  <span class="truncate">Eliminar</span>
+                </h3>
+                <span class="text-[10px] lg:text-[11.5px] text-slate-500 italic ml-5 mt-0.5">Ex: Pesca predatória</span>
+              </div>
+              <form
+                onsubmit="
+                  addItem(event, 'q3', 'Atual/Indesejável', 'quadrant-red')
+                "
+                class="flex gap-2"
+              >
+                <input
+                  type="text"
+                  id="input-q3"
+                  class="flex-1 text-sm bg-white border border-slate-200 rounded-md px-3 py-1.5 focus:ring-2 focus:ring-quadrant-red/20 focus:border-quadrant-red outline-none min-w-0"
+                  placeholder="Adicionar item..."
+                  required
+                />
+                <button
+                  type="submit"
+                  class="text-slate-500 hover:text-quadrant-red transition-colors"
+                >
+                  <span class="material-symbols-outlined">add_circle</span>
+                </button>
+              </form>
+            </div>
+            <div
+              id="list-q3"
+              class="p-3 lg:p-4 flex-1 overflow-y-auto space-y-2"
+            ></div>
+          </div>
+
+          <!-- Q4: Futuro / Indesejável (Amarelo) -->
+          <div
+            class="glass rounded-xl shadow-sm flex flex-col overflow-hidden relative group hover:shadow-md transition-shadow min-h-[180px] lg:min-h-0"
+          >
+            <div
+              class="absolute top-0 left-0 w-full h-1.5 bg-quadrant-yellow/80"
+            ></div>
+            <div
+              class="p-3 lg:p-4 border-b border-border-light flex flex-col gap-2 lg:gap-3 bg-white/40"
+            >
+              <div class="flex flex-col">
+                <h3
+                  class="font-bold text-sm lg:text-base flex items-center gap-2 lg:gap-2.5 text-slate-800"
+                >
+                  <span
+                    class="w-2.5 h-2.5 rounded-full bg-quadrant-yellow shadow-sm shrink-0"
+                  ></span>
+                  <span class="truncate">Evitar</span>
+                </h3>
+                <span class="text-[10px] lg:text-[11.5px] text-slate-500 italic ml-5 mt-0.5">Ex: Contato indevido com a fauna</span>
+              </div>
+              <form
+                onsubmit="
+                  addItem(event, 'q4', 'Futuro/Indesejável', 'quadrant-yellow')
+                "
+                class="flex gap-2"
+              >
+                <input
+                  type="text"
+                  id="input-q4"
+                  class="flex-1 text-sm bg-white border border-slate-200 rounded-md px-3 py-1.5 focus:ring-2 focus:ring-quadrant-yellow/20 focus:border-quadrant-yellow outline-none min-w-0"
+                  placeholder="Adicionar item..."
+                  required
+                />
+                <button
+                  type="submit"
+                  class="text-slate-500 hover:text-quadrant-yellow transition-colors"
+                >
+                  <span class="material-symbols-outlined">add_circle</span>
+                </button>
+              </form>
+            </div>
+            <div
+              id="list-q4"
+              class="p-3 lg:p-4 flex-1 overflow-y-auto space-y-2"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RANKING SIDEBAR -->
+      <aside
+        class="w-full lg:w-96 glass rounded-xl shadow-sm flex flex-col h-[500px] lg:h-full border border-slate-200/60 bg-white/80 shrink-0"
+      >
+        <div
+          class="p-5 border-b border-border-light flex justify-between items-center bg-slate-50/80 rounded-t-xl"
+        >
+          <h2
+            class="font-bold text-slate-800 flex items-center gap-2.5 text-lg tracking-tight"
+          >
+            <span class="material-symbols-outlined text-primary text-[22px]"
+              >format_list_numbered</span
+            >
+            Ranking de Prioridades
+          </h2>
+          <span
+            id="item-count"
+            class="text-xs font-bold bg-primary/10 text-primary px-2.5 py-1 rounded-full border border-primary/20"
+            >0 Itens</span
+          >
+        </div>
+
+        <!-- Instructions -->
+        <div class="px-5 pt-3 pb-1">
+          <p class="text-[11px] text-slate-500 text-center leading-tight">
+            Arraste os usos para priorizar (mais alto = mais prioritário). Adicione uma descrição e seu <strong>nível de maturidade</strong> (0 a 5 estrelas) para indicar o quão estabelecido este uso está.
+          </p>
+        </div>
+
+        <div id="ranking-list" class="flex-1 overflow-y-auto p-4 space-y-4">
+          <!-- Items will be injected here -->
+          <div
+            id="empty-ranking"
+            class="h-full flex flex-col items-center justify-center text-slate-400 opacity-60"
+          >
+            <span class="material-symbols-outlined text-4xl mb-2"
+              >drag_indicator</span
+            >
+            <p class="text-sm font-medium text-center">
+              Nenhum uso inserido ainda.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-4 border-t border-border-light bg-slate-50 rounded-b-xl text-[10px] text-slate-500 leading-tight space-y-1">
+            <strong>Legenda de Maturidade (0 - 5 estrelas):</strong><br>
+            <strong>0:</strong> Ideia, não iniciado.<br>
+            <strong>1-2:</strong> Inicial (testes isolados, não regulamentado).<br>
+            <strong>3-4:</strong> Em desenvolvimento (infra parcial, regulação progredindo).<br>
+            <strong>5:</strong> Maduro (uso consolidado, bem regulamentado).
+        </div>
+      </aside>
+    </main>
+
+        <!-- Modal Template for Items in Matrix (Invisible, used in JS) -->
+    <template id="matrix-item-template">
+
+
+      <div
+        class="p-2.5 bg-white border border-slate-200 rounded-lg shadow-sm text-sm group/item flex justify-between items-center transition-all cursor-default"
+      >
+        <span
+          class="font-medium text-slate-700 item-title truncate mr-2"
+        ></span>
+        <button
+          class="text-slate-400 hover:text-red-500 opacity-0 group-hover/item:opacity-100 transition-opacity p-1 rounded hover:bg-red-50 remove-btn"
+          title="Remover"
+        >
+          <span class="material-symbols-outlined text-[16px]">delete</span>
+        </button>
+      </div>
+    </template>
+
+    <!-- Template for Ranking Item -->
+    <template id="ranking-item-template">
+      <div
+        class="border border-slate-200 rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow overflow-hidden group/rank flex flex-col"
+      >
+        <div
+          class="flex items-center p-3 bg-slate-50/80 border-b border-slate-100 drag-handle"
+        >
+          <span
+            class="material-symbols-outlined text-slate-400 mr-2 group-hover/rank:text-slate-600 transition-colors"
+            >drag_indicator</span
+          >
+          <span
+            class="text-xs font-bold text-slate-400 mr-2 rank-number w-4 text-center"
+            >1</span
+          >
+          <div class="flex-1 flex items-center justify-between overflow-hidden">
+            <span
+              class="font-bold text-sm text-slate-700 truncate mr-2 item-title"
+            ></span>
+            <span
+              class="w-3 h-3 rounded-full shadow-sm ring-2 ring-white flex-shrink-0 item-indicator"
+              title=""
+            ></span>
+          </div>
+          <button
+            class="text-slate-300 hover:text-red-500 ml-2 remove-btn"
+            title="Remover"
+          >
+            <span class="material-symbols-outlined text-[16px]">close</span>
+          </button>
+        </div>
+        <div class="p-3 bg-white flex-1 flex flex-col gap-2">
+          <textarea
+            class="item-desc w-full text-sm bg-slate-50 border border-slate-200 rounded-lg p-3 focus:ring-2 focus:ring-primary/20 focus:border-primary resize-y text-slate-700 placeholder-slate-400 transition-all outline-none"
+            placeholder="Breve descrição explicando do que se trata este uso/item..."
+            rows="2"
+          ></textarea>
+          <div class="flex items-center justify-between bg-slate-50 rounded-lg p-2 border border-slate-100">
+            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-widest pl-1">Maturidade:</span>
+            <div class="flex gap-0.5 star-container">
+              <button class="material-symbols-outlined text-[20px] text-slate-300 hover:text-yellow-400 focus:outline-none transition-colors star-btn cursor-pointer" data-value="1">star</button>
+              <button class="material-symbols-outlined text-[20px] text-slate-300 hover:text-yellow-400 focus:outline-none transition-colors star-btn cursor-pointer" data-value="2">star</button>
+              <button class="material-symbols-outlined text-[20px] text-slate-300 hover:text-yellow-400 focus:outline-none transition-colors star-btn cursor-pointer" data-value="3">star</button>
+              <button class="material-symbols-outlined text-[20px] text-slate-300 hover:text-yellow-400 focus:outline-none transition-colors star-btn cursor-pointer" data-value="4">star</button>
+              <button class="material-symbols-outlined text-[20px] text-slate-300 hover:text-yellow-400 focus:outline-none transition-colors star-btn cursor-pointer" data-value="5">star</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <script>
+      // --- State ---
+      let appData = {
+        mode: '',
+        user: { name: '', inst: '', role: '', municipio: '' },
+        items: [],
+        projects: []
+      };
+
+      // --- Triage ---
+      function selectMode(mode) {
+        appData.mode = mode;
+        document.getElementById('triage-modal').classList.add('hidden');
+        applyMode();
+        saveState();
+        setTimeout(() => startTour(), 400);
+      }
+
+      function applyMode() {
+        const modal = document.getElementById('triage-modal');
+        const tabBar = document.getElementById('tab-bar');
+        const secP = document.getElementById('section-projetos');
+        const secM = document.getElementById('section-matriz');
+        modal.classList.add('hidden');
+        tabBar.classList.add('hidden');
+        tabBar.classList.remove('flex');
+        secP.classList.add('hidden');
+        secM.classList.add('hidden');
+
+        if (appData.mode === 'projetos_prontos') {
+          secP.classList.remove('hidden');
+        } else if (appData.mode === 'desenvolver') {
+          secM.classList.remove('hidden');
+        } else if (appData.mode === 'ambos') {
+          tabBar.classList.remove('hidden');
+          tabBar.classList.add('flex');
+          appData._activeTab = appData._activeTab || 'projetos';
+          switchTab(appData._activeTab);
+        } else {
+          modal.classList.remove('hidden');
+        }
+      }
+
+      function switchTab(tab) {
+        const secP = document.getElementById('section-projetos');
+        const secM = document.getElementById('section-matriz');
+        const tP = document.getElementById('tab-projetos');
+        const tM = document.getElementById('tab-matriz');
+        appData._activeTab = tab;
+        const active = 'px-5 py-2.5 rounded-t-xl font-bold text-sm border border-b-0 transition-all flex items-center gap-2 bg-white text-primary border-slate-200 shadow-sm';
+        const inactive = 'px-5 py-2.5 rounded-t-xl font-bold text-sm border border-b-0 transition-all flex items-center gap-2 bg-slate-100 text-slate-500 border-slate-200';
+        if (tab === 'projetos') {
+          secP.classList.remove('hidden'); secM.classList.add('hidden');
+          tP.className = active; tM.className = inactive;
+        } else {
+          secP.classList.add('hidden'); secM.classList.remove('hidden');
+          tM.className = active; tP.className = inactive;
+        }
+      }
+
+      function changeMode() {
+        appData.mode = '';
+        applyMode();
+        saveState();
+      }
+
+      function startTour() {
+        const driver = window.driver.js.driver;
+        let steps = [];
+
+        // Modo Projetos Prontos
+        if (appData.mode === 'projetos_prontos') {
+          steps.push({ popover: { title: 'Bem-vindo(a)!', description: 'Este formul\u00e1rio coleta informa\u00e7\u00f5es sobre os projetos de turismo n\u00e1utico do seu munic\u00edpio. Ao final, exporte e envie para <strong>eduardo.figueira@itaipuparquetec.org.br</strong>. Caso possua os arquivos dos projetos prontos, <strong>anexe-os ao email</strong>.', align: 'center' }});
+          steps.push({ element: '#user-name', popover: { title: 'Seus Dados', description: 'Preencha seus dados: nome, institui\u00e7\u00e3o, munic\u00edpio e fun\u00e7\u00e3o nos campos aqui do topo. Isso \u00e9 fundamental para identificarmos de qual munic\u00edpio s\u00e3o as respostas no momento da exporta\u00e7\u00e3o.', side: 'bottom', align: 'start' }});
+          steps.push({ element: 'button[onclick="addProject()"]', popover: { title: 'Adicionar Projeto', description: 'Clique neste bot\u00e3o para adicionar um novo formul\u00e1rio e cadastrar um projeto pr\u00e9-existente.', side: 'bottom', align: 'start' }});
+          steps.push({ element: '#section-projetos', popover: { title: 'Aba de Projetos Prontos', description: 'Para cada projeto, descreva o Nome, Tipo, Status de Andamento, N\u00edvel de Maturidade (1 a 5 estrelas baseadas numa legenda m\u00e1xima), Financiamento, Situa\u00e7\u00e3o Regulat\u00f3ria, Prazos e Obs.', side: 'top', align: 'center' }});
+          steps.push({ element: '#section-projetos label', popover: { title: 'Importar CSV', description: 'Caso voc\u00ea j\u00e1 tenha uma planilha de projetos previamente exportada daqui, use este bot\u00e3o para carreg\u00e1-la novamente no sistema.', side: 'bottom', align: 'start' }});
+          steps.push({ element: '#section-projetos button[onclick="clearAll()"]', popover: { title: 'Limpar Tudo', description: 'Cuidado: este bot\u00e3o apaga absolutamente tudo que voc\u00ea tiver preenchido para recome\u00e7ar do zero.', side: 'bottom', align: 'end' }});
+          steps.push({ element: '#section-projetos button[onclick="exportCSV()"]', popover: { title: 'Exportar Resultados', description: 'Ao terminar, clique aqui para realizar a exporta\u00e7\u00e3o da sua carga de respostas para uma planilha CSV e nos enviar por e-mail.', side: 'bottom', align: 'start' }});
+        } 
+        
+        // Modo Desenvolver (Matriz)
+        else if (appData.mode === 'desenvolver') {
+          steps.push({ popover: { title: 'Bem-vindo(a)!', description: 'Este \u00e9 um formul\u00e1rio para coletar possíveis ideias e os usos do lago por parte das partes interessadas no fortalecimento do turismo n\u00e1utico no Lago de Itaipu.', align: 'center' }});
+          steps.push({ element: '#user-name', popover: { title: 'Seus Dados', description: 'Preencha aqui seu nome, institui\u00e7\u00e3o, munic\u00edpio e fun\u00e7\u00e3o. Isso ajuda a identificar quem respondeu a matriz na hora de exportar.', side: 'bottom', align: 'start' }});
+          steps.push({ element: document.getElementById('input-q1').closest('.glass'), popover: { title: 'Manter (Atual e Desej\u00e1vel)', description: 'O primeiro quadrante! Escreva um uso do lago que j\u00e1 temos hoje e consideramos positivo/bom para a regi\u00e3o. Estas s\u00e3o atividades essenciais que devem ser cultivadas e protegidas (ex: Pesca Esportiva).', side: 'right', align: 'start' }});
+          steps.push({ element: document.getElementById('input-q2').closest('.glass'), popover: { title: 'Alcan\u00e7ar (Futuro e Desej\u00e1vel)', description: 'Neste quadrante azul, liste um uso ou pr\u00e1tica no lago que voc\u00eas ainda n\u00e3o t\u00eam solidamente, mas querem MUITO implementar ou desenvolver no futuro pr\u00f3ximo.', side: 'left', align: 'start' }});
+          steps.push({ element: document.getElementById('input-q3').closest('.glass'), popover: { title: 'Eliminar (Atual e Indesej\u00e1vel)', description: 'Quadrante vermelho: Problemas cruciais ou pr\u00e1ticas destrutivas que temos *hoje*, que prejudicam o turismo/ecossistema na regi\u00e3o e que voc\u00eas querem sanar/eliminar o mais r\u00e1pido poss\u00edvel.', side: 'right', align: 'start' }});
+          steps.push({ element: document.getElementById('input-q4').closest('.glass'), popover: { title: 'Evitar (Futuro e Indesej\u00e1vel)', description: 'Quadrante amarelo: Mapeie aqui aqueles tipos de usos invasivos ou riscos macro/futuros que sabemos que batem \u00e0 porta amanh\u00e3 e far\u00e3o mal \u00e0 opera\u00e7\u00e3o, e por isso n\u00e3o queremos que nunca se estabele\u00e7am.', side: 'left', align: 'start' }});
+          steps.push({ element: document.getElementById('ranking-list').closest('aside'), popover: { title: 'Ranking de Prioridades', description: 'Todos os itens inseridos nos quatro quadrantes caem neste espa\u00e7o! Voc\u00ea deve clicar com o mouse no icone de bolinhas na esquerda deles e arrastá-los (Drag) para prioriz\u00e1-los em ordem (em cima = o mais urgente/importante).', side: 'left', align: 'start' }});
+          steps.push({ element: document.getElementById('ranking-list').closest('aside'), popover: { title: 'Maturidade do Uso', description: 'Aproveite tamb\u00e9m para editar a mini-descri\u00e7\u00e3o de cada item ranqueado e definir de 1 a 5 estrelas o seu n\u00edvel de consolida\u00e7\u00e3o f\u00edsica/legal (est\u00e1 na legisla\u00e7\u00e3o? tem estrutura completa?). H\u00e1 uma legenda explicativa na subse\u00e7\u00e3o abaixo deste ranking.', side: 'left', align: 'start' }});
+          steps.push({ element: '#btn-import', popover: { title: 'Importar Resultados', description: 'Atrav\u00e9s deste bot\u00e3o no topo, caso algu\u00e9m j\u00e1 tenha compartilhado uma vers\u00e3o de .CSV desta matriz em andamento com voc\u00ea, voc\u00ea pode abri-la e continuar iterando em cima.', side: 'bottom', align: 'start' }});
+          steps.push({ element: '#section-matriz button[onclick="clearAll()"]', popover: { title: 'Limpar Tudo', description: 'O \u00edcone de lixeira avermelhado limpa toda a matriz instantaneamente resetando as vis\u00f5es preenchidas. Tenha certo cuidado, j\u00e1 que n\u00e3o h\u00e1 CTRL+Z', side: 'bottom', align: 'end' }});
+          steps.push({ element: '#section-matriz button[onclick="exportCSV()"]', popover: { title: 'Exportar Resultados', description: 'Por fim, clique no bot\u00e3o azul Exportar CSV. Ele formatar\u00e1 todas as suas ideias ranqueadas e dados num arquivo perfeito que deve nos ser enviado como anexo do e-mail ao destinat\u00e1rio final, sem que voc\u00ea precise formatar nada.', side: 'bottom', align: 'start' }});
+        }
+        
+        // Modo Ambos
+        else if (appData.mode === 'ambos') {
+          steps.push({ popover: { title: 'Bem-vindo(a) \u00e0 Pipeline Completa!', description: 'Este formul\u00e1rio h\u00edbrido coleta as informa\u00e7\u00f5es formais sobre Projetos Prontos do munic\u00edpio E mapeia estrat\u00e9gica e metodicamente os novos usos da \u00e1gua do lago na sequ\u00eancia. Voc\u00ea alternar\u00e1 entre os dois no menu de \u00e1bas adiante.', align: 'center' }});
+          steps.push({ element: '#user-name', popover: { title: 'Seus Dados', description: 'Por favor, inicie identificando-se na aba superior. Voc\u00ea e sua fun\u00e7\u00e3o identificam este escopo todo.', side: 'bottom', align: 'start' }});
+          steps.push({ element: '#tab-bar', popover: { title: 'Abas Interativas', description: 'Ao completar seu cat\u00e1logo pr\u00e1tico de projetos em "Projetos Prontos" volte o mouse neste ponto espec\u00edfico para migrar \u00e0 "Matriz Desejo\u00d7Tempo". Tudo se auto-salva internamente durante a transi\u00e7\u00e3o.', side: 'bottom' }});
+          
+          if (appData._activeTab === 'projetos') {
+            steps.push({ element: '#section-projetos', popover: { title: 'Listagem de Projetos', description: 'Cadastre aqui cada projeto existente usando \u00edndices (tipo, andamento regulat\u00f3rio, nota descritiva).', side: 'top', align: 'center' }});
+            steps.push({ element: '#section-projetos button[onclick="exportCSV()"]', popover: { title: 'Exportar Base Cimentada', description: 'Voc\u00ea exportar\u00e1 UM (\u00fanico) CSV para contemplar tudo preenchido de ambos os recortes - n\u00e3o esque\u00e7a de checar que todos seus arquivos t\u00eam c\u00f3pia em anexo antes de encaminhar o e-mail global.', side: 'bottom', align: 'start' }});
+          } else {
+            steps.push({ element: document.getElementById('input-q1').closest('.glass'), popover: { title: 'Manter (Atual e Desej\u00e1vel)', description: 'Quadrantes Estrat\u00e9gicos: Lance num\u00e9ricas apropria\u00e7\u00f5es ou pr\u00e1ticas vitais que j\u00e1 est\u00e3o boas em sua zona e necessitamos que a represa de Itaipu priorize com carinho nas normas.', side: 'right', align: 'start' }});
+            steps.push({ element: document.getElementById('input-q2').closest('.glass'), popover: { title: 'Alcan\u00e7ar (Futuro e Desej\u00e1vel)', description: 'Aqui inserimos o que ainda carecemos de regulariza\u00e7\u00e3o mas precisamos para crescer as frentes de lazer ali na prainha.', side: 'left', align: 'start' }});
+            steps.push({ element: document.getElementById('input-q3').closest('.glass'), popover: { title: 'Eliminar (Atual e Indesej\u00e1vel)', description: 'Acontece, por\u00e9m causa preju\u00edzo natural, de conviv\u00eancia ou turismo, por este motivo tem que ser extinto/inibido.', side: 'right', align: 'start' }});
+            steps.push({ element: document.getElementById('input-q4').closest('.glass'), popover: { title: 'Evitar (Futuro e Indesej\u00e1vel)', description: 'Algo perigoso de estourar a l\u00f3gica tur\u00edstica que n\u00e3o acontece e jamais poderia.', side: 'left', align: 'start' }});
+            steps.push({ element: document.getElementById('ranking-list').closest('aside'), popover: { title: 'Reorganizando a Prioridade', description: 'Todos ser\u00e3o agregados aqui numa fila que pode ser modificada livremente e avaliada com um grau de maturidade particular.', side: 'left', align: 'start' }});
+            steps.push({ element: '#section-matriz button[onclick="exportCSV()"]', popover: { title: 'Exporta\u00e7\u00e3o Mesclada', description: 'Os dois espectros - Projetos e Matriz - unificar-se-\u00e3o num arquivo perfeitamente integrado quando esta a\u00e7\u00e3o for efetuada! Lembrete do Anexo final.', side: 'bottom', align: 'start' }});
+          }
+        }
+
+        const driverObj = driver({ showProgress: true, animate: true, nextBtnText: 'Pr\u00f3ximo', prevBtnText: 'Anterior', doneBtnText: 'Conclu\u00eddo', steps });
+        driverObj.drive();
+      }
+
+      // --- Init ---
+      document.addEventListener('DOMContentLoaded', () => {
+        loadState();
+        initSortable();
+        if (!appData.mode) document.getElementById('triage-modal').classList.remove('hidden');
+      });
+
+      function generateId() { return Math.random().toString(36).substr(2, 9); }
+
+      // === MATRIX (Fluxo B) ===
+      function addItem(e, quadId, quadLabel, colorClass) {
+        e.preventDefault();
+        const input = document.getElementById(`input-${quadId}`);
+        const text = input.value.trim();
+        if (!text) return;
+        appData.items.push({ id: generateId(), text, desc: '', maturity: 0, quadId, quadLabel, colorClass, order: appData.items.length });
+        input.value = '';
+        renderAll(); saveState();
+      }
+
+      function removeItem(id) {
+        appData.items = appData.items.filter(i => i.id !== id);
+        appData.items.sort((a,b) => a.order - b.order);
+        appData.items.forEach((it,i) => it.order = i);
+        renderAll(); saveState();
+      }
+
+      function updateItemDesc(id, v) {
+        const item = appData.items.find(i => i.id === id);
+        if (item) { item.desc = v; saveState(); }
+      }
+
+      function renderAll() {
+        ['q1','q2','q3','q4'].forEach(q => document.getElementById(`list-${q}`).innerHTML = '');
+        const rl = document.getElementById('ranking-list');
+        rl.innerHTML = '';
+        if (!appData.items.length) {
+          rl.innerHTML = '<div class="h-full flex flex-col items-center justify-center text-slate-400 opacity-60"><span class="material-symbols-outlined text-4xl mb-2">drag_indicator</span><p class="text-sm font-medium text-center">Nenhum item inserido ainda.</p></div>';
+        }
+        document.getElementById('item-count').textContent = `${appData.items.length} Itens`;
+        const sorted = [...appData.items].sort((a,b) => a.order - b.order);
+        const mT = document.getElementById('matrix-item-template');
+        const rT = document.getElementById('ranking-item-template');
+        sorted.forEach((item, idx) => {
+          const mN = mT.content.cloneNode(true);
+          mN.querySelector('.item-title').textContent = item.text;
+          mN.querySelector('.item-title').title = item.text;
+          mN.querySelector('.remove-btn').onclick = () => removeItem(item.id);
+          mN.querySelector('div').classList.add(`hover:border-${item.colorClass}/30`);
+          document.getElementById(`list-${item.quadId}`).appendChild(mN);
+          const rN = rT.content.cloneNode(true);
+          rN.querySelector('div').dataset.id = item.id;
+          rN.querySelector('.rank-number').textContent = idx + 1;
+          rN.querySelector('.item-title').textContent = item.text;
+          rN.querySelector('.item-title').title = item.text;
+          const dot = rN.querySelector('.item-indicator');
+          dot.classList.add(`bg-${item.colorClass}`); dot.title = item.quadLabel;
+          const ta = rN.querySelector('.item-desc');
+          ta.value = item.desc;
+          ta.oninput = e => updateItemDesc(item.id, e.target.value);
+          const stars = rN.querySelectorAll('.star-btn');
+          const uS = v => stars.forEach((s,i) => { if(i<v){s.classList.replace('text-slate-300','text-yellow-400');s.style.fontVariationSettings="'FILL' 1";}else{s.classList.replace('text-yellow-400','text-slate-300');s.style.fontVariationSettings="'FILL' 0";}});
+          uS(item.maturity||0);
+          stars.forEach(s => s.onclick = () => { const v=parseInt(s.dataset.value); item.maturity=(item.maturity===v)?0:v; uS(item.maturity); saveState(); });
+          rN.querySelector('.remove-btn').onclick = () => removeItem(item.id);
+          rl.appendChild(rN);
+        });
+      }
+
+      function initSortable() {
+        const el = document.getElementById('ranking-list');
+        Sortable.create(el, { handle: '.drag-handle', animation: 150, ghostClass: 'ghost-draggable',
+          onEnd: () => { Array.from(el.children).forEach((c,i) => { const id=c.dataset.id; if(id){const it=appData.items.find(x=>x.id===id);if(it)it.order=i;} }); renderAll(); saveState(); }
+        });
+      }
+
+      // === PROJECTS (Fluxo A) ===
+      function addProject() {
+        appData.projects.push({ id: generateId(), name:'', type:'', status:'', desc:'', funding:'', regulatory:'', timeline:'', maturity:0, notes:'' });
+        renderProjects(); saveState();
+      }
+      function removeProject(id) {
+        appData.projects = appData.projects.filter(p => p.id !== id);
+        renderProjects(); saveState();
+      }
+      function renderProjects() {
+        const list = document.getElementById('projects-list');
+        const empty = document.getElementById('empty-projects');
+        list.innerHTML = '';
+        empty.classList.toggle('hidden', appData.projects.length > 0);
+        const tmpl = document.getElementById('project-card-template');
+        appData.projects.forEach((proj, idx) => {
+          const node = tmpl.content.cloneNode(true);
+          const card = node.querySelector('.project-card');
+          card.dataset.id = proj.id;
+          node.querySelector('.project-number').textContent = `Projeto ${idx+1}`;
+          node.querySelector('.remove-project-btn').onclick = () => removeProject(proj.id);
+          const sv = (s,v) => { const el=node.querySelector(s); if(el) el.value=v||''; };
+          sv('.proj-name',proj.name); sv('.proj-type',proj.type); sv('.proj-status',proj.status);
+          sv('.proj-desc',proj.desc); sv('.proj-funding',proj.funding); sv('.proj-regulatory',proj.regulatory);
+          sv('.proj-timeline',proj.timeline); sv('.proj-notes',proj.notes);
+          const stars = node.querySelectorAll('.proj-star-btn');
+          const uS = v => stars.forEach((s,i) => { if(i<v){s.classList.replace('text-slate-300','text-yellow-400');s.style.fontVariationSettings="'FILL' 1";}else{s.classList.replace('text-yellow-400','text-slate-300');s.style.fontVariationSettings="'FILL' 0";}});
+          uS(proj.maturity||0);
+          stars.forEach(s => s.onclick = () => { const v=parseInt(s.dataset.value); proj.maturity=(proj.maturity===v)?0:v; uS(proj.maturity); saveState(); });
+          list.appendChild(node);
+          const ap = list.lastElementChild;
+          const bind = (s,k) => { const el=ap.querySelector(s); if(el) el.oninput=()=>{proj[k]=el.value;saveState();}; };
+          bind('.proj-name','name'); bind('.proj-type','type'); bind('.proj-status','status');
+          bind('.proj-desc','desc'); bind('.proj-funding','funding'); bind('.proj-regulatory','regulatory');
+          bind('.proj-timeline','timeline'); bind('.proj-notes','notes');
+        });
+      }
+
+      // === SAVE/LOAD ===
+      function saveState() {
+        appData.user.name = document.getElementById('user-name').value;
+        appData.user.inst = document.getElementById('user-inst').value;
+        appData.user.role = document.getElementById('user-role').value;
+        appData.user.municipio = document.getElementById('user-municipio').value;
+        localStorage.setItem('matrizDesejoTempoDataV3', JSON.stringify(appData));
+      }
+      function loadState() {
+        const saved = localStorage.getItem('matrizDesejoTempoDataV3');
+        if (saved) {
+          try {
+            const p = JSON.parse(saved);
+            appData = { ...appData, ...p };
+            appData.projects = appData.projects || [];
+            appData.items = appData.items || [];
+            document.getElementById('user-name').value = appData.user.name||'';
+            document.getElementById('user-inst').value = appData.user.inst||'';
+            document.getElementById('user-role').value = appData.user.role||'';
+            document.getElementById('user-municipio').value = appData.user.municipio||'';
+          } catch(e) { console.error(e); }
+        }
+        applyMode(); renderAll(); renderProjects();
+      }
+      function clearAll() {
+        if (confirm('Tem certeza que deseja limpar tudo?')) {
+          appData.items = []; appData.projects = [];
+          renderAll(); renderProjects(); saveState();
+        }
+      }
+
+      // === EXPORT ===
+      function exportCSV() {
+        const hasI = appData.items.length > 0, hasP = appData.projects.length > 0;
+        if (!hasI && !hasP) { alert('N\u00e3o h\u00e1 dados para exportar.'); return; }
+        saveState();
+        let csv = '\uFEFF';
+        const ml = {projetos_prontos:'Projetos Prontos',desenvolver:'Desenvolver',ambos:'Ambos'}[appData.mode]||appData.mode;
+        csv += 'Nome,Instituicao,Funcao,Municipio,Modo\n';
+        csv += `"${appData.user.name}","${appData.user.inst}","${appData.user.role}","${appData.user.municipio}","${ml}"\n\n`;
+        if (hasP) {
+          csv += '=== PROJETOS PRONTOS ===\n';
+          csv += 'Num,Nome do Projeto,Tipo,Status,Maturidade,Financiamento,Situacao Regulatoria,Prazo Inicio,Descricao,Observacoes\n';
+          appData.projects.forEach((p,i) => {
+            const s = v => `"${(v||'').replace(/"/g,'""')}"`;
+            csv += `${i+1},${s(p.name)},${s(p.type)},${s(p.status)},${p.maturity||0},${s(p.funding)},${s(p.regulatory)},${s(p.timeline)},${s(p.desc)},${s(p.notes)}\n`;
+          });
+          csv += '\n';
+        }
+        if (hasI) {
+          csv += '=== MATRIZ DESEJO x TEMPO ===\n';
+          csv += 'Prioridade,Item,Quadrante,Maturidade,Descricao\n';
+          [...appData.items].sort((a,b)=>a.order-b.order).forEach((it,i) => {
+            csv += `${i+1},"${it.text.replace(/"/g,'""')}","${it.quadLabel}",${it.maturity||0},"${it.desc.replace(/"/g,'""')}"\n`;
+          });
+        }
+        if (hasP) csv += '\n"LEMBRETE: Anexe os arquivos dos projetos prontos ao email de envio deste CSV para eduardo.figueira@itaipuparquetec.org.br"\n';
+        const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        const mun = (appData.user.municipio||'municipio').replace(/\s+/g,'-').toLowerCase();
+        a.href = url; a.download = `matriz-estrategica-${mun}-${new Date().toISOString().split('T')[0]}.csv`;
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        if (hasP) setTimeout(()=>alert('Lembrete: Anexe os arquivos dos seus projetos prontos ao email.'),500);
+      }
+
+      // === IMPORT ===
+      function importCSV(event) {
+        const file = event.target.files[0]; if(!file) return;
+        const r = new FileReader();
+        r.onload = e => { parseCSV(e.target.result); event.target.value=''; };
+        r.readAsText(file);
+      }
+      function parseCSVLine(t) {
+        return t.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(p => {
+          let s=p.trim(); if(s.startsWith('"')&&s.endsWith('"')) s=s.slice(1,-1).replace(/""/g,'"'); return s;
+        });
+      }
+      function parseCSV(text) {
+        try {
+          const lines = text.split(/\r\n|\n|\r/);
+          if (lines.length < 3) throw new Error('Arquivo curto');
+          const up = parseCSVLine(lines[1]);
+          if (up.length>=4) {
+            appData.user = {name:up[0]||'',inst:up[1]||'',role:up[2]||'',municipio:up[3]||''};
+            document.getElementById('user-name').value=appData.user.name;
+            document.getElementById('user-inst').value=appData.user.inst;
+            document.getElementById('user-role').value=appData.user.role;
+            document.getElementById('user-municipio').value=appData.user.municipio;
+            if(up[4]){const mm={'Projetos Prontos':'projetos_prontos','Desenvolver':'desenvolver','Ambos':'ambos'};appData.mode=mm[up[4]]||'desenvolver';}
+          }
+          appData.items=[]; appData.projects=[];
+          let sec='';
+          const qm={'Atual/Desej\u00e1vel':{id:'q1',c:'quadrant-green'},'Futuro/Desej\u00e1vel':{id:'q2',c:'quadrant-blue'},'Atual/Indesej\u00e1vel':{id:'q3',c:'quadrant-red'},'Futuro/Indesej\u00e1vel':{id:'q4',c:'quadrant-yellow'}};
+          for(let i=2;i<lines.length;i++){
+            const ln=lines[i].trim();
+            if(!ln||ln.startsWith('"LEMBRETE'))continue;
+            if(ln.includes('=== PROJETOS PRONTOS ===')){sec='p';continue;}
+            if(ln.includes('=== MATRIZ DESEJO x TEMPO ===')){sec='m';continue;}
+            if(ln.startsWith('Num,')||ln.startsWith('Prioridade,')||ln.startsWith('Nome,'))continue;
+            const pp=parseCSVLine(ln);
+            if(sec==='p'&&pp.length>=5){
+              appData.projects.push({id:generateId(),name:pp[1]||'',type:pp[2]||'',status:pp[3]||'',maturity:parseInt(pp[4])||0,funding:pp[5]||'',regulatory:pp[6]||'',timeline:pp[7]||'',desc:pp[8]||'',notes:pp[9]||''});
+            } else if(sec==='m'&&pp.length>=4){
+              const o=parseInt(pp[0])-1, ql=pp[2], qi=qm[ql]||qm['Atual/Desej\u00e1vel'];
+              let mt=0,ds='';
+              if(pp.length>=5&&!isNaN(parseInt(pp[3]))){mt=parseInt(pp[3]);ds=pp[4]||'';}else{ds=pp[3]||'';}
+              appData.items.push({id:generateId(),text:pp[1],desc:ds,maturity:mt,quadId:qi.id,quadLabel:ql,colorClass:qi.c,order:o>=0?o:999});
+            }
+          }
+          appData.items.sort((a,b)=>a.order-b.order);
+          appData.items.forEach((it,i)=>it.order=i);
+          applyMode(); renderAll(); renderProjects(); saveState();
+          alert('Dados importados com sucesso!');
+        } catch(e) { console.error(e); alert('Erro ao ler CSV.'); }
+      }
+    </script>
+  </body>
+</html>

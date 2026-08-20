@@ -1,0 +1,23 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary and lock files
+*.tmp
+*.temp
+*.bak
+.~lock.*#
+*.lock

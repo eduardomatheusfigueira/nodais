@@ -1,0 +1,2290 @@
+[
+  {
+    "key": "MS - Bonito",
+    "slug": "MS_Bonito",
+    "map_filename": "mapa_MS_Bonito.html",
+    "centroid_lat": -21.11559641333171,
+    "centroid_lon": -56.422170489727755,
+    "cnpj_count": 395,
+    "atrativos": [
+      {
+        "badge": 1,
+        "name": "MS - 382",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.1054687500228,
+        "lon": -56.5299653871388
+      },
+      {
+        "badge": 2,
+        "name": "MS - 178",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.1122748067473,
+        "lon": -56.5081643932329
+      },
+      {
+        "badge": 3,
+        "name": "MS - 345",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.1092321375606,
+        "lon": -56.4824151874302
+      },
+      {
+        "badge": 4,
+        "name": "Aeroporto Regional de Bonito (BYO)",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.2441173802121,
+        "lon": -56.4501866744902
+      },
+      {
+        "badge": 5,
+        "name": "Gruta do Mimoso",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.9027780033044,
+        "lon": -56.5573204754932
+      },
+      {
+        "badge": 6,
+        "name": "Abismo Anhumas",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.1449164212417,
+        "lon": -56.600205342947
+      },
+      {
+        "badge": 7,
+        "name": "Aquário Natural",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.1631580653656,
+        "lon": -56.4389780908296
+      },
+      {
+        "badge": 8,
+        "name": "Nascente Azul",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.8934621435473,
+        "lon": -56.5320267061812
+      },
+      {
+        "badge": 9,
+        "name": "Rio Formoso",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.2053299158256,
+        "lon": -56.4934777355884
+      },
+      {
+        "badge": 10,
+        "name": "Praça da Liberdade",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.1283528682116,
+        "lon": -56.4834413178148
+      },
+      {
+        "badge": 11,
+        "name": "Aeroporto Regional de Bonito",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.2439273846822,
+        "lon": -56.4502188619912
+      },
+      {
+        "badge": 12,
+        "name": "Serra da Bodoquena",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.998997713791,
+        "lon": -56.8333762843074
+      },
+      {
+        "badge": 13,
+        "name": "Passeios de bote",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.1431871554237,
+        "lon": -56.4012792619943
+      },
+      {
+        "badge": 14,
+        "name": "Boia cross",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.1712870587485,
+        "lon": -56.4464047350092
+      },
+      {
+        "badge": 15,
+        "name": "Boca da Onça Ecotur",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.7612384674248,
+        "lon": -56.7130098277597
+      },
+      {
+        "badge": 16,
+        "name": "Balneário do Sol",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.1421790341944,
+        "lon": -56.4054866485021
+      },
+      {
+        "badge": 17,
+        "name": "Balneário Ilha Bonita",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.1448314381339,
+        "lon": -56.4005513619941
+      },
+      {
+        "badge": 18,
+        "name": "Balneário Municipal",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.173278280413,
+        "lon": -56.445918729454
+      },
+      {
+        "badge": 19,
+        "name": "Barra do Sucuri",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.2567204114246,
+        "lon": -56.5492467043189
+      },
+      {
+        "badge": 20,
+        "name": "Cabanas Boia Cross",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.1713470868887,
+        "lon": -56.4463510908294
+      },
+      {
+        "badge": 21,
+        "name": "Caiman Scuba Dive",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.1294148077375,
+        "lon": -56.4831079196665
+      },
+      {
+        "badge": 22,
+        "name": "Cavalgada Recanto do Peão",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.1585664308631,
+        "lon": -56.4425130736341
+      },
+      {
+        "badge": 23,
+        "name": "Ceita Corê Ecoturismo",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.8419173841541,
+        "lon": -56.5902022196749
+      },
+      {
+        "badge": 24,
+        "name": "Discovery Bonito Scuba no Rio Formoso",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.1287759841031,
+        "lon": -56.4859071773385
+      },
+      {
+        "badge": 25,
+        "name": "Estância Mimosa Ecoturismo",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.9824966674694,
+        "lon": -56.5160743429515
+      },
+      {
+        "badge": 26,
+        "name": "Fabrica Taboa Encantos",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -19.6449408895391,
+        "lon": -56.640017281227
+      },
+      {
+        "badge": 27,
+        "name": "Gruta de São Miguel",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.8919530211994,
+        "lon": -56.5810704414535
+      },
+      {
+        "badge": 28,
+        "name": "Gruta do Lago Azul",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.1443653634341,
+        "lon": -56.5913835043223
+      },
+      {
+        "badge": 29,
+        "name": "Gruta São Mateus e Museu",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.1341283581892,
+        "lon": -56.4540329313068
+      },
+      {
+        "badge": 30,
+        "name": "Lobo Guara Bike Adventure",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.1293686926498,
+        "lon": -56.4830879196666
+      },
+      {
+        "badge": 31,
+        "name": "Parque das Cachoeiras",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.0058530114832,
+        "lon": -56.5015771196701
+      },
+      {
+        "badge": 32,
+        "name": "Parque Ecológico Baia Bonita",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.1624230431723,
+        "lon": -56.4402629601418
+      },
+      {
+        "badge": 33,
+        "name": "Porto da Ilha",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.1187397665013,
+        "lon": -56.3868009485028
+      },
+      {
+        "badge": 34,
+        "name": "Praia da Figueira",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.2517952958376,
+        "lon": -56.5353260619912
+      },
+      {
+        "badge": 35,
+        "name": "Projeto Jibóia",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.1215575276959,
+        "lon": -56.4973186601432
+      },
+      {
+        "badge": 36,
+        "name": "Rio do Peixe",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.8625964994773,
+        "lon": -56.5303177466584
+      },
+      {
+        "badge": 37,
+        "name": "Rio Sucuri Ecoturismo",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.2544293070713,
+        "lon": -56.569999948499
+      }
+    ]
+  },
+  {
+    "key": "MS - Campo Grande",
+    "slug": "MS_Campo_Grande",
+    "map_filename": "mapa_MS_Campo_Grande.html",
+    "centroid_lat": -20.47457606299101,
+    "centroid_lon": -54.61617323225272,
+    "cnpj_count": 4226,
+    "atrativos": [
+      {
+        "badge": 1,
+        "name": "Centro Cultural José Octavio Guizzo",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4672978895621,
+        "lon": -54.6177413745102
+      },
+      {
+        "badge": 2,
+        "name": "Complexo Ferroviário",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4497128272635,
+        "lon": -54.6206271456752
+      },
+      {
+        "badge": 3,
+        "name": "Museu de Medicina de Mato Grosso do Sul",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4771844614442,
+        "lon": -54.6153501321811
+      },
+      {
+        "badge": 4,
+        "name": "Morada dos Baís",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4641512600755,
+        "lon": -54.620198276359
+      },
+      {
+        "badge": 5,
+        "name": "Museu de Arqueologia da UFMS",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4681626396199,
+        "lon": -54.6177879051943
+      },
+      {
+        "badge": 6,
+        "name": "Correios e Telágrafos",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4611160621612,
+        "lon": -54.6197298731611
+      },
+      {
+        "badge": 7,
+        "name": "Casa do Artesão",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4639266493639,
+        "lon": -54.6184387038988
+      },
+      {
+        "badge": 8,
+        "name": "Memorial da Cultura Indígena (em reforma)",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4692431528152,
+        "lon": -54.5700394321812
+      },
+      {
+        "badge": 9,
+        "name": "Museu de Arte Contemporânea – Marco",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.451008671167,
+        "lon": -54.5755257591687
+      },
+      {
+        "badge": 10,
+        "name": "Museu José Antônio Pereira",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.5350169919495,
+        "lon": -54.6292268591665
+      },
+      {
+        "badge": 11,
+        "name": "Parque Florestal Antônio De Albuquerque – Horto Florestal",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4694314502787,
+        "lon": -54.6228409456748
+      },
+      {
+        "badge": 12,
+        "name": "Parque Ecológico Do Anhanduí",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.5065795954846,
+        "lon": -54.6429674321805
+      },
+      {
+        "badge": 13,
+        "name": "Parque das Nações Indígenas",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4562069744759,
+        "lon": -54.5812607438265
+      },
+      {
+        "badge": 14,
+        "name": "Parque do Sóter",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4292049383891,
+        "lon": -54.5766368898534
+      },
+      {
+        "badge": 15,
+        "name": "Parque Estadual do Prosa",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4503744175757,
+        "lon": -54.5608383168396
+      },
+      {
+        "badge": 16,
+        "name": "Parque Linear do Imbirussu",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.445013742159,
+        "lon": -54.6975156489655
+      },
+      {
+        "badge": 17,
+        "name": "Parque Estadual Matas Do Segredo",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.3983718920946,
+        "lon": -54.5861971456766
+      },
+      {
+        "badge": 18,
+        "name": "Lago Do Amor",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.5025532011317,
+        "lon": -54.6187871033448
+      },
+      {
+        "badge": 19,
+        "name": "Parque Doutor Anísio De Barros – Lagoa Itatiaia",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4780362770024,
+        "lon": -54.5827390403169
+      },
+      {
+        "badge": 20,
+        "name": "Estância Alegria",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.6439862623045,
+        "lon": -54.5328075475191
+      },
+      {
+        "badge": 21,
+        "name": "Estância Hanay",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.470686711263,
+        "lon": -54.4549933475234
+      },
+      {
+        "badge": 22,
+        "name": "Estância Jóia",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.3253389395345,
+        "lon": -54.5600865745138
+      },
+      {
+        "badge": 23,
+        "name": "Estância Malhete",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.375455572793,
+        "lon": -54.6104262475257
+      },
+      {
+        "badge": 24,
+        "name": "Estância Vovô Dedê",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.2852125227652,
+        "lon": -54.7795895456793
+      },
+      {
+        "badge": 25,
+        "name": "Fazenda Pontal das Águas",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4661138422872,
+        "lon": -54.4364766321813
+      },
+      {
+        "badge": 26,
+        "name": "Pousada Rural Cabanas do Pontal",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.2223604291047,
+        "lon": -54.9172643763651
+      },
+      {
+        "badge": 27,
+        "name": "Recanto Nippon",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.3918987953019,
+        "lon": -54.6617469033478
+      },
+      {
+        "badge": 28,
+        "name": "Toca do Ouriço",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.3810712093417,
+        "lon": -54.6105363610191
+      },
+      {
+        "badge": 29,
+        "name": "Monumento Maria Fumaça",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4566904274898,
+        "lon": -54.6201522978
+      },
+      {
+        "badge": 30,
+        "name": "Chácara J&F",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.2926080518394,
+        "lon": -54.5477638745144
+      },
+      {
+        "badge": 31,
+        "name": "Igreja Universal do Reino de Deus",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4513925364535,
+        "lon": -54.6880020271509
+      },
+      {
+        "badge": 32,
+        "name": "Monumento Estátua Manoel Barros",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4633448933057,
+        "lon": -54.613837318688
+      },
+      {
+        "badge": 33,
+        "name": "Bioparque Pantanal",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4558373398393,
+        "lon": -54.5760472033461
+      },
+      {
+        "badge": 34,
+        "name": "Esplanada Ferroviária",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4540445805297,
+        "lon": -54.6202988610172
+      },
+      {
+        "badge": 35,
+        "name": "Feira Central",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4509748993902,
+        "lon": -54.619948164991
+      },
+      {
+        "badge": 36,
+        "name": "Morro do Ernesto",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.3389230025842,
+        "lon": -54.7093112745137
+      },
+      {
+        "badge": 37,
+        "name": "Morada dos Baís",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.464231674063,
+        "lon": -54.6195974615696
+      },
+      {
+        "badge": 38,
+        "name": "Hotel Gaspar",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.456426827076,
+        "lon": -54.6201247880039
+      },
+      {
+        "badge": 39,
+        "name": "Memorial da Cidadania e da Cultura Popular Apolônio de Carvalho",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4681438366443,
+        "lon": -54.617625959168
+      },
+      {
+        "badge": 40,
+        "name": "Mercado Municipal Antônio Valente",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4664409650606,
+        "lon": -54.6199089898523
+      },
+      {
+        "badge": 41,
+        "name": "Museu da Cultura Dom Bosco",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4546428813513,
+        "lon": -54.5675333610171
+      },
+      {
+        "badge": 42,
+        "name": "Palácio das Comunicações",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.440689888394,
+        "lon": -54.5554087861558
+      },
+      {
+        "badge": 43,
+        "name": "Paróquia Santo Antônio - Catedral Nossa Senhora da Abadia",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4660104937388,
+        "lon": -54.6179837904051
+      },
+      {
+        "badge": 44,
+        "name": "Paróquia São Francisco de Assis",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4425899242492,
+        "lon": -54.619595974511
+      },
+      {
+        "badge": 45,
+        "name": "Pesqueiro Nippon",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.3918485129272,
+        "lon": -54.6617683610188
+      },
+      {
+        "badge": 46,
+        "name": "Praça Ary Coelho",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4636837171988,
+        "lon": -54.6163037753093
+      },
+      {
+        "badge": 47,
+        "name": "Praça Esportiva Belmar Fidalgo",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4594946400583,
+        "lon": -54.6069178475236
+      },
+      {
+        "badge": 48,
+        "name": "Praça Comendador Oshiro Takemori",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4672148624803,
+        "lon": -54.6201021610169
+      },
+      {
+        "badge": 49,
+        "name": "Praça das Araras",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4629425717359,
+        "lon": -54.6315391484233
+      },
+      {
+        "badge": 50,
+        "name": "Praça do Rádio",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4633848516277,
+        "lon": -54.6313674870549
+      },
+      {
+        "badge": 51,
+        "name": "Praça dos Imigrantes",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4667882231553,
+        "lon": -54.6130146898524
+      },
+      {
+        "badge": 52,
+        "name": "Praça Pantanal Sul",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4599431461655,
+        "lon": -54.6047976625284
+      },
+      {
+        "badge": 53,
+        "name": "Relógio Central Renato Barbosa Rezende",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4640810600206,
+        "lon": -54.618888833201
+      },
+      {
+        "badge": 54,
+        "name": "Santuário Estadual Nossa Senhora do Perpétuo Socorro",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4667331432598,
+        "lon": -54.6316346573196
+      },
+      {
+        "badge": 55,
+        "name": "Eco Park Clube Campo Grande",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4722530315448,
+        "lon": -54.476225057043
+      },
+      {
+        "badge": 56,
+        "name": "Carlos Iracy Tour da Experiência",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4621147330698,
+        "lon": -54.6255018627941
+      },
+      {
+        "badge": 57,
+        "name": "Sitio Harmonia",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.2106305751872,
+        "lon": -54.5861089168458
+      },
+      {
+        "badge": 58,
+        "name": "BR - 262",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4777396612871,
+        "lon": -54.7518381394175
+      },
+      {
+        "badge": 59,
+        "name": "BR - 163",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.3781258098512,
+        "lon": -54.5377080966375
+      },
+      {
+        "badge": 60,
+        "name": "BR - 060",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.552352200423,
+        "lon": -54.6690890301768
+      },
+      {
+        "badge": 61,
+        "name": "BR - 010",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4029092995745,
+        "lon": -54.6178007678865
+      },
+      {
+        "badge": 62,
+        "name": "MS - 080",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4094811703154,
+        "lon": -54.7312322715898
+      },
+      {
+        "badge": 63,
+        "name": "Aeroporto Internacional de Campo Grande",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -20.4572805628068,
+        "lon": -54.6687325301103
+      }
+    ]
+  },
+  {
+    "key": "MS - Corumbá",
+    "slug": "MS_Corumba",
+    "map_filename": "mapa_MS_Corumba.html",
+    "centroid_lat": -19.035296195802466,
+    "centroid_lon": -57.57532940691358,
+    "cnpj_count": 405,
+    "atrativos": [
+      {
+        "badge": 1,
+        "name": "Pantanal",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -19.030692150103,
+        "lon": -57.6502346008807
+      },
+      {
+        "badge": 2,
+        "name": "Rio Paraguai",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -18.7305580988823,
+        "lon": -57.4158732647146
+      },
+      {
+        "badge": 3,
+        "name": "Porto Geral",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -18.9966174803827,
+        "lon": -57.6533853755456
+      },
+      {
+        "badge": 4,
+        "name": "Barcos-hotéis",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -18.9983510266536,
+        "lon": -57.6143434166266
+      },
+      {
+        "badge": 5,
+        "name": "Mirante do Cristo Rei",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -19.0171324522671,
+        "lon": -57.6412076536182
+      },
+      {
+        "badge": 6,
+        "name": "Museu de História do Pantanal (Muhpan)",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -18.9972313258584,
+        "lon": -57.6542536430062
+      },
+      {
+        "badge": 7,
+        "name": "Memorial do Homem Pantaneiro",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -18.9975539485879,
+        "lon": -57.6554060927411
+      },
+      {
+        "badge": 8,
+        "name": "Carnaval de Corumbá",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -18.9947691989855,
+        "lon": -57.656447911149
+      },
+      {
+        "badge": 9,
+        "name": "Casario do Porto Geral de Corumbá",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -18.9974081261385,
+        "lon": -57.6554252773974
+      },
+      {
+        "badge": 10,
+        "name": "Cristo Rei do Pantanal",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -19.0182825455884,
+        "lon": -57.6403830890372
+      },
+      {
+        "badge": 11,
+        "name": "Artizu - casa da artesã Izulina Xavier",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -19.0015573537324,
+        "lon": -57.6478895197253
+      },
+      {
+        "badge": 12,
+        "name": "Escadinha da Quinze",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -18.997790426744,
+        "lon": -57.6551181620536
+      },
+      {
+        "badge": 13,
+        "name": "Forte Junqueira",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -18.9966355799196,
+        "lon": -57.6362547890377
+      },
+      {
+        "badge": 14,
+        "name": "Igreja Nossa Senhora da Candelária",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -18.9986598719445,
+        "lon": -57.6508491197254
+      },
+      {
+        "badge": 15,
+        "name": "ILA – Instituto Luiz de Albuquerque",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -19.003131053019,
+        "lon": -57.6367604307282
+      },
+      {
+        "badge": 16,
+        "name": "Ladeira Cunha e Cruz",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -18.9969803144253,
+        "lon": -57.6516111197253
+      },
+      {
+        "badge": 17,
+        "name": "Praça da Independência",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -19.0008869546808,
+        "lon": -57.6532214773973
+      },
+      {
+        "badge": 18,
+        "name": "Santuário Nossa Senhora Auxiliadora",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -19.0019597524463,
+        "lon": -57.6530005369208
+      },
+      {
+        "badge": 19,
+        "name": "Casa do Artesão",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -18.999973196008,
+        "lon": -57.6468330736939
+      },
+      {
+        "badge": 20,
+        "name": "Casa do Massa Barro",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -18.9988184508993,
+        "lon": -57.663902979249
+      },
+      {
+        "badge": 21,
+        "name": "Forte Coimbra",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -19.0078441797701,
+        "lon": -57.651646863905
+      },
+      {
+        "badge": 22,
+        "name": "Capela Nossa Senhora do Carmo",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -19.0179429907463,
+        "lon": -57.6671030890373
+      },
+      {
+        "badge": 23,
+        "name": "Instituto do Homem Pantaneiro – IHP",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -18.997614815353,
+        "lon": -57.6552558890376
+      },
+      {
+        "badge": 24,
+        "name": "Estrada Parque Pantanal",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -19.2217157298601,
+        "lon": -57.4608670816053
+      },
+      {
+        "badge": 25,
+        "name": "BR-262",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -19.0301071064997,
+        "lon": -57.6186242161533
+      },
+      {
+        "badge": 26,
+        "name": "Aeroporto Internacional de Corumbá",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -19.0142097859437,
+        "lon": -57.6638097373455
+      },
+      {
+        "badge": 27,
+        "name": "Porto Geral de Corumbá",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -19.013724414982,
+        "lon": -57.6638004566974
+      }
+    ]
+  },
+  {
+    "key": "MS - Mundo Novo",
+    "slug": "MS_Mundo_Novo",
+    "map_filename": "mapa_MS_Mundo_Novo.html",
+    "centroid_lat": -23.6025402106383,
+    "centroid_lon": -54.19146313723404,
+    "cnpj_count": 94,
+    "atrativos": [
+      {
+        "badge": 1,
+        "name": "Biblioterca Municipal",
+        "rank": "5º",
+        "category": "Atrativo Turístico",
+        "lat": -23.937317852654,
+        "lon": -54.2896760216043
+      },
+      {
+        "badge": 2,
+        "name": "Museu Tapuy Porã",
+        "rank": "5º",
+        "category": "Atrativo Turístico",
+        "lat": -23.9393267666689,
+        "lon": -54.294131247429
+      },
+      {
+        "badge": 3,
+        "name": "Ponte Ayrton Senna",
+        "rank": "3º",
+        "category": "Turismo de fronteira e cartão-postal",
+        "lat": -23.9393267666689,
+        "lon": -54.2939703148961
+      },
+      {
+        "badge": 4,
+        "name": "Porto Isabel",
+        "rank": "2º",
+        "category": "Turismo fluvial e infraestrutura de lazer",
+        "lat": -23.9414543643208,
+        "lon": -54.2153026198189
+      },
+      {
+        "badge": 5,
+        "name": "Prainha do Cascalho",
+        "rank": "1º",
+        "category": "Turismo de natureza e lazer à beira do Lago/Rio",
+        "lat": -24.0412853382026,
+        "lon": -54.2346894578516
+      },
+      {
+        "badge": 6,
+        "name": "Prainha do Sol",
+        "rank": "1º",
+        "category": "Atrativo Turístico",
+        "lat": -24.0012789538396,
+        "lon": -54.1816738744142
+      },
+      {
+        "badge": 7,
+        "name": "BR- 163",
+        "rank": "Acesso / Infraestrutura",
+        "category": "Atrativo Turístico",
+        "lat": -23.9349949400461,
+        "lon": -54.2814757410002
+      },
+      {
+        "badge": 8,
+        "name": "Porto Isabel",
+        "rank": "2º",
+        "category": "Turismo fluvial e infraestrutura de lazer",
+        "lat": -23.9980190680772,
+        "lon": -54.2005213000487
+      }
+    ]
+  },
+  {
+    "key": "MS - Ponta Porã",
+    "slug": "MS_Ponta_Pora",
+    "map_filename": "mapa_MS_Ponta_Pora.html",
+    "centroid_lat": -22.521116821637428,
+    "centroid_lon": -55.71758686432749,
+    "cnpj_count": 342,
+    "atrativos": [
+      {
+        "badge": 1,
+        "name": "Estação Ferroviária Noroeste Do Brasil - Ramal De Ponta Porã",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -22.5237620119402,
+        "lon": -55.733694335701
+      },
+      {
+        "badge": 2,
+        "name": "MS - 164",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -22.4740034520861,
+        "lon": -55.7501991568767
+      },
+      {
+        "badge": 3,
+        "name": "BR - 463",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -22.5828958720131,
+        "lon": -55.6854068804178
+      },
+      {
+        "badge": 4,
+        "name": "Aeroporto Internacional de Ponta Porã - PMG",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -22.5518528795002,
+        "lon": -55.7061934916459
+      },
+      {
+        "badge": 5,
+        "name": "Museu da Erva Mate - Santo Antônio",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -22.5298032293794,
+        "lon": -55.7350477294133
+      },
+      {
+        "badge": 6,
+        "name": "11º Regimento de Cavalaria Mecanizada",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -22.5405007393292,
+        "lon": -55.7226189889365
+      },
+      {
+        "badge": 7,
+        "name": "Prefeitura Municipal de Ponta Porã",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -22.5381295289298,
+        "lon": -55.7246126024288
+      },
+      {
+        "badge": 8,
+        "name": "Parque dos Ervais",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -22.5516147179238,
+        "lon": -55.716698761952
+      },
+      {
+        "badge": 9,
+        "name": "Monumento das Cuias",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -22.562658473049,
+        "lon": -55.6984382926394
+      },
+      {
+        "badge": 10,
+        "name": "Majestic Hall Centro de Eventos",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -22.590584627235,
+        "lon": -55.6744662447553
+      },
+      {
+        "badge": 11,
+        "name": "Castelinho Atividades cultural",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -22.5231972989464,
+        "lon": -55.7351683542811
+      },
+      {
+        "badge": 12,
+        "name": "Centro Internacional de Convenções “Miguel Gomez”",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -22.5247463343085,
+        "lon": -55.721490104281
+      },
+      {
+        "badge": 13,
+        "name": "Horto Florestal de Ponta Porã",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -22.5263253641078,
+        "lon": -55.7258640153843
+      },
+      {
+        "badge": 14,
+        "name": "Assentamento Itamarati",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -22.1932341519013,
+        "lon": -55.5779614456448
+      },
+      {
+        "badge": 15,
+        "name": "Prédio Histórico da Estação Ferroviária Noroeste do Brasil",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -22.5236055704795,
+        "lon": -55.7336430831169
+      }
+    ]
+  },
+  {
+    "key": "MS - Porto Murtinho",
+    "slug": "MS_Porto_Murtinho",
+    "map_filename": "mapa_MS_Porto_Murtinho.html",
+    "centroid_lat": -21.67613610416667,
+    "centroid_lon": -57.80973671249999,
+    "cnpj_count": 48,
+    "atrativos": [
+      {
+        "badge": 1,
+        "name": "BR - 267",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.6989036577613,
+        "lon": -57.8758845641771
+      },
+      {
+        "badge": 2,
+        "name": "Porto Carandá",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.7052829016904,
+        "lon": -57.8950330961047
+      },
+      {
+        "badge": 3,
+        "name": "Fecho dos Morros",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.4770878431268,
+        "lon": -57.9277665012807
+      },
+      {
+        "badge": 4,
+        "name": "Morro Celina",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.4564293662802,
+        "lon": -57.9231220889693
+      },
+      {
+        "badge": 5,
+        "name": "Cachoeira do Apa",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.9929692581665,
+        "lon": -57.4358626172663
+      },
+      {
+        "badge": 6,
+        "name": "Fazenda Barranco Branco",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.1463379124298,
+        "lon": -57.6338271408747
+      },
+      {
+        "badge": 7,
+        "name": "Cachoeira da Fazenda Primavera",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -22.1658808050609,
+        "lon": -57.5238068484718
+      },
+      {
+        "badge": 8,
+        "name": "Cachoeira Facão",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -22.1658609332017,
+        "lon": -57.5237639321367
+      },
+      {
+        "badge": 9,
+        "name": "Paróquia Sagrado Coração de Jesus",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.6983601705481,
+        "lon": -57.8834382898203
+      },
+      {
+        "badge": 10,
+        "name": "Monumento \"O Pantanal\" - Praça dos Tuiuiús",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.6969471167651,
+        "lon": -57.8879974392676
+      },
+      {
+        "badge": 11,
+        "name": "Praça do Tererê",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.6980293504861,
+        "lon": -57.8888451498927
+      },
+      {
+        "badge": 12,
+        "name": "Monumento \"O Pioneiro\"",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.6967043993041,
+        "lon": -57.8839950456426
+      },
+      {
+        "badge": 13,
+        "name": "Monumento ao Lenhador",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.7006053639234,
+        "lon": -57.8863443474913
+      },
+      {
+        "badge": 14,
+        "name": "Monumento ao Chalaneiro",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.6995070224503,
+        "lon": -57.8888069712736
+      },
+      {
+        "badge": 15,
+        "name": "Monumento ao Aguatero",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.7006239157722,
+        "lon": -57.8863733585692
+      },
+      {
+        "badge": 16,
+        "name": "Cine Teatro Murtinhense Ney Machado Mesquita",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.6988461398639,
+        "lon": -57.8896233131097
+      },
+      {
+        "badge": 17,
+        "name": "Edificação Ismail Ali Alouie",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.6941405641249,
+        "lon": -57.8827175321494
+      },
+      {
+        "badge": 18,
+        "name": "Edificação Rafael Cortada Codorniz",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.7005880793079,
+        "lon": -57.8827100726294
+      },
+      {
+        "badge": 19,
+        "name": "Edificação Nelson Cintra Ribeiro",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.7005781108375,
+        "lon": -57.8827744456425
+      },
+      {
+        "badge": 20,
+        "name": "Rio Negro",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -19.4379489706898,
+        "lon": -54.9878457781568
+      },
+      {
+        "badge": 21,
+        "name": "Rio Perdido",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.6059447869501,
+        "lon": -57.0799891791272
+      },
+      {
+        "badge": 22,
+        "name": "Rio Abobral",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -19.3166113243423,
+        "lon": -57.2636289399003
+      },
+      {
+        "badge": 23,
+        "name": "Rio Vermelho",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -19.6459579686791,
+        "lon": -56.7612992285459
+      },
+      {
+        "badge": 24,
+        "name": "Monumento do Touro Candil",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.6949126899143,
+        "lon": -57.8860053744783
+      },
+      {
+        "badge": 25,
+        "name": "Praça do Tererê",
+        "rank": "Fora do Estudo",
+        "category": "Atrativo Turístico",
+        "lat": -21.6979595699382,
+        "lon": -57.8892421168071
+      }
+    ]
+  },
+  {
+    "key": "PR - Barracão",
+    "slug": "PR_Barracao",
+    "map_filename": "mapa_PR_Barracao.html",
+    "centroid_lat": -26.23974032857143,
+    "centroid_lon": -53.63508260238094,
+    "cnpj_count": 42,
+    "atrativos": [
+      {
+        "badge": 1,
+        "name": "Igreja Histórica de São José",
+        "rank": "4º",
+        "category": "Atrativo Turístico",
+        "lat": -26.230417420786,
+        "lon": -53.5822440166764
+      },
+      {
+        "badge": 2,
+        "name": "Marco das Três Fronteiras",
+        "rank": "1º",
+        "category": "Turismo de fronteira, histórico e contemplativo",
+        "lat": -26.2526920677701,
+        "lon": -53.6357892743467
+      },
+      {
+        "badge": 3,
+        "name": "Vale do Capanema",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -26.2303693006676,
+        "lon": -53.5821689148277
+      },
+      {
+        "badge": 4,
+        "name": "Gruta de Santa Emília de Rodat",
+        "rank": "2º",
+        "category": "Atrativo Turístico",
+        "lat": -26.2302665588344,
+        "lon": -53.4496766872359
+      },
+      {
+        "badge": 5,
+        "name": "BR - 163",
+        "rank": "Acesso / Infraestrutura",
+        "category": "Atrativo Turístico",
+        "lat": -26.2525046210077,
+        "lon": -53.6350477501663
+      }
+    ]
+  },
+  {
+    "key": "PR - Capanema",
+    "slug": "PR_Capanema",
+    "map_filename": "mapa_PR_Capanema.html",
+    "centroid_lat": -25.64643099,
+    "centroid_lon": -53.771545026666665,
+    "cnpj_count": 60,
+    "atrativos": [
+      {
+        "badge": 1,
+        "name": "Salto do Rio Silva Jardim",
+        "rank": "2º",
+        "category": "Atrativo Turístico",
+        "lat": -25.6599155753367,
+        "lon": -53.7897618514771
+      },
+      {
+        "badge": 2,
+        "name": "Ilha do Cavalo",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.5586141773917,
+        "lon": -53.7538004190986
+      },
+      {
+        "badge": 3,
+        "name": "Balneário Martini",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.6009770508486,
+        "lon": -53.7793763320379
+      },
+      {
+        "badge": 4,
+        "name": "Balneário/Camping Kaú",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.5848883250131,
+        "lon": -53.8715379405385
+      },
+      {
+        "badge": 5,
+        "name": "Camping Ecológico Wesling",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.5897956309629,
+        "lon": -53.9124227117028
+      },
+      {
+        "badge": 6,
+        "name": "Camping Por do Sol",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.6003993171194,
+        "lon": -53.7758211497812
+      },
+      {
+        "badge": 7,
+        "name": "BR - 163",
+        "rank": "Acesso / Infraestrutura",
+        "category": "Atrativo Turístico",
+        "lat": -25.6699258143741,
+        "lon": -53.8085162358188
+      }
+    ]
+  },
+  {
+    "key": "PR - Foz do Iguaçu",
+    "slug": "PR_Foz_do_Iguacu",
+    "map_filename": "mapa_PR_Foz_do_Iguacu.html",
+    "centroid_lat": -25.529354905016255,
+    "centroid_lon": -54.56180187830933,
+    "cnpj_count": 2153,
+    "atrativos": [
+      {
+        "badge": 1,
+        "name": "Adrena Kart Kartódromo",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.556195631962,
+        "lon": -54.5676834320391
+      },
+      {
+        "badge": 2,
+        "name": "Aguaray Eco",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.5974976645001,
+        "lon": -54.5280260706694
+      },
+      {
+        "badge": 3,
+        "name": "AquaFoz",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.6141313697398,
+        "lon": -54.4804620710579
+      },
+      {
+        "badge": 4,
+        "name": "Aquamania",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.5824012517886,
+        "lon": -54.5277482590253
+      },
+      {
+        "badge": 5,
+        "name": "Bike Poço Preto",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.6133,
+        "lon": -54.4812
+      },
+      {
+        "badge": 6,
+        "name": "Blue Park",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.5662210907766,
+        "lon": -54.5537880296375
+      },
+      {
+        "badge": 7,
+        "name": "Cataratas del Iguazú – Arg.",
+        "rank": "1º",
+        "category": "Atrativo Turístico",
+        "lat": -25.6657397623252,
+        "lon": -54.4503015493529
+      },
+      {
+        "badge": 8,
+        "name": "Cataratas do Iguaçu – Brasil",
+        "rank": "1º",
+        "category": "Atrativo natural",
+        "lat": -25.6807176021686,
+        "lon": -54.4373528594411
+      },
+      {
+        "badge": 9,
+        "name": "Dreams Park Show",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.5898628224964,
+        "lon": -54.5170353767298
+      },
+      {
+        "badge": 10,
+        "name": "Falls Bike Tour",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.5565265291119,
+        "lon": -54.5730605518506
+      },
+      {
+        "badge": 11,
+        "name": "Fly Foz – Paraquedismo",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.4604893533922,
+        "lon": -54.5967721608776
+      },
+      {
+        "badge": 12,
+        "name": "Helisul Experience – Cataratas",
+        "rank": "1º",
+        "category": "Atrativo Turístico",
+        "lat": -25.6126977621796,
+        "lon": -54.481560960873
+      },
+      {
+        "badge": 13,
+        "name": "Helisul Experience – Itaipu",
+        "rank": "3º",
+        "category": "Atrativo Turístico",
+        "lat": -25.6126203654703,
+        "lon": -54.4811639939586
+      },
+      {
+        "badge": 14,
+        "name": "Iguassu by Bike",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.6139901837243,
+        "lon": -54.4816155897085
+      },
+      {
+        "badge": 15,
+        "name": "Itaipu Iluminada",
+        "rank": "3º",
+        "category": "Atrativo Turístico",
+        "lat": -25.4467837820795,
+        "lon": -54.5840048897135
+      },
+      {
+        "badge": 16,
+        "name": "Itaipu Panorâmica",
+        "rank": "3º",
+        "category": "Atrativo Turístico",
+        "lat": -25.4467550061132,
+        "lon": -54.5839186897136
+      },
+      {
+        "badge": 17,
+        "name": "Itaipu Refúgio Biológico",
+        "rank": "3º",
+        "category": "Atrativo Turístico",
+        "lat": -25.4468007700637,
+        "lon": -54.5839371571807
+      },
+      {
+        "badge": 18,
+        "name": "Kattamaram",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.4331438695461,
+        "lon": -54.5586608092154
+      },
+      {
+        "badge": 19,
+        "name": "Macuco Safari",
+        "rank": "5º",
+        "category": "Atrativo de aventura e natureza",
+        "lat": -25.6510496621479,
+        "lon": -54.4380611743651
+      },
+      {
+        "badge": 20,
+        "name": "Marco das Três Fronteiras",
+        "rank": "4º",
+        "category": "Atrativo cultural e paisagístico",
+        "lat": -25.5899267377765,
+        "lon": -54.5902396320383
+      },
+      {
+        "badge": 21,
+        "name": "Mesquita Omar Ibn Al-Khattab",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.5203063960528,
+        "lon": -54.5785828743691
+      },
+      {
+        "badge": 22,
+        "name": "Parque das Aves",
+        "rank": "2º",
+        "category": "Atrativo natural",
+        "lat": -25.6137196130527,
+        "lon": -54.4825549743663
+      },
+      {
+        "badge": 23,
+        "name": "Pôr do Sol nas Cataratas",
+        "rank": "1º",
+        "category": "Atrativo Turístico",
+        "lat": -25.4932352403254,
+        "lon": -54.5919894860148
+      },
+      {
+        "badge": 24,
+        "name": "Templo Budista Chen Tien",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.4743844342876,
+        "lon": -54.5990115479364
+      },
+      {
+        "badge": 25,
+        "name": "Turismo Itaipu",
+        "rank": "3º",
+        "category": "Atrativo Turístico",
+        "lat": -25.4467277662568,
+        "lon": -54.5841632992332
+      },
+      {
+        "badge": 26,
+        "name": "Wonder Park Foz",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.6088396057347,
+        "lon": -54.4889792166955
+      },
+      {
+        "badge": 27,
+        "name": "Yup Star – Roda Gigante",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.5865072600867,
+        "lon": -54.5881834264922
+      },
+      {
+        "badge": 28,
+        "name": "Catedral",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.4973495190614,
+        "lon": -54.5734058742622
+      },
+      {
+        "badge": 29,
+        "name": "Centro Comercial - Paraguai",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.5093771902319,
+        "lon": -54.607232124992
+      },
+      {
+        "badge": 30,
+        "name": "Museu El Mensú - Paraguai",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.5130623206802,
+        "lon": -54.6145171012438
+      },
+      {
+        "badge": 31,
+        "name": "Salto Monday - Paraguai",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.5592412618521,
+        "lon": -54.6315324742607
+      },
+      {
+        "badge": 32,
+        "name": "Duty Free - Argentina",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.5992615181105,
+        "lon": -54.5639498319324
+      },
+      {
+        "badge": 33,
+        "name": "Marco das 3 fronteiras (Argentina)",
+        "rank": "4º",
+        "category": "Atrativo Turístico",
+        "lat": -25.5947055889842,
+        "lon": -54.5907523165872
+      },
+      {
+        "badge": 34,
+        "name": "Cataratas (Argentina)",
+        "rank": "1º",
+        "category": "Atrativo Turístico",
+        "lat": -25.6768328654673,
+        "lon": -54.4555185850584
+      },
+      {
+        "badge": 35,
+        "name": "Feirinha da Argentina",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.59390036863,
+        "lon": -54.5738994742598
+      },
+      {
+        "badge": 36,
+        "name": "Feira do centro da cidade - Argentina",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.5962744988072,
+        "lon": -54.5747998153454
+      },
+      {
+        "badge": 37,
+        "name": "BR - 277",
+        "rank": "Acesso / Infraestrutura",
+        "category": "Atrativo Turístico",
+        "lat": -25.4923141836294,
+        "lon": -54.5147953174536
+      },
+      {
+        "badge": 38,
+        "name": "Aeroporto Internacional de Foz do Iguaçu/Cataratas",
+        "rank": "1º",
+        "category": "Atrativo Turístico",
+        "lat": -25.5977504500675,
+        "lon": -54.4885219320378
+      }
+    ]
+  },
+  {
+    "key": "PR - Guaíra",
+    "slug": "PR_Guaira",
+    "map_filename": "mapa_PR_Guaira.html",
+    "centroid_lat": -24.078881423749998,
+    "centroid_lon": -54.0528681,
+    "cnpj_count": 160,
+    "atrativos": [
+      {
+        "badge": 1,
+        "name": "Mirante com vista para o Rio Paraná",
+        "rank": "2º",
+        "category": "Atrativo Turístico",
+        "lat": -25.2935787374816,
+        "lon": -54.5866360479513
+      },
+      {
+        "badge": 2,
+        "name": "Parque Nacional de Ilha Grande",
+        "rank": "1º",
+        "category": "Atrativo Turístico",
+        "lat": -23.709190853018,
+        "lon": -54.0245486953817
+      },
+      {
+        "badge": 3,
+        "name": "Centro Náutico Recreativo (Marinas)",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -24.0791340737343,
+        "lon": -54.2619876167409
+      },
+      {
+        "badge": 4,
+        "name": "Lagoa Saraiva",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -24.0170545792981,
+        "lon": -54.1758581455782
+      },
+      {
+        "badge": 5,
+        "name": "Igreja Nossa Senhora dos Navegantes",
+        "rank": "3º",
+        "category": "Atrativo Turístico",
+        "lat": -23.9515042784727,
+        "lon": -54.2461657841627
+      },
+      {
+        "badge": 6,
+        "name": "Kartódromo Ayrton Senna",
+        "rank": "5º",
+        "category": "Atrativo Turístico",
+        "lat": -23.9602555227227,
+        "lon": -54.2462016746202
+      },
+      {
+        "badge": 7,
+        "name": "Trilha Marinas",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -24.0790914998343,
+        "lon": -54.2621470146159
+      },
+      {
+        "badge": 8,
+        "name": "Estação Motorhome",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -24.0792614118279,
+        "lon": -54.26115076757
+      },
+      {
+        "badge": 9,
+        "name": "Praça do Japão Mitsuaki Shiomi",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -24.0906034251604,
+        "lon": -54.2559187032471
+      },
+      {
+        "badge": 10,
+        "name": "Cine Teatro  Sete Quedas",
+        "rank": "4º",
+        "category": "Atrativo Turístico",
+        "lat": -24.0771385799275,
+        "lon": -54.257984274412
+      },
+      {
+        "badge": 11,
+        "name": "Cruzeiro das Américas",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -24.0791438689767,
+        "lon": -54.2619232437278
+      },
+      {
+        "badge": 12,
+        "name": "Praia do Sol",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -24.0789969402613,
+        "lon": -54.262030532083
+      },
+      {
+        "badge": 13,
+        "name": "Museu Sete Quedas",
+        "rank": "4º",
+        "category": "Turismo histórico, cultural e patrimonial",
+        "lat": -24.0792,
+        "lon": -54.2612
+      },
+      {
+        "badge": 14,
+        "name": "Vila Velha",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -24.0808844862211,
+        "lon": -54.2589429185895
+      },
+      {
+        "badge": 15,
+        "name": "Locomotiva nº 04",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -24.0774005221686,
+        "lon": -54.256760274412
+      },
+      {
+        "badge": 16,
+        "name": "Ponte Ayrton Senna",
+        "rank": "5º",
+        "category": "Turismo de contemplação, engenharia e fronteira",
+        "lat": -24.0569680583842,
+        "lon": -54.259383645577
+      },
+      {
+        "badge": 17,
+        "name": "Feira do Produtor",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -24.0854132833258,
+        "lon": -54.2498975744116
+      },
+      {
+        "badge": 18,
+        "name": "Rio Paraná",
+        "rank": "2º",
+        "category": "Turismo náutico, contemplativo e de aventura",
+        "lat": -24.0856380380568,
+        "lon": -54.2826309364624
+      },
+      {
+        "badge": 19,
+        "name": "Igreja Nuestro Señor Del Perdón",
+        "rank": "3º",
+        "category": "Turismo histórico, religioso e cultural",
+        "lat": -24.0792613595865,
+        "lon": -54.258518084208
+      },
+      {
+        "badge": 20,
+        "name": "Maracaju dos Gaúchos",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -24.2018117473838,
+        "lon": -54.2003081381779
+      },
+      {
+        "badge": 21,
+        "name": "Feira do Artesão",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -20.3128361750483,
+        "lon": -48.2880402154085
+      },
+      {
+        "badge": 22,
+        "name": "Ilha São Francisco",
+        "rank": "1º",
+        "category": "Atrativo Turístico",
+        "lat": -24.0672616130541,
+        "lon": -54.2551726704386
+      },
+      {
+        "badge": 23,
+        "name": "Portal Turístico",
+        "rank": "Acesso / Infraestrutura",
+        "category": "Atrativo Turístico",
+        "lat": -24.0751329497639,
+        "lon": -54.2421751093462
+      },
+      {
+        "badge": 24,
+        "name": "Parque do Lago - Rogério Manuel Gonçalvez",
+        "rank": "1º",
+        "category": "Atrativo Turístico",
+        "lat": -24.0876261975501,
+        "lon": -54.2425912074972
+      },
+      {
+        "badge": 25,
+        "name": "Atelíê do Frei Pacífico",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -24.0803111560899,
+        "lon": -54.2479363810632
+      },
+      {
+        "badge": 26,
+        "name": "BR - 163",
+        "rank": "Acesso / Infraestrutura",
+        "category": "Atrativo Turístico",
+        "lat": -24.0850106904945,
+        "lon": -54.2436130528495
+      },
+      {
+        "badge": 27,
+        "name": "BR - 272",
+        "rank": "Acesso / Infraestrutura",
+        "category": "Atrativo Turístico",
+        "lat": -24.1055548955709,
+        "lon": -54.2631603641306
+      },
+      {
+        "badge": 28,
+        "name": "Aeroporto Municipal Walter Martins de Oliveira",
+        "rank": "Acesso / Infraestrutura",
+        "category": "Atrativo Turístico",
+        "lat": -24.0801824736038,
+        "lon": -54.1874865455764
+      },
+      {
+        "badge": 29,
+        "name": "Porto de Guaíra",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -24.069839306686,
+        "lon": -54.2413358312157
+      }
+    ]
+  },
+  {
+    "key": "PR - Medianeira",
+    "slug": "PR_Medianeira",
+    "map_filename": "mapa_PR_Medianeira.html",
+    "centroid_lat": -25.29449824611872,
+    "centroid_lon": -54.02708384246575,
+    "cnpj_count": 219,
+    "atrativos": [
+      {
+        "badge": 1,
+        "name": "Sítio da Marlene",
+        "rank": "5º",
+        "category": "Atrativo Turístico",
+        "lat": -25.3172831120339,
+        "lon": -54.021845918553
+      },
+      {
+        "badge": 2,
+        "name": "Sítio do Beto",
+        "rank": "5º",
+        "category": "Turismo rural, gastronômico e de experiência",
+        "lat": -25.3152092170208,
+        "lon": -54.0346596964754
+      },
+      {
+        "badge": 3,
+        "name": "Recanto Olivo",
+        "rank": "5º",
+        "category": "Turismo rural, gastronômico e de experiência",
+        "lat": -25.235213098874,
+        "lon": -54.0662612860224
+      },
+      {
+        "badge": 4,
+        "name": "Recanto Ilha do Sol",
+        "rank": "5º",
+        "category": "Atrativo Turístico",
+        "lat": -25.3048795918431,
+        "lon": -54.10269164554
+      },
+      {
+        "badge": 5,
+        "name": "Cachoeira da Maralúcia",
+        "rank": "5º",
+        "category": "Atrativo Turístico",
+        "lat": -25.1898550411715,
+        "lon": -54.0402315355778
+      },
+      {
+        "badge": 6,
+        "name": "Circuito Medianeira Rural",
+        "rank": "5º",
+        "category": "Turismo rural, gastronômico e de experiência",
+        "lat": -25.2954389122991,
+        "lon": -54.0882697826311
+      },
+      {
+        "badge": 7,
+        "name": "Espigão do Norte",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -25.1996989688195,
+        "lon": -54.0685915706545
+      },
+      {
+        "badge": 8,
+        "name": "Morro da Salete",
+        "rank": "1º",
+        "category": "Turismo religioso, natural e paisagístico",
+        "lat": -25.2967184776127,
+        "lon": -54.0373615301983
+      },
+      {
+        "badge": 9,
+        "name": "Rota da fé",
+        "rank": "Acesso / Infraestrutura",
+        "category": "Atrativo Turístico",
+        "lat": -25.2296862596704,
+        "lon": -54.0732644185557
+      },
+      {
+        "badge": 10,
+        "name": "BR - 277",
+        "rank": "Acesso / Infraestrutura",
+        "category": "Atrativo Turístico",
+        "lat": -25.2869497001778,
+        "lon": -54.0956793075944
+      },
+      {
+        "badge": 11,
+        "name": "BR - 495",
+        "rank": "Acesso / Infraestrutura",
+        "category": "Atrativo Turístico",
+        "lat": -25.2871396887538,
+        "lon": -54.0956793075944
+      },
+      {
+        "badge": 12,
+        "name": "Aeroporto Municipal Medianeira (SSMD)",
+        "rank": "4º",
+        "category": "Atrativo Turístico",
+        "lat": -25.3088996380832,
+        "lon": -54.0751403583292
+      }
+    ]
+  },
+  {
+    "key": "SC - Dionísio Cerqueira",
+    "slug": "SC_Dionisio_Cerqueira",
+    "map_filename": "mapa_SC_Dionisio_Cerqueira.html",
+    "centroid_lat": -26.272136688535028,
+    "centroid_lon": -53.61695475923567,
+    "cnpj_count": 157,
+    "atrativos": [
+      {
+        "badge": 1,
+        "name": "BR - 163",
+        "rank": "Acesso / Infraestrutura",
+        "category": "Atrativo Turístico",
+        "lat": -26.2524577712749,
+        "lon": -53.6351542921032
+      },
+      {
+        "badge": 2,
+        "name": "Cânion do Assentamento",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -26.2747029363217,
+        "lon": -53.3747639688001
+      },
+      {
+        "badge": 3,
+        "name": "Cachoeira do Toldo",
+        "rank": "5º",
+        "category": "Atrativo Turístico",
+        "lat": -26.3035238483696,
+        "lon": -53.6174349778005
+      },
+      {
+        "badge": 4,
+        "name": "Praça Professor Dalilo Quintino Pereira",
+        "rank": "Secundário / Complementar",
+        "category": "Atrativo Turístico",
+        "lat": -26.2538324679562,
+        "lon": -53.6405096018861
+      },
+      {
+        "badge": 5,
+        "name": "Aeroporto de Dionísio Cerqueira - SND6",
+        "rank": "Acesso / Infraestrutura",
+        "category": "Atrativo Turístico",
+        "lat": -26.2874466156152,
+        "lon": -53.6319270031812
+      }
+    ]
+  }
+]
